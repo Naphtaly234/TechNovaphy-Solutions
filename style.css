@@ -34,7 +34,7 @@ body {
   font-weight: 500;
 }
 
-.theme-btn {
+.Mode btn {
   background: transparent;
   border: none;
   font-size: 1.2rem;
@@ -44,7 +44,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.theme-btn:hover {
+.Mode-btn:hover {
   transform: scale(1.2);
 }
 
@@ -161,3 +161,4 @@ body {
 .dark .contact-form button:hover {
   background: #0ea5e9;
 }
+
