@@ -62,13 +62,48 @@ body {background:#f4f6f9; color:#333; transition:0.3s ease;}
 footer {background:#111; color:white; text-align:center; padding:20px 0;}
 
 /* DARK MODE */
-body.dark {background:#121212; color:white;}
-body.dark .card {background:#1e1e1e; color:white;}
-body.dark .navbar {background:black;}
+/* DARK MODE - USER FRIENDLY */
+body.dark {
+  background: #1e1e2f;        /* soft dark blue-gray */
+  color: #e0e0e0;             /* light gray text */
+}
 
+body.dark .navbar {
+  background: #2a2a3d;        /* dark but not black */
+}
+
+body.dark .card {
+  background: #2c2c3e;        /* slightly lighter dark for cards */
+  color: #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+body.dark .hero-box {
+  background: rgba(255,255,255,0.05); /* keep hero overlay soft */
+  color: #e0e0e0;
+}
+
+body.dark .btn.primary {
+  background: #4da6ff;         /* soft blue accent */
+}
+
+body.dark .btn.primary:hover {
+  background: #3399ff;
+}
+
+body.dark .btn.secondary {
+  border: 2px solid #e0e0e0;
+  color: #e0e0e0;
+}
+
+body.dark .btn.secondary:hover {
+  background: #e0e0e0;
+  color: #2a2a3d;
+}
 /* RESPONSIVE */
 @media(max-width:768px){
 .hero-box h2{font-size:26px;}
 .nav-links{display:none;}
 .cards{flex-direction:column; align-items:center;}
 }
+
