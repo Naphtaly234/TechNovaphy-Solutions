@@ -34,7 +34,7 @@ body {
   font-weight: 500;
 }
 
-.Mode btn {
+.Mode-btn {
   background: transparent;
   border: none;
   font-size: 1.2rem;
@@ -161,4 +161,5 @@ body {
 .dark .contact-form button:hover {
   background: #0ea5e9;
 }
+
 
