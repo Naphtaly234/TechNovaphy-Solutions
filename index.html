@@ -15,7 +15,15 @@
 
 <body>
 
+<button id="toggleTheme">Dark Mode</button>
 
+<script>
+const btn = document.getElementById('toggleTheme');
+btn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+</script>
+  
 
 <!-- Navigation -->
 <nav class="navbar">
@@ -166,6 +174,7 @@
 
 </body>
 </html>
+
 
 
 
