@@ -168,9 +168,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+  <script>
+const policyButtons = document.querySelectorAll('.policy-btn');
+
+policyButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  });
+});
+</script>
 
 </body>
 </html>
+
 
 
 
