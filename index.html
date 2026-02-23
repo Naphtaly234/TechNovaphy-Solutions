@@ -10,30 +10,35 @@
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="container nav-flex">
     <h1 class="logo">ITS</h1>
+
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
     <button id="theme-toggle" class="theme-btn">🌙</button>
   </div>
 </nav>
 
 <main>
 
-<!-- Hero Section -->
+<!-- HERO -->
 <header class="hero" id="home">
-  <div class="container hero-content">
+  <div class="overlay"></div>
+
+  <div class="hero-box">
     <h2>Empowering Businesses Through Smart Technology</h2>
     <p>
-      Reliable IT support, custom software development, and advanced cybersecurity
-      services to help your business grow securely and efficiently.
+      Reliable IT support, custom software development, and cybersecurity
+      solutions to help your business grow securely.
     </p>
+
     <div class="hero-buttons">
       <a href="#contact" class="btn primary">Get a Free Quote</a>
       <a href="#services" class="btn secondary">Explore Services</a>
@@ -41,62 +46,78 @@
   </div>
 </header>
 
-<!-- Services -->
+<!-- SERVICES -->
 <section id="services" class="section">
   <div class="container">
     <h2 class="section-title">Our Services</h2>
+
     <div class="cards">
-      <article class="card">
+      <div class="card">
         <h3>IT Support</h3>
-        <p>24/7 support, system maintenance, and network solutions.</p>
-      </article>
-      <article class="card">
+        <p>24/7 support, maintenance, troubleshooting, and business IT consulting.</p>
+      </div>
+
+      <div class="card">
         <h3>Software Development</h3>
-        <p>Modern websites, business systems, and scalable web apps.</p>
-      </article>
-      <article class="card">
+        <p>Modern websites, custom systems, and scalable web applications.</p>
+      </div>
+
+      <div class="card">
         <h3>Cybersecurity</h3>
-        <p>Security audits, firewall setup, and advanced data protection.</p>
-      </article>
+        <p>Security audits, firewall setup, malware protection, and risk prevention.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- About -->
+<!-- ABOUT -->
 <section id="about" class="section light">
   <div class="container">
-    <h2 class="section-title">About Us</h2>
+    <h2 class="section-title">About Innovative Tech Solutions</h2>
     <p>
-      Innovative Tech Solutions helps businesses grow through reliable,
-      scalable, and secure technology solutions.
+      We help businesses grow through reliable, scalable, and secure
+      technology solutions tailored to their needs.
     </p>
   </div>
 </section>
 
-<!-- Contact -->
+<!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
     <h2 class="section-title">Contact Us</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button class="btn primary">Send Message</button>
+
+    <!-- WORKING FORM -->
+    <form action="https://formspree.io/f/xzdajgyz" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="message" placeholder="Tell us about your project..." rows="5" required></textarea>
+      <button type="submit" class="btn primary">Send Message</button>
     </form>
+
+    <div class="contact-info">
+      <p>Email: innovativetechsolutions54@gmail.com</p>
+      <p>Phone: +254 799 269 573</p>
+      <p>Location: Nairobi, Kenya</p>
+    </div>
   </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <p>&copy; 2026 Innovative Tech Solutions. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- DARK MODE SCRIPT -->
 <script>
-document.getElementById('theme-toggle').addEventListener('click', function () {
-  document.body.classList.toggle('dark');
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("theme-toggle");
+  toggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+  });
 });
 </script>
 
