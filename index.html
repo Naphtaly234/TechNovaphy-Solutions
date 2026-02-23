@@ -3,151 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Innovative Tech Solutions | IT Support & Software Development</title>
-  <meta name="description" content="Innovative Tech Solutions provides professional IT support, custom software development, and cybersecurity services for businesses. Get a free consultation today.">
-  <meta name="keywords" content="IT Support, Software Development, Cybersecurity, Web Development, Tech Solutions">
-  <meta name="author" content="Innovative Tech Solutions">
+  <meta name="description" content="Professional IT support, custom software development, and cybersecurity services.">
 
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <!-- Navbar -->
 <nav class="navbar">
   <div class="container nav-flex">
-    <h2 class="logo">ITS</h2>
-    <ul>
+    <h1 class="logo">ITS</h1>
+    <ul class="nav-links">
       <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <!-- Dark mode toggle -->
     <button id="theme-toggle" class="theme-btn">🌙</button>
   </div>
 </nav>
 
+<main>
+
 <!-- Hero Section -->
 <header class="hero" id="home">
   <div class="container hero-content">
-    <h1>Empowering Businesses Through Smart Technology</h1>
-    <p>We deliver reliable IT support, custom software solutions, and advanced cybersecurity services to help your business grow securely and efficiently.</p>
+    <h2>Empowering Businesses Through Smart Technology</h2>
+    <p>
+      Reliable IT support, custom software development, and advanced cybersecurity
+      services to help your business grow securely and efficiently.
+    </p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn primary floating-btn">Get a Free Quote</a>
+      <a href="#contact" class="btn primary">Get a Free Quote</a>
       <a href="#services" class="btn secondary">Explore Services</a>
     </div>
   </div>
 </header>
 
-<!-- About Section -->
-<section id="about" class="section">
-  <div class="container">
-    <h2>About Innovative Tech Solutions</h2>
-    <p>Innovative Tech Solutions is a professional technology company dedicated to helping businesses succeed in the digital world. We specialize in IT support, modern software development, and enterprise-grade cybersecurity solutions.</p>
-    <p>Our mission is to provide affordable, reliable, and scalable technology services that improve productivity and protect your digital assets.</p>
-  </div>
-</section>
-
-<!-- Services Section -->
+<!-- Services -->
 <section id="services" class="section">
   <div class="container">
-    <h2>Our Services</h2>
+    <h2 class="section-title">Our Services</h2>
     <div class="cards">
-      <div class="card">
-        <h3>IT Support & Network Solutions</h3>
-        <p>24/7 technical support, hardware troubleshooting, network setup, system maintenance, and business IT consulting to keep your operations running smoothly.</p>
-      </div>
-      <div class="card">
-        <h3>Custom Software Development</h3>
-        <p>We design and build modern websites, web applications, and business systems tailored to your needs using secure and scalable technologies.</p>
-      </div>
-      <div class="card">
-        <h3>Cybersecurity Services</h3>
-        <p>Protect your data with security audits, vulnerability assessments, firewall configuration, malware protection, and advanced security strategies.</p>
-      </div>
+      <article class="card">
+        <h3>IT Support</h3>
+        <p>24/7 support, system maintenance, and network solutions.</p>
+      </article>
+      <article class="card">
+        <h3>Software Development</h3>
+        <p>Modern websites, business systems, and scalable web apps.</p>
+      </article>
+      <article class="card">
+        <h3>Cybersecurity</h3>
+        <p>Security audits, firewall setup, and advanced data protection.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Portfolio Section -->
-<section id="portfolio" class="section">
+<!-- About -->
+<section id="about" class="section light">
   <div class="container">
-    <h2>Our Portfolio</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Business Website Development</h3>
-        <p>Developed responsive company websites optimized for performance and SEO.</p>
-      </div>
-      <div class="card">
-        <h3>Inventory Management System</h3>
-        <p>Custom-built system to help businesses track products, sales, and reports efficiently.</p>
-      </div>
-      <div class="card">
-        <h3>Network Security Upgrade</h3>
-        <p>Implemented enterprise-level firewall and endpoint security solutions for local businesses.</p>
-      </div>
-    </div>
+    <h2 class="section-title">About Us</h2>
+    <p>
+      Innovative Tech Solutions helps businesses grow through reliable,
+      scalable, and secure technology solutions.
+    </p>
   </div>
 </section>
 
-<!-- Testimonials Section -->
-<section id="testimonials" class="section">
-  <div class="container">
-    <h2>What Our Clients Say</h2>
-    <div class="cards">
-      <div class="card">
-        <p>"Innovative Tech Solutions transformed our IT infrastructure. Their support team is reliable and professional."</p>
-        <h4>- Business Owner</h4>
-      </div>
-      <div class="card">
-        <p>"Our website and internal system were delivered on time and exceeded expectations."</p>
-        <h4>- Company Director</h4>
-      </div>
-      <div class="card">
-        <p>"Their cybersecurity solutions helped us secure our business data effectively."</p>
-        <h4>- Operations Manager</h4>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section (ONLY ONE) -->
+<!-- Contact -->
 <section id="contact" class="section">
   <div class="container">
-    <h2>Contact Us</h2>
-    <p>Ready to grow your business with secure and reliable technology? Get in touch today.</p>
-
-    <form action="https://formspree.io/f/xzdajgyz" method="POST" class="contact-form">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-      <button type="submit" class="btn primary">Send Message</button>
+    <h2 class="section-title">Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button class="btn primary">Send Message</button>
     </form>
-
-    <div class="contact-info">
-      <p>Email: <a href="mailto:innovativetechsolutions54@gmail.com">innovativetechsolutions54@gmail.com</a></p>
-      <p>Phone: <a href="tel:+254799269573">+254 799 269 573</a></p>
-      <p>Location: Nairobi, Kenya</p>
-    </div>
   </div>
 </section>
 
-<!-- Footer -->
+</main>
+
 <footer>
-  <div class="container footer-content">
-    <p>© 2026 Innovative Tech Solutions. All rights reserved.</p>
-    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  <div class="container">
+    <p>&copy; 2026 Innovative Tech Solutions. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- Dark Mode Toggle JS -->
 <script>
-const btn = document.getElementById('theme-toggle');
-btn.addEventListener('click', () => {
+document.getElementById('theme-toggle').addEventListener('click', function () {
   document.body.classList.toggle('dark');
 });
 </script>
