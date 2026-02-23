@@ -63,16 +63,14 @@
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact Us</h2>
-
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+<form method="POST" action="https://formspree.io/f/{form_id}">
+  <input type="email" name="email" placeholder="Your email">
+  <textarea name="message" placeholder="Test Message"></textarea>
+  <button type="submit">Send Test</button>
+</form> </form>
 
     <div class="contact-info">
-      <p>Email: <a href="mailto:innovativetechsolutions54@gmail">innovativetechsolutions54@gmail.com@gmail.com</a></p>
+      <p>Email: <a href="mailto:innovativetechsolutions54@gmail">innovativetechsolutions54@gmail.com</a></p>
       <p>Phone: <a href="tel:+254799269573">+254 799 269 573</a></p>
     </div>
   </div>
@@ -85,5 +83,6 @@
 </body>
 
 </html>
+
 
 
