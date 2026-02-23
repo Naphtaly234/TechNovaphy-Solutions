@@ -1,6 +1,6 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+/* ---------------------- */
+/* General Reset & Fonts  */
+/* ---------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -8,73 +8,124 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
   line-height: 1.6;
-  background: #f4f7fa;
-  color: #333;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Containers */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+/* ---------------------- */
+/* Sections               */
+/* ---------------------- */
+.section {
+  padding: 80px 0;
 }
 
-/* Navbar */
-.navbar {
+.section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+/* ---------------------- */
+/* Dark Mode              */
+/* ---------------------- */
+.dark {
   background: #0f172a;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
   color: #fff;
-  font-weight: 700;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
+.dark h2 {
+  color: #fff;
+}
+
+/* ---------------------- */
+/* Cards                  */
+/* ---------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: 0.3s ease;
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar a:hover {
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #0ea5e9;
+}
+
+/* Dark mode cards */
+.dark .card {
+  background: #1e293b;
+  color: #fff;
+}
+
+.dark .card h3 {
   color: #38bdf8;
 }
 
-/* Hero */
-.hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
-              url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
+/* ---------------------- */
+/* Contact Form           */
+/* ---------------------- */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background: #0ea5e9;
   color: #fff;
-  padding: 120px 0;
-  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+.contact-form button:hover {
+  background: #0284c7;
 }
 
-.hero p {
-  font-size: 1.1rem;
-  max-width: 700px;
+/* Dark mode contact form */
+.dark .contact-form input,
+.dark .contact-form textarea {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid #334155;
+}
+
+.dark .contact-form button {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.dark .contact-form button:hover {
+  background: #0ea5e9;
+}  max-width: 700px;
   margin: auto;
   margin-bottom: 30px;
 }
@@ -234,3 +285,4 @@ footer a {
     font-size: 2rem;
   }
 }
+
