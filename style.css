@@ -284,3 +284,42 @@ body, .card, .hero-box, .navbar, .btn {
     font-size: 16px;
   }
 }
+
+<!-- Footer CSS -->
+<style>
+.footer-content {
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  background: #111;
+  font-size: 14px;
+}
+
+.footer-policies {
+  margin-top: 15px;
+}
+
+.policy-btn {
+  background: none;
+  border: none;
+  color: #00bcd4;
+  cursor: pointer;
+  display: block;
+  margin: 5px auto;
+  font-size: 14px;
+}
+
+.policy-btn:hover {
+  text-decoration: underline;
+}
+
+.policy-content {
+  display: none;
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
