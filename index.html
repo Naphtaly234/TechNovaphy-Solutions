@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO Optimization -->
   <title>Innovative Tech Solutions | IT Support & Software Development</title>
   <meta name="description" content="Innovative Tech Solutions provides professional IT support, custom software development, and cybersecurity services for businesses. Get a free consultation today.">
   <meta name="keywords" content="IT Support, Software Development, Cybersecurity, Web Development, Tech Solutions">
@@ -27,38 +26,33 @@
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <!-- Dark mode toggle button -->
+    <!-- Dark mode toggle -->
     <button id="theme-toggle" class="theme-btn">🌙</button>
   </div>
 </nav>
 
 <!-- Hero Section -->
 <header class="hero" id="home">
-  <div class="container">
+  <div class="container hero-content">
     <h1>Empowering Businesses Through Smart Technology</h1>
     <p>We deliver reliable IT support, custom software solutions, and advanced cybersecurity services to help your business grow securely and efficiently.</p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn primary">Get a Free Quote</a>
+      <a href="#contact" class="btn primary floating-btn">Get a Free Quote</a>
       <a href="#services" class="btn secondary">Explore Services</a>
     </div>
   </div>
 </header>
 
-<!-- About -->
+<!-- About Section -->
 <section id="about" class="section">
   <div class="container">
     <h2>About Innovative Tech Solutions</h2>
-    <p>
-      Innovative Tech Solutions is a professional technology company dedicated to helping businesses succeed in the digital world.
-      We specialize in IT support, modern software development, and enterprise-grade cybersecurity solutions.
-    </p>
-    <p>
-      Our mission is to provide affordable, reliable, and scalable technology services that improve productivity and protect your digital assets.
-    </p>
+    <p>Innovative Tech Solutions is a professional technology company dedicated to helping businesses succeed in the digital world. We specialize in IT support, modern software development, and enterprise-grade cybersecurity solutions.</p>
+    <p>Our mission is to provide affordable, reliable, and scalable technology services that improve productivity and protect your digital assets.</p>
   </div>
 </section>
 
-<!-- Services -->
+<!-- Services Section -->
 <section id="services" class="section">
   <div class="container">
     <h2>Our Services</h2>
@@ -75,6 +69,99 @@
       </div>
 
       <div class="card">
+        <h3>Cybersecurity Services</h3>
+        <p>Protect your data with security audits, vulnerability assessments, firewall configuration, malware protection, and advanced security strategies.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <h2>Our Portfolio</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Business Website Development</h3>
+        <p>Developed responsive company websites optimized for performance and SEO.</p>
+      </div>
+
+      <div class="card">
+        <h3>Inventory Management System</h3>
+        <p>Custom-built system to help businesses track products, sales, and reports efficiently.</p>
+      </div>
+
+      <div class="card">
+        <h3>Network Security Upgrade</h3>
+        <p>Implemented enterprise-level firewall and endpoint security solutions for local businesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <h2>What Our Clients Say</h2>
+    <div class="cards">
+      <div class="card">
+        <p>"Innovative Tech Solutions transformed our IT infrastructure. Their support team is reliable and professional."</p>
+        <h4>- Business Owner</h4>
+      </div>
+
+      <div class="card">
+        <p>"Our website and internal system were delivered on time and exceeded expectations."</p>
+        <h4>- Company Director</h4>
+      </div>
+
+      <div class="card">
+        <p>"Their cybersecurity solutions helped us secure our business data effectively."</p>
+        <h4>- Operations Manager</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Ready to grow your business with secure and reliable technology? Get in touch today.</p>
+
+    <form action="https://formspree.io/f/xzdajgyz" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+      <button type="submit" class="btn primary">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <p>Email: <a href="mailto:innovativetechsolutions54@gmail.com">innovativetechsolutions54@gmail.com</a></p>
+      <p>Phone: <a href="tel:+254799269573">+254 799 269 573</a></p>
+      <p>Location: Nairobi, Kenya</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footer-content">
+    <p>© 2026 Innovative Tech Solutions. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </div>
+</footer>
+
+<!-- Dark Mode Toggle JS -->
+<script>
+const btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+</script>
+
+</body>
+</html>      <div class="card">
         <h3>Cybersecurity Services</h3>
         <p>Protect your data with security audits, vulnerability assessments, firewall configuration, malware protection, and advanced security strategies.</p>
       </div>
@@ -170,3 +257,4 @@ btn.addEventListener('click', () => {
 
 </body>
     </html>
+
