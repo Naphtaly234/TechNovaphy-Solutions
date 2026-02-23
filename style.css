@@ -9,7 +9,7 @@
 body {
   background: #f4f6f9;
   color: #333;
-  transition: 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -211,9 +211,9 @@ footer {
   padding: 20px 0;
 }
 
-/* USER-FRIENDLY BLUE GRADIENT DARK MODE */
+/* DARK MODE with blue gradient background */
 body.dark {
-  background: linear-gradient(180deg, #0e1e4a 0%, #142e6a 100%);
+  background: linear-gradient(180deg, #0e1e4a 0%, #142e6a 100%) !important;
   color: #e0e0e0;
 }
 
