@@ -99,6 +99,297 @@ body {
   margin-bottom: 20px;
 }
 
+.hero-box p strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 5px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.primary {
+  background: #00bcd4;
+  color: white;
+}
+
+.primary:hover {
+  background: #0097a7;
+}
+
+.secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.secondary:hover {
+  background: white;
+  color: black;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 0;
+}
+
+.light {
+  background: white;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  flex: 1 1 280px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+  font-size: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* PRICING SECTION */
+#pricing .card {
+  background: #f0f8ff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+#pricing .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* PROCESS SECTION */
+#process .card h3 {
+  position: relative;
+  padding-left: 35px;
+}
+
+#process .card h3::before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #00bcd4;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+#process {
+  counter-reset: step;
+}
+
+/* CONTACT FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* CONTACT INFO */
+.contact-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.contact-info a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-policies {
+  margin-top: 15px;
+}
+
+.policy-btn {
+  background: none;
+  border: none;
+  color: #00bcd4;
+  cursor: pointer;
+  display: block;
+  margin: 5px auto;
+  font-size: 14px;
+}
+
+.policy-btn:hover {
+  text-decoration: underline;
+}
+
+.policy-content {
+  display: none;
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+  transition: max-height 0.4s ease;
+  overflow: hidden;
+}
+
+/* DARK MODE */
+body.dark {
+  background: linear-gradient(180deg, #0e1e4a 0%, #142e6a 100%) !important;
+  color: #e0e0e0;
+}
+
+body.dark .navbar {
+  background: #0b1841;
+}
+
+body.dark .card {
+  background: #162c63;
+  color: #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+body.dark #pricing .card {
+  background: #1a2b4c;
+}
+
+body.dark #process .card {
+  background: #162c63;
+}
+
+body.dark .hero-box {
+  background: rgba(255,255,255,0.1);
+  color: #e0e0e0;
+}
+
+body.dark .btn.primary {
+  background: #3a86ff;
+}
+
+body.dark .btn.primary:hover {
+  background: #1f5fcc;
+}
+
+body.dark .btn.secondary {
+  border: 2px solid #e0e0e0;
+  color: #e0e0e0;
+}
+
+body.dark .btn.secondary:hover {
+  background: #e0e0e0;
+  color: #142e6a;
+}
+
+body.dark .overlay {
+  background: rgba(0,0,0,0.35);
+}
+
+/* TRANSITIONS */
+body, .card, .hero-box, .navbar, .btn {
+  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .hero-box {
+    padding: 20px;
+    max-width: 90%;
+  }
+  .hero-box h2 {
+    font-size: 26px;
+  }
+  .hero-box p {
+    font-size: 16px;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    flex: 1 1 90%;
+    font-size: 16px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+  #pricing .cards, #process .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}  position: relative;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  padding: 30px 40px;
+  max-width: 600px;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-box h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.hero-box p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 /* BUTTONS */
 .btn {
   padding: 10px 20px;
@@ -322,4 +613,5 @@ body, .card, .hero-box, .navbar, .btn {
   line-height: 1.5;
   color: #ccc;
 }
+
 
