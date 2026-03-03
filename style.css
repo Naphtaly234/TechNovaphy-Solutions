@@ -1,390 +1,69 @@
-/* =========================================
-   DESIGN TOKENS & THEMES
-   ========================================= */
 :root {
     --primary: #0062ff;
-    --primary-hover: #004cc7;
-    --whatsapp-green: #25d366;
     --bg: #ffffff;
-    --bg-alt: #f1f5f9;
     --text: #0f172a;
-    --text-muted: #64748b;
     --border: #e2e8f0;
     --card: #ffffff;
-    --transition: all 0.4s ease;
-    --nav-height: 80px;
+    --transition: all 0.3s ease;
 }
 
 body.dark {
     --bg: #020617;
-    --bg-alt: #0f172a;
     --text: #f8fafc;
-    --text-muted: #94a3b8;
     --border: #1e293b;
     --card: #0f172a;
 }
 
-/* =========================================
-   RESET & BASE STYLES
-   ========================================= */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding-top: 80px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section { padding: 80px 0; }
+.light { background: #f8fafc; }
+body.dark .light { background: #0f172a; }
 
-html {
-    scroll-behavior: smooth;
-}
+/* Navbar */
+.navbar { position: fixed; top: 0; width: 100%; background: var(--bg); border-bottom: 1px solid var(--border); z-index: 1000; height: 80px; display: flex; align-items: center; }
+.nav-flex { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; }
 
-body { 
-    font-family: 'Inter', sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    line-height: 1.6; 
-    padding-top: var(--nav-height); /* Prevents content from hiding under fixed navbar */
-}
+/* Buttons & Cards */
+.btn { padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; }
+.primary { background: var(--primary); color: white; }
+.secondary { border: 2px solid var(--primary); color: var(--primary); margin-left: 10px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.card { background: var(--card); padding: 2rem; border-radius: 15px; border: 1px solid var(--border); }
 
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 2rem; 
-}
-
-.section { 
-    padding: 100px 0; 
-}
-
-.light { 
-    background: var(--bg-alt); 
-}
-
-/* =========================================
-   NAVBAR
-   ========================================= */
-.navbar { 
-    position: fixed; 
-    width: 100%; 
-    top: 0; 
-    left: 0;
-    z-index: 1000; 
-    background: var(--bg); 
-    border-bottom: 1px solid var(--border); 
-    padding: 1rem 0; 
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
-}
-
-.nav-flex { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 100%;
-}
-
-.nav-links { 
-    display: flex; 
-    gap: 2rem; 
-    list-style: none; 
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--primary);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-decoration: none;
-    color: var(--text);
-}
-
-.logo span { 
-    color: var(--primary); 
-}
-
-/* =========================================
-   HERO SLIDER
-   ========================================= */
-.hero { 
-    position: relative; 
-    height: calc(85vh - var(--nav-height)); 
-    display: flex; 
-    align-items: center; 
-    overflow: hidden; 
-    color: white; 
-}
-
-.hero-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.hero-slider .slide {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background-size: cover; 
-    background-position: center;
-    opacity: 0; 
-    transition: opacity 1.5s ease;
-}
-
-/* Ensure the first slide is visible if JS fails */
-.hero-slider .slide:first-child,
-.hero-slider .slide.active { 
-    opacity: 1; 
-}
-
-/* Dark overlay for text readability */
-.hero-slider .slide::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.hero-content { 
-    position: relative; 
-    z-index: 5; 
-    max-width: 700px; 
-}
-
-/* =========================================
-   COMPONENTS (Cards & Buttons)
-   ========================================= */
-.card { 
-    background: var(--card); 
-    padding: 3rem; 
-    border-radius: 20px; 
-    border: 1px solid var(--border); 
-    transition: var(--transition); 
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.btn { 
-    padding: 1rem 2rem; 
-    border-radius: 12px; 
-    font-weight: 700; 
-    text-decoration: none; 
-    display: inline-block; 
-    cursor: pointer; 
-    border: none; 
-    transition: var(--transition);
-}
-
-.btn.primary { 
-    background: var(--primary); 
-    color: white; 
-}
-
-.btn.primary:hover {
-    background: var(--primary-hover);
-}
-
-.btn.secondary { 
-    border: 2px solid white; 
-    color: white; 
-    margin-left: 1rem; 
-    background: transparent;
-}
-
-.btn.secondary:hover {
-    background: white;
-    color: var(--primary);
-}
-
-/* =========================================
-   QUIZ & BOOKING
-   ========================================= */
-.quiz-box { 
-    text-align: center; 
-    max-width: 800px; 
-    margin: 0 auto; 
-}
-
-.quiz-btn { 
-    padding: 1rem 3rem; 
-    margin: 1rem; 
-    border-radius: 10px; 
-    border: 1px solid var(--border); 
-    background: var(--bg-alt); 
-    color: var(--text); 
-    cursor: pointer; 
-    font-weight: bold; 
-    transition: var(--transition);
-}
-
-.quiz-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.booking-container { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 4rem; 
-    align-items: center; 
-}
-
-.check-list { 
-    list-style: none; 
-    margin: 2rem 0; 
-}
-
-.check-list li { 
-    margin-bottom: 0.5rem; 
-    color: var(--text-muted); 
-    display: flex;
-    align-items: center;
-}
-
-.check-list i { 
-    color: var(--primary); 
-    margin-right: 10px; 
-}
-
-.booking-visual { 
-    text-align: center; 
-    font-size: 4rem; 
-    color: var(--primary); 
-}
-
-.booking-visual span { 
-    display: block; 
-    font-size: 1rem; 
-    color: var(--text); 
-    margin-top: 1rem; 
-}
-
-/* =========================================
-   FORMS
-   ========================================= */
-.contact-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 4rem; 
-}
-
-.contact-form input, 
-.contact-form textarea { 
-    width: 100%; 
-    padding: 1rem; 
-    margin-bottom: 1rem; 
-    border-radius: 10px; 
-    border: 1px solid var(--border); 
-    background: var(--bg-alt); 
-    color: var(--text); 
-    font-family: inherit;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    outline: 2px solid var(--primary);
-    border-color: transparent;
-}
-
-/* =========================================
-   WHATSAPP FLOATING BUTTON
-   ========================================= */
+/* THE WHATSAPP BUTTON FIX */
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: var(--whatsapp-green);
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
-    z-index: 10000;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px; /* Pill shape */
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
     text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 9999;
     transition: var(--transition);
 }
 
+.whatsapp-float i { font-size: 24px; }
+
 .whatsapp-float:hover {
-    transform: scale(1.1) rotate(5deg);
-    color: #fff;
-    box-shadow: 2px 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
+    background: #1eb954;
 }
 
-/* =========================================
-   RESPONSIVE (MOBILE)
-   ========================================= */
+/* Mobile Menu */
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px;
-    }
-
-    .nav-links { 
-        display: none; 
-        position: absolute; 
-        top: 100%; 
-        left: 0; 
-        width: 100%; 
-        background: var(--bg); 
-        flex-direction: column; 
-        padding: 2rem; 
-        border-bottom: 1px solid var(--border); 
-    }
-
-    .nav-links.active { 
-        display: flex; 
-    }
-
-    .hero {
-        height: 70vh;
-        text-align: center;
-    }
-
-    .btn.secondary {
-        margin-left: 0;
-        margin-top: 1rem;
-        display: block;
-    }
-
-    .booking-container, 
-    .contact-grid { 
-        grid-template-columns: 1fr; 
-        gap: 2rem;
-        text-align: center; 
-    }
-
-    .check-list li {
-        justify-content: center;
-    }
-
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 25px;
-    }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--bg); padding: 2rem; }
+    .nav-links.active { display: flex; }
+    .whatsapp-float span { display: none; } /* Hide text on mobile, show only icon */
+    .whatsapp-float { padding: 15px; border-radius: 50%; }
 }
