@@ -1,210 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNovaphy Solutions | Premium IT & Cybersecurity Nairobi</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="reveal-container">
-
-    <nav class="navbar">
+<body class="dark-theme"> <nav class="navbar" id="main-nav">
         <div class="container nav-flex">
-            <a href="#" class="logo">TN<span>PS</span></a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Our Process</a></li>
-                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            <a href="#" class="logo">TECH<span>NOVAPHY</span></a>
+            <ul class="nav-links">
+                <li><a href="#services">Solutions</a></li>
+                <li><a href="#process">Methodology</a></li>
+                <li><a href="#audit" class="nav-btn-alt">Free Audit</a></li>
             </ul>
-            <div class="nav-btns">
-                <button id="theme-toggle" class="theme-btn">🌙</button>
-                <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
-            </div>
+            <button id="theme-toggle" class="icon-btn">☀️</button>
         </div>
     </nav>
 
     <main>
-        <section class="hero" id="home">
-            <div class="container hero-content reveal">
-                <span class="badge">Innovation Meets Security</span>
-                <h1>Enterprise-Grade IT <br> <span class="text-gradient">Without the Enterprise Cost</span></h1>
-                <p>We provide the technical backbone for Nairobi's fastest-growing companies—from custom software builds to elite cybersecurity defense.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn primary">Free Consultation <i class="fas fa-arrow-right"></i></a>
-                    <a href="#services" class="btn secondary">View Expertise</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats-section">
-            <div class="container stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="99">0</div><span class="suffix">%</span>
-                    <p>System Uptime</p>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="150">0</div><span class="suffix">+</span>
-                    <p>Projects Delivered</p>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="24">0</div><span class="suffix">/7</span>
-                    <p>Threat Monitoring</p>
+        <section class="hero-premium">
+            <div class="hero-glow"></div>
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="status-pill animate-flicker">● Systems Operational</div>
+                    <h1 class="reveal-text">Securing the Future of <br><span class="gradient-text">Kenyan Innovation.</span></h1>
+                    <p class="hero-sub">We build the digital fortresses and custom software engines that power Nairobi’s elite enterprises.</p>
+                    <div class="cta-group">
+                        <a href="#contact" class="btn-glow">Start Strategy Call</a>
+                        <a href="#services" class="btn-outline">Explore Solutions</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="services" class="section">
             <div class="container">
-                <div class="section-header reveal">
-                    <h2 class="section-title">Core Specializations</h2>
-                    <p>Tailored solutions for complex technical challenges.</p>
-                </div>
-                <div class="cards-grid">
-                    <div class="card reveal">
-                        <div class="icon-box"><i class="fas fa-headset"></i></div>
-                        <h3>Managed IT Support</h3>
-                        <p>Proactive maintenance and 24/7 troubleshooting for your entire team.</p>
-                    </div>
-                    <div class="card reveal">
-                        <div class="icon-box"><i class="fas fa-code"></i></div>
-                        <h3>Custom Software</h3>
-                        <p>High-performance web applications built to scale with your business needs.</p>
-                    </div>
-                    <div class="card reveal">
-                        <div class="icon-box"><i class="fas fa-shield-halved"></i></div>
-                        <h3>Cybersecurity</h3>
-                        <p>Military-grade encryption and threat monitoring to safeguard your data.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="process" class="section light">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2 class="section-title">The Technovaphy Process</h2>
-                    <p>A transparent roadmap from first call to final deployment.</p>
-                </div>
-                
-                
-                
-                <div class="process-steps">
-                    <div class="step-card reveal">
-                        <span class="step-digit">01</span>
-                        <h3>Technical Audit</h3>
-                        <p>We analyze your existing infrastructure to find security holes and bottlenecks.</p>
-                    </div>
-                    <div class="step-card reveal">
-                        <span class="step-digit">02</span>
-                        <h3>Custom Strategy</h3>
-                        <p>A bespoke roadmap designed for your specific budget and scaling goals.</p>
-                    </div>
-                    <div class="step-card reveal">
-                        <span class="step-digit">03</span>
-                        <h3>Deployment</h3>
-                        <p>Expert implementation with zero downtime for your daily operations.</p>
-                    </div>
-                    <div class="step-card reveal">
-                        <span class="step-digit">04</span>
-                        <h3>24/7 Support</h3>
-                        <p>Ongoing optimization to keep your technology ahead of the curve.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="container contact-wrapper">
-                <div class="contact-info reveal">
-                    <h2 class="section-title">Ready to Secure Your Future?</h2>
-                    <p>Send us a message and our lead engineer will reach out within 60 minutes.</p>
-                    <div class="contact-methods">
-                        <div class="method-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@technovaphy.com</span>
+                <h2 class="section-tag">Expertise</h2>
+                <div class="bento-grid">
+                    <div class="bento-item large reveal">
+                        <div class="bento-content">
+                            <i class="fas fa-shield-check"></i>
+                            <h3>Elite Cybersecurity</h3>
+                            <p>24/7 Threat Hunting, Penetration Testing, and Zero-Trust Architecture for financial & logistics firms.</p>
                         </div>
-                        <div class="method-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+254 799 269 573</span>
+                        <div class="bento-visual">
+                            <div class="radar-scan"></div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <i class="fas fa-code-branch"></i>
+                        <h3>Custom Dev</h3>
+                        <p>Scalable web & mobile apps built with React/Node.</p>
+                    </div>
+                    <div class="bento-item reveal">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Ops</h3>
+                        <p>AWS & Azure migration with 99.9% uptime.</p>
+                    </div>
+                    <div class="bento-item wide reveal">
+                        <div class="flex-bento">
+                            <div class="text">
+                                <h3>Managed IT Support</h3>
+                                <p>On-site & Remote troubleshooting for modern offices.</p>
+                            </div>
+                            <div class="stat-circle">24/7</div>
                         </div>
                     </div>
                 </div>
-
-                <form action="https://formspree.io/f/xzdajgyz" method="POST" class="contact-form glass-card reveal">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <textarea name="message" placeholder="Describe your project" rows="4" required></textarea>
-                    <button type="submit" class="btn primary full-width">Send Message</button>
-                </form>
             </div>
         </section>
     </main>
 
-    <a href="https://wa.me/254799269573" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span>Chat with an Expert</span>
-    </a>
-
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggle = document.getElementById("theme-toggle");
-            const menuIcon = document.getElementById("menu-icon");
-            const navLinks = document.getElementById("nav-links");
-
-            // 1. Theme Logic
-            toggle.addEventListener("click", () => {
-                document.body.classList.toggle("dark");
-                toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+        // 1. Smooth Reveal Observer
+        const revealCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
+        };
+        const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // 2. Mobile Menu
-            menuIcon.addEventListener("click", () => navLinks.classList.toggle("active"));
+        // 2. Navbar Dynamic Blur
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 100) nav.classList.add('glass-active');
+            else nav.classList.remove('glass-active');
+        });
 
-            // 3. Scroll Reveal Logic
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Trigger counter if the entry is a stat
-                        if (entry.target.classList.contains('stat-item')) {
-                            startCounter(entry.target.querySelector('.stat-number'));
-                        }
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-            // 4. Counter Animation
-            function startCounter(el) {
-                if (el.classList.contains('counted')) return;
-                const target = +el.getAttribute('data-target');
-                const count = () => {
-                    const current = +el.innerText;
-                    const increment = target / 50;
-                    if (current < target) {
-                        el.innerText = Math.ceil(current + increment);
-                        setTimeout(count, 30);
-                    } else {
-                        el.innerText = target;
-                        el.classList.add('counted');
-                    }
-                };
-                count();
-            }
-
-            // 5. Navbar Color on Scroll
-            window.addEventListener('scroll', () => {
-                const nav = document.querySelector('.navbar');
-                nav.classList.toggle('scrolled', window.scrollY > 50);
-            });
+        // 3. Magnetic Button Effect (Subtle 2026 Touch)
+        const btn = document.querySelector('.btn-glow');
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            btn.style.setProperty('--x', `${x}px`);
+            btn.style.setProperty('--y', `${y}px`);
         });
     </script>
 </body>
-</html>
