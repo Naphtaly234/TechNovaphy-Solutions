@@ -9,7 +9,156 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNovaphy Solutions | IT & Cybersecurity Nairobi</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<nav class="navbar">
+    <div class="container nav-flex">
+        <h1 class="logo">TN<span>PS</span></h1>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#booking">Consultation</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-btns">
+            <button id="theme-btn" class="theme-btn">🌙</button>
+            <div class="menu-icon" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hardware.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/software.jpg');"></div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/security.jpg');"></div>
+    </div>
+    
+    <div class="container hero-content">
+        <span class="badge">Innovation Meets Security</span>
+        <h1>Scale Your Business <br> With Smarter IT</h1>
+        <p>From custom software builds to enterprise-grade cybersecurity, we provide the technical backbone for Nairobi's fastest-growing companies.</p>
+        <div class="hero-buttons">
+            <a href="#booking" class="btn primary">Book a Call</a>
+            <a href="#services" class="btn secondary">Our Expertise</a>
+        </div>
+    </div>
+</section>
+
+<section class="section light">
+    <div class="container">
+        <div class="quiz-box card">
+            <h2>Instant Security Audit</h2>
+            <div id="quiz-ui">
+                <p id="question-text">1. Do you use unique passwords for every business account?</p>
+                <div class="quiz-actions">
+                    <button class="quiz-btn" onclick="handleQuiz(true)">Yes</button>
+                    <button class="quiz-btn" onclick="handleQuiz(false)">No</button>
+                </div>
+            </div>
+            <div id="quiz-results" style="display:none;">
+                <h3 id="status-label">Status: Loading...</h3>
+                <p>We've pre-filled a custom recommendation in the contact form below.</p>
+                <a href="#contact" class="btn primary">View My Report</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="section">
+    <div class="container booking-container">
+        <div class="booking-text">
+            <h2>Let's Plan Your Next Project</h2>
+            <p>Skip the back-and-forth emails. Pick a time for a 1-on-1 technical discovery call with our lead engineer.</p>
+            <ul class="check-list">
+                <li><i class="fas fa-check"></i> Project scope & feasibility</li>
+                <li><i class="fas fa-check"></i> Technology stack selection</li>
+                <li><i class="fas fa-check"></i> Budget & Timeline estimation</li>
+            </ul>
+            <a href="https://calendly.com" class="btn primary">Schedule Meeting</a>
+        </div>
+        <div class="booking-visual card">
+            <i class="fas fa-calendar-check"></i>
+            <span>30 Min Discovery Call</span>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section light">
+    <div class="container contact-grid">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>Have a specific inquiry? Our team responds to all messages within 60 minutes during business hours.</p>
+            <div class="info-block">
+                <i class="fas fa-envelope"></i>
+                <span>info@technovaphy.com</span>
+            </div>
+        </div>
+        <form action="#" class="contact-form card">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea id="auto-msg" rows="5" placeholder="Tell us about your project..."></textarea>
+            <button type="submit" class="btn primary">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // 1. BACKGROUND SLIDER LOGIC
+    const slides = document.querySelectorAll('.slide');
+    let idx = 0;
+    function rotateSlides() {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+    }
+    setInterval(rotateSlides, 5000);
+
+    // 2. SECURITY QUIZ LOGIC
+    let score = 0;
+    let qIdx = 0;
+    const qs = ["2. Is your sensitive data encrypted?", "3. Do you run weekly security updates?"];
+    
+    function handleQuiz(isSafe) {
+        if(!isSafe) score++;
+        if(qIdx < qs.length) {
+            document.getElementById('question-text').innerText = qs[qIdx];
+            qIdx++;
+        } else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('quiz-results').style.display = 'block';
+            let risk = score > 1 ? "CRITICAL" : "MODERATE";
+            document.getElementById('status-label').innerText = "Risk Level: " + risk;
+            document.getElementById('auto-msg').value = "I completed the Security Audit. My Risk Level is " + risk + ". I need an expert review.";
+        }
+    }
+
+    // 3. THEME & MENU
+    const themeBtn = document.getElementById('theme-btn');
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        themeBtn.innerText = document.body.classList.contains('dark') ? "☀️" : "🌙";
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => {
+        document.getElementById('nav-menu').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
 <body>
 
 <nav class="navbar">
@@ -333,3 +482,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
