@@ -1,41 +1,32 @@
-/* ================= RESET & GLOBAL ================= */
+/* ================= GLOBAL STYLES ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: #333;
-  background: #f9f9f9;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-body.dark {
-  background: #1a1a1a;
-  color: #f4f4f4;
+  background-color: #f5f5f5;
+  color: #222;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVIGATION ================= */
 .navbar {
-  background: #0a192f;
+  background-color: #fff;
   padding: 15px 0;
-  color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .nav-flex {
@@ -45,7 +36,9 @@ body.dark {
 }
 
 .logo {
-  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00aaff;
 }
 
 .nav-links {
@@ -55,9 +48,10 @@ body.dark {
 }
 
 .nav-links a {
-  color: white;
   text-decoration: none;
-  transition: color 0.2s ease;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -67,181 +61,233 @@ body.dark {
 .theme-btn {
   background: none;
   border: none;
-  color: white;
-  font-size: 18px;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO SECTION ================= */
 .hero {
-  height: 90vh;
-  background: url("computer-hardware.jpg") center/cover no-repeat;
   position: relative;
+  background: url('images/hardware-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  color: #fff;
 }
 
 .hero-overlay {
-  background: rgba(10, 25, 47, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0,0,0,0.55);
   display: flex;
   align-items: center;
-}
-
-.hero-content {
-  color: white;
-  text-align: center;
+  justify-content: center;
   padding: 0 20px;
 }
 
-.hero h2 {
-  font-size: 2.5rem;
+.hero-content h1 {
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.hero p {
+.hero-content p {
   font-size: 1.2rem;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 .btn {
-  padding: 10px 20px;
-  border-radius: 6px;
   text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: background 0.3s ease, transform 0.3s ease;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.btn.primary {
+  background-color: #00aaff;
+  color: #fff;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  opacity: 0.85;
 }
 
-.primary {
-  background: #0a192f;
-  color: white;
-}
-
-.secondary {
-  background: #0077cc;
-  color: white;
-}
-
-/* ================= SECTIONS ================= */
+/* ================= SECTION TITLES ================= */
 .section {
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
-.light {
-  background: #f4f4f4;
-}
-
-body.dark .light {
-  background: #2d2d2d;
+.section.light {
+  background-color: #f5f5f5;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 40px;
   font-size: 2rem;
+  margin-bottom: 50px;
+  color: #222;
 }
 
-/* ================= CARDS ================= */
-.cards, .portfolio-grid {
+/* ================= PORTFOLIO / CARDS ================= */
+.portfolio-grid,
+.cards {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-.card, .portfolio-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.portfolio-card,
+.card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover, .portfolio-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.portfolio-card:hover,
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-body.dark .card, body.dark .portfolio-card {
-  background: #333;
-  border: 1px solid #444;
+.portfolio-card h3,
+.card h3 {
+  margin-bottom: 15px;
+  color: #00aaff;
 }
 
 /* ================= CONTACT FORM ================= */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
-.contact-info-box {
-  margin-top: 20px;
-  padding: 20px;
-  background: rgba(0,0,0,0.05);
-  border-radius: 8px;
-  text-align: center;
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  width: 200px;
+  align-self: center;
+}
+
+/* ================= CONTACT INFO ================= */
+.contact-info-box p {
+  margin-bottom: 10px;
 }
 
 .contact-info-box a {
-  color: #0077cc;
+  color: #00aaff;
   text-decoration: none;
-  font-weight: bold;
 }
 
-body.dark .contact-info-box {
-  background: rgba(255,255,255,0.05);
+.contact-info-box a:hover {
+  text-decoration: underline;
 }
 
 /* ================= WHATSAPP FLOAT ================= */
 .whatsapp-float {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  color: white;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25d366;
+  color: #fff;
   padding: 12px 20px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
 }
 
 .whatsapp-float:hover {
-  transform: translateY(-3px);
+  transform: scale(1.1);
 }
 
 /* ================= FOOTER ================= */
 footer {
-  background: #0a192f;
-  color: white;
   text-align: center;
-  padding: 20px;
+  padding: 25px 0;
+  background-color: #222;
+  color: #fff;
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .navbar {
+  background-color: #1a1a1a;
+}
+
+body.dark .nav-links a {
+  color: #e0e0e0;
+}
+
+body.dark .portfolio-card,
+body.dark .card {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark .section.light {
+  background-color: #1a1a1a;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background-color: #222;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+body.dark footer {
+  background-color: #111;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .hero h2 {
+  .hero-content h1 {
     font-size: 2rem;
   }
-
-  .hero p {
+  .hero-content p {
     font-size: 1rem;
   }
-
+  .hero-buttons .btn {
+    width: 80%;
+    margin: 10px auto 0;
+  }
   .nav-links {
     flex-direction: column;
     gap: 10px;
+    margin-top: 10px;
   }
-  }
+}
