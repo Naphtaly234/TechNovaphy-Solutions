@@ -121,28 +121,4 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 1.5rem; line-height: 
     .price-card.premium {
         grid-column: span 1;
     }
-}}
-
-/* Status Dot Pulse */
-.dot.pulse {
-    animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 }
-
-@keyframes pulse-ring {
-    0% { transform: scale(0.33); }
-    80%, 100% { opacity: 0; }
-}
-
-/* Pricing Card Features */
-.price-card ul li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-}
-
-/* Responsive Grid Fix */
-@media (max-width: 992px) {
-    .bento-grid { grid-template-columns: 1fr; }
-    .bento-card.large, .bento-card.wide { grid-column: span 1; }
-    .pricing-grid { grid-template-columns: 1fr; }
-}
-
