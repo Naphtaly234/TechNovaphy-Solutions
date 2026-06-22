@@ -119,6 +119,129 @@
                     </ul>
                     <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Managed%20Pro%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
                 </div>
+                <div class="price-card premium reveal">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 class="clash-display">Premium Website</h3>
+                        <span style="background: var(--primary); color: black; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">ONE-TIME</span>
+                    </div>
+                    <div class="price">KSh 120k<span>/once</span></div>
+                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Custom Professional Design</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Responsive & Mobile-Optimized</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> SEO Optimized</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Integration Support</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Lifetime Access (No Recurring Fees)</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Website%20package%20for%20KSh%20120k." class="btn-primary" style="width: 100%;">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section" style="border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="logo" style="margin-bottom: 2rem;">TECH<span>NOVAPHY</span></div>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="tel:+254799269573" style="text-decoration: none; color: var(--text);"><i class="fas fa-phone"></i> +254 799 269 573</a>
+                <a href="mailto:technovaphysolutions@gmail.com" style="text-decoration: none; color: var(--text);"><i class="fas fa-envelope"></i> technovaphysolutions@gmail.com</a>
+            </div>
+            <p style="margin-top: 3rem; opacity: 0.4;">    © 2026 TechNovaphy Solutions. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20would%20like%20more%20information%20about%20your%20TechNovaphy%20services." class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat Now</span>
+    </a>
+
+    <script>
+        // Navbar Scroll Logic
+        window.onscroll = () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+
+            // Progress Bar
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        };
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+        </html>                        <div style="background: var(--primary); color: black; padding: 10px 20px; border-radius: 50px; font-weight: 800;">EXPRESS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Why Choose Our Process</h2>
+            
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="bento-card reveal">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">01. Audit</h4>
+                    <p>We analyze your current hardware and software for bottlenecks.</p>
+                </div>
+                <div class="bento-card reveal">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">02. Design</h4>
+                    <p>Custom infrastructure roadmap aligned with your budget.</p>
+                </div>
+                <div class="bento-card reveal">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">03. Deploy</h4>
+                    <p>Seamless implementation with zero business interruption.</p>
+                </div>
+                <div class="bento-card reveal">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">04. Manage</h4>
+                    <p>Ongoing optimization and 24/7 technical helpdesk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem;">Scalable Support Plans</h2>
+            <div class="pricing-grid">
+                <div class="price-card reveal">
+                    <h3 class="clash-display">Standard IT</h3>
+                    <div class="price">KSh 15k<span>/mo</span></div>
+                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Remote Support</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Cloud Backup</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Monthly Reports</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20IT%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
+                </div>
+                <div class="price-card featured reveal">
+                    <h3 class="clash-display">Managed Pro</h3>
+                    <div class="price">KSh 50k<span>/mo</span></div>
+                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> On-Site Maintenance</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Software Dev Support</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Priority Helpdesk</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Managed%20Pro%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
+                </div>
             </div>
         </div>
     </section>
