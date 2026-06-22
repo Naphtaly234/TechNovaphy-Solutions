@@ -51,10 +51,40 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 1.5rem; line-height: 
 
 /* PRICING */
 .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 900px; margin: 50px auto 0; }
-.price-card { background: var(--card); border: 1px solid var(--border); padding: 3rem; border-radius: 40px; text-align: center; position: relative; }
+.price-card { background: var(--card); border: 1px solid var(--border); padding: 3rem; border-radius: 40px; text-align: center; position: relative; transition: 0.4s; }
+.price-card:hover { transform: translateY(-5px); }
 .price-card.featured { border-color: var(--primary); background: rgba(0, 242, 255, 0.02); }
+
+/* PREMIUM CARD STYLING */
+.price-card.premium { 
+    grid-column: span 2; 
+    border: 2px solid var(--primary);
+    background: linear-gradient(135deg, rgba(0, 242, 255, 0.08) 0%, rgba(112, 0, 255, 0.04) 100%);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.15), inset 0 1px 0 rgba(0, 242, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-card.premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.5;
+}
+
+.price-card.premium:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.25), inset 0 1px 0 rgba(0, 242, 255, 0.1);
+    transform: translateY(-8px);
+}
+
 .price { font-size: 2.5rem; font-weight: 800; margin: 1.5rem 0; }
 .price span { font-size: 1rem; opacity: 0.6; }
+
 /* Progress Bar at Top */
 #scroll-progress {
     position: fixed;
@@ -64,6 +94,34 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 1.5rem; line-height: 
     z-index: 2000;
     transition: width 0.1s ease-out;
 }
+
+/* Status Dot Pulse */
+.dot.pulse {
+    animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.33); }
+    80%, 100% { opacity: 0; }
+}
+
+/* Pricing Card Features */
+.price-card ul li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+/* Responsive Grid Fix */
+@media (max-width: 992px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-card.large, .bento-card.wide { grid-column: span 1; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    
+    /* Premium card responsiveness */
+    .price-card.premium {
+        grid-column: span 1;
+    }
+}}
 
 /* Status Dot Pulse */
 .dot.pulse {
