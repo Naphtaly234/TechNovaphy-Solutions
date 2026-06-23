@@ -121,4 +121,102 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 1.5rem; line-height: 
     .price-card.premium {
         grid-column: span 1;
     }
+
+    /* Mobile responsiveness for pricing cards */
+    .price-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .price span {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small screens (mobile phones) */
+@media (max-width: 640px) {
+    .container { padding: 0 1rem; }
+    
+    .section { padding: 60px 0; }
+    
+    h1 { font-size: 2rem; }
+    
+    h2 { font-size: 1.8rem !important; }
+    
+    h3 { font-size: 1.3rem; }
+    
+    h4 { font-size: 1rem; }
+    
+    .price-card {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+    }
+    
+    .price {
+        font-size: 1.8rem;
+    }
+    
+    .price span {
+        font-size: 0.75rem;
+    }
+    
+    .price-card ul li {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        padding: 120px 0 60px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .hero-actions a {
+        width: 100%;
+    }
+    
+    /* Bento grid mobile */
+    .bento-card {
+        padding: 1.5rem;
+    }
+    
+    .bento-card i {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Tech stack badges mobile */
+    .bento-card span {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    /* Footer mobile */
+    footer .container {
+        text-align: center;
+    }
+    
+    footer [style*="display: flex"] {
+        flex-direction: column;
+        gap: 1rem !important;
+    }
 }
