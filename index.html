@@ -18,6 +18,9 @@
       gtag('config', 'G-1Q7655ML09');
     </script>
 
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+
     <!-- Schema Markup - Local Business -->
     <script type="application/ld+json">
     {
@@ -405,39 +408,39 @@
         </div>
     </section>
 
-    <!-- Lead Magnet Section -->
+    <!-- Lead Magnet Section with EmailJS -->
     <section id="leadmagnet" class="section" style="background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(112, 0, 255, 0.05) 100%);">
         <div class="container" style="max-width: 700px;">
             <h2 class="clash-display" style="text-align: center; font-size: 2.3rem; margin-bottom: 1rem;">Get Your Free IT Infrastructure Audit</h2>
             <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem; font-size: 1.05rem;">Discover vulnerabilities, inefficiencies, and opportunities in your IT setup. Worth KES 50,000 — absolutely free.</p>
             
             <div class="bento-card" style="border: 2px solid var(--primary); background: rgba(0, 242, 255, 0.05);">
-                <form style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <form id="auditForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
-                        <input type="text" placeholder="John Doe" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
+                        <input type="text" id="from_name" name="from_name" placeholder="John Doe" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
                     </div>
                     
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Company Name</label>
-                        <input type="text" placeholder="Your Company" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
+                        <input type="text" id="company_name" name="company_name" placeholder="Your Company" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
                     </div>
                     
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email Address</label>
-                        <input type="email" placeholder="your@email.com" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
+                        <input type="email" id="to_email" name="to_email" placeholder="your@email.com" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
                     </div>
                     
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone Number</label>
-                        <input type="tel" placeholder="+254 799 269 573" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="+254 799 269 573" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
                     </div>
                     
-                    <button type="submit" onclick="handleAuditSubmit(event)" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem;">
+                    <button type="submit" id="auditBtn" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem;">
                         <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Get Free Audit PDF
                     </button>
                     
-                    <p style="font-size: 0.85rem; opacity: 0.6; text-align: center;">We'll email you the audit guide and follow up with a consultation offer.</p>
+                    <p style="font-size: 0.85rem; opacity: 0.6; text-align: center;">✓ We'll email you the audit guide instantly. No spam, unsubscribe anytime.</p>
                 </form>
             </div>
         </div>
@@ -503,6 +506,9 @@
     </a>
 
     <script>
+        // Initialize EmailJS (Replace with your actual credentials)
+        emailjs.init('YOUR_PUBLIC_KEY'); // Get this from EmailJS account settings
+
         // Navbar Scroll Logic
         window.onscroll = () => {
             const nav = document.getElementById('navbar');
@@ -533,32 +539,60 @@
             observer.observe(el);
         });
 
-        // Lead magnet form handler
-        function handleAuditSubmit(event) {
-            event.preventDefault();
+        // EmailJS Form Handler
+        const form = document.getElementById('auditForm');
+        const btn = document.getElementById('auditBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Get form data
-            const formInputs = event.target.querySelectorAll('input');
-            const name = formInputs[0].value;
-            const company = formInputs[1].value;
-            const email = formInputs[2].value;
-            const phone = formInputs[3].value;
-            
-            // Send to WhatsApp with details
-            const message = `Hi! I'd like the Free IT Infrastructure Audit. Details: Name: ${name}, Company: ${company}, Email: ${email}, Phone: ${phone}`;
-            const whatsappUrl = `https://wa.me/254799269573?text=${encodeURIComponent(message)}`;
-            
-            // Also send confirmation email via Gmail
-            const emailSubject = "Your Free IT Infrastructure Audit - TechNovaphy";
-            const emailBody = `Thank you for requesting the free IT Infrastructure Audit! We'll review your details and send the audit guide shortly.`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-            
-            // Show confirmation
-            alert('Thank you! Check your WhatsApp for next steps. We\'ll also email you the audit guide.');
-            event.target.reset();
-        }
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            // Prepare email parameters
+            const templateParams = {
+                from_name: document.getElementById('from_name').value,
+                company_name: document.getElementById('company_name').value,
+                to_email: document.getElementById('to_email').value,
+                phone_number: document.getElementById('phone_number').value,
+                pdf_link: 'https://drive.google.com/file/d/YOUR_PDF_FILE_ID/view?usp=sharing' // Replace with your PDF link
+            };
+
+            // Send email via EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    // Success
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-check"></i> PDF Sent! Check your email';
+                    btn.style.background = '#10b981';
+                    
+                    // Show success message
+                    alert('✓ Success! Check your email for the Free IT Infrastructure Audit PDF.\n\nIf you have questions, feel free to message us on WhatsApp: +254 799 269 573');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                        btn.style.background = '';
+                    }, 3000);
+                }, function(error) {
+                    // Error
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Try WhatsApp';
+                    console.error('EmailJS error:', error);
+                    
+                    alert('There was an error sending the PDF. Please message us on WhatsApp: +254 799 269 573');
+                    
+                    // Reset button
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                    }, 2000);
+                });
+        });
     </script>
 </body>
-    </html>
+                            </html>
