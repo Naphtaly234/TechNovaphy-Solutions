@@ -18,7 +18,7 @@
       gtag('config', 'G-1Q7655ML09');
     </script>
 
-    <!-- EmailJS -->
+    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 
     <!-- Schema Markup - Local Business -->
@@ -432,7 +432,7 @@
                     </div>
                     
                     <div>
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone Number</label>
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone Number (Optional)</label>
                         <input type="tel" id="phone_number" name="phone_number" placeholder="+254 799 269 573" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.05); color: var(--text); font-family: inherit;">
                     </div>
                     
@@ -442,6 +442,9 @@
                     
                     <p style="font-size: 0.85rem; opacity: 0.6; text-align: center;">✓ We'll email you the audit guide instantly. No spam, unsubscribe anytime.</p>
                 </form>
+                
+                <!-- Status Message -->
+                <div id="auditStatus" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;"></div>
             </div>
         </div>
     </section>
@@ -496,7 +499,7 @@
                 <a href="tel:+254799269573" style="text-decoration: none; color: var(--text);"><i class="fas fa-phone"></i> +254 799 269 573</a>
                 <a href="mailto:technovaphysolutions@gmail.com" style="text-decoration: none; color: var(--text);"><i class="fas fa-envelope"></i> technovaphysolutions@gmail.com</a>
             </div>
-            <p style="margin-top: 3rem; opacity: 0.4;">    © 2026 TechNovaphy Solutions. All Rights Reserved.</p>
+            <p style="margin-top: 3rem; opacity: 0.4;">© 2026 TechNovaphy Solutions. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -506,10 +509,24 @@
     </a>
 
     <script>
-        // Initialize EmailJS (Replace with your actual credentials)
-        emailjs.init('YOUR_PUBLIC_KEY'); // Get this from EmailJS account settings
+        // =====================================================
+        // EMAILJS CONFIGURATION - CREDENTIALS ACTIVE ✅
+        // =====================================================
+        
+        // EmailJS Credentials (ACTIVE)
+        const EMAILJS_PUBLIC_KEY = '7q7HfWQWRlpmbQGLW'; // Your Public Key
+        const EMAILJS_SERVICE_ID = 'service_nx8erzm'; // Gmail Service
+        const EMAILJS_TEMPLATE_ID = 'template_z8efygx'; // Email Template
+        
+        // Replace with your Google Drive PDF shareable link
+        const PDF_DOWNLOAD_LINK = 'https://drive.google.com/file/d/YOUR_PDF_FILE_ID/view?usp=sharing';
+        
+        // Initialize EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        // Navbar Scroll Logic
+        // =====================================================
+        // NAVBAR SCROLL LOGIC
+        // =====================================================
         window.onscroll = () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) nav.classList.add('scrolled');
@@ -522,7 +539,9 @@
             document.getElementById("scroll-progress").style.width = scrolled + "%";
         };
 
-        // Scroll Reveal Animation
+        // =====================================================
+        // SCROLL REVEAL ANIMATION
+        // =====================================================
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -539,60 +558,84 @@
             observer.observe(el);
         });
 
-        // EmailJS Form Handler
+        // =====================================================
+        // EMAILJS FORM HANDLER - AUDIT FORM
+        // =====================================================
         const form = document.getElementById('auditForm');
         const btn = document.getElementById('auditBtn');
+        const statusDiv = document.getElementById('auditStatus');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Validate that EmailJS is configured
+            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY_HERE') {
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.style.borderRadius = '8px';
+                statusDiv.textContent = '❌ EmailJS not configured. Please add your credentials to the script.';
+                return;
+            }
+            
             // Show loading state
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            statusDiv.style.display = 'none';
 
-            // Prepare email parameters
+            // Prepare email parameters for EmailJS template
             const templateParams = {
                 from_name: document.getElementById('from_name').value,
                 company_name: document.getElementById('company_name').value,
                 to_email: document.getElementById('to_email').value,
-                phone_number: document.getElementById('phone_number').value,
-                pdf_link: 'https://drive.google.com/file/d/YOUR_PDF_FILE_ID/view?usp=sharing' // Replace with your PDF link
+                phone_number: document.getElementById('phone_number').value || 'Not provided',
+                pdf_link: PDF_DOWNLOAD_LINK
             };
 
             // Send email via EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then(function(response) {
-                    // Success
+                    // Success - Show success message
                     btn.disabled = false;
                     btn.innerHTML = '<i class="fas fa-check"></i> PDF Sent! Check your email';
                     btn.style.background = '#10b981';
                     
-                    // Show success message
-                    alert('✓ Success! Check your email for the Free IT Infrastructure Audit PDF.\n\nIf you have questions, feel free to message us on WhatsApp: +254 799 269 573');
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.background = '#d4edda';
+                    statusDiv.style.color = '#155724';
+                    statusDiv.textContent = '✓ Success! Check your email for the Free IT Infrastructure Audit PDF.';
                     
                     // Reset form
                     form.reset();
                     
-                    // Reset button after 3 seconds
+                    // Reset button after 4 seconds
                     setTimeout(() => {
                         btn.disabled = false;
                         btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
                         btn.style.background = '';
-                    }, 3000);
+                        statusDiv.style.display = 'none';
+                    }, 4000);
+                    
+                    console.log('EmailJS Success:', response);
+                    
                 }, function(error) {
-                    // Error
+                    // Error - Show error message
                     btn.disabled = false;
                     btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Try WhatsApp';
-                    console.error('EmailJS error:', error);
                     
-                    alert('There was an error sending the PDF. Please message us on WhatsApp: +254 799 269 573');
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.background = '#f8d7da';
+                    statusDiv.style.color = '#721c24';
+                    statusDiv.textContent = '❌ There was an error. Please message us on WhatsApp: +254 799 269 573';
                     
-                    // Reset button
+                    console.error('EmailJS Error:', error);
+                    
+                    // Reset button after 3 seconds
                     setTimeout(() => {
                         btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
-                    }, 2000);
+                    }, 3000);
                 });
         });
     </script>
 </body>
-                            </html>
+    </html>
