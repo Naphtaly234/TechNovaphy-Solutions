@@ -1088,13 +1088,11 @@ const products = [
     { id:47, name:'HP All-in-One 24"', brand:"HP", category:"computers", condition:"new", price:59999, originalPrice:75000, rating:4.3, reviews:134, badge:"Copilot+" },
     { id:48, name:'HP All-in-One 24"', brand:"HP", category:"computers", condition:"refurbished", price:39999, originalPrice:59999, rating:4.2, reviews:89 }
 ];
-
-// ============================================================
-//  IMAGE PATH – WORKS IN IDE (USES PICSUM PLACEHOLDERS)
-// ============================================================
+    
 function getImagePath(product) {
     return `images/${product.id}.webp`;
 }
+
 // ============================================================
 //  STATE
 // ============================================================
@@ -1427,7 +1425,7 @@ function selectPayment(method) {
     } else if (method === 'bank') {
         payeeInfo.innerHTML = '🏦 KCB Bank – Account: <strong>1335889469</strong>';
         paymentLabel.textContent = 'Account Name / Reference';
-        paymentInput.placeholder = 'e.g. Daniel Daniel;
+        paymentInput.placeholder = 'e.g. John Doe';
     }
     paymentInput.value = '';
 }
