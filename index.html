@@ -441,7 +441,6 @@
                 <form id="auditForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
-                        <!-- 👇 UPDATED: "Daniel Naphtaly" as placeholder -->
                         <input type="text" id="from_name" name="from_name" placeholder="Daniel Naphtaly" required style="width: 100%; padding: 0.8rem; border: 1px solid #1a1f3a; border-radius: 12px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: inherit;">
                     </div>
                     
@@ -542,7 +541,6 @@
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                // Swap icon between bars and times
                 const icon = this.querySelector('i');
                 if (icon) {
                     icon.classList.toggle('fa-bars');
@@ -550,7 +548,6 @@
                 }
             });
 
-            // Close menu when a link is clicked
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -592,67 +589,141 @@
             observer.observe(el);
         });
 
-        // ===== EMAILJS =====
-        const EMAILJS_PUBLIC_KEY = '7q7HfWQWRlpmbQGLW';
-        const EMAILJS_SERVICE_ID = 'service_nx8erzm';
-        const EMAILJS_TEMPLATE_ID = 'template_z8efygx';
-        const PDF_DOWNLOAD_LINK = 'https://drive.google.com/file/d/1cqgGCvEphXZgqDSTXJylwuyakKKqcZk1/view?usp=drivesdk';
-        
-        emailjs.init(EMAILJS_PUBLIC_KEY);
+        // ============================================================
+        //  EMAILJS – FIXED (NO AUTO-REFRESH)
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ Page loaded, initializing EmailJS...');
 
-        const form = document.getElementById('auditForm');
-        const btn = document.getElementById('auditBtn');
-        const statusDiv = document.getElementById('auditStatus');
+            const EMAILJS_PUBLIC_KEY = '7q7HfWQWRlpmbQGLW';
+            const EMAILJS_SERVICE_ID = 'service_nx8erzm';
+            const EMAILJS_TEMPLATE_ID = 'template_z8efygx';
+            const PDF_DOWNLOAD_LINK = 'https://drive.google.com/file/d/1cqgGCvEphXZgqDSTXJylwuyakKKqcZk1/view?usp=drivesdk';
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            statusDiv.style.display = 'none';
+            // Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                console.error('❌ EmailJS not loaded! Check the script tag.');
+                return;
+            }
 
-            const templateParams = {
-                from_name: document.getElementById('from_name').value,
-                company_name: document.getElementById('company_name').value,
-                to_email: document.getElementById('to_email').value,
-                phone_number: document.getElementById('phone_number').value || 'Not provided',
-                pdf_link: PDF_DOWNLOAD_LINK
-            };
+            console.log('✅ EmailJS loaded, initializing...');
+            emailjs.init(EMAILJS_PUBLIC_KEY);
 
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(function(response) {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-check"></i> PDF Sent!';
-                    btn.style.background = '#10b981';
-                    
-                    statusDiv.style.display = 'block';
-                    statusDiv.style.background = '#d4edda';
-                    statusDiv.style.color = '#155724';
-                    statusDiv.textContent = '✓ Check your email for the Free IT Infrastructure Audit PDF.';
-                    
-                    form.reset();
-                    
-                    setTimeout(() => {
-                        btn.disabled = false;
-                        btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
-                        btn.style.background = '';
-                        statusDiv.style.display = 'none';
-                    }, 4000);
-                    
-                }, function(error) {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Try WhatsApp';
-                    
+            const form = document.getElementById('auditForm');
+            const btn = document.getElementById('auditBtn');
+            const statusDiv = document.getElementById('auditStatus');
+
+            if (!form) {
+                console.error('❌ Form not found! Check ID: auditForm');
+                return;
+            }
+
+            console.log('✅ Form found, attaching submit handler');
+
+            form.addEventListener('submit', function(e) {
+                // PREVENT AUTO-REFRESH
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('📤 Form submitted');
+
+                // Disable button and show loading
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                statusDiv.style.display = 'none';
+
+                // Get current time
+                const now = new Date();
+                const time = now.toLocaleString('en-KE', { 
+                    timeZone: 'Africa/Nairobi',
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                // Get customer's email
+                const customerEmail = document.getElementById('to_email').value;
+
+                // Get form values
+                const fromName = document.getElementById('from_name').value;
+                const companyName = document.getElementById('company_name').value;
+                const phoneNumber = document.getElementById('phone_number').value || 'Not provided';
+
+                // Validate
+                if (!fromName || !customerEmail) {
                     statusDiv.style.display = 'block';
                     statusDiv.style.background = '#f8d7da';
                     statusDiv.style.color = '#721c24';
-                    statusDiv.textContent = '❌ Error. Please message us on WhatsApp: +254 799 269 573';
-                    
-                    setTimeout(() => {
-                        btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
-                    }, 3000);
-                });
+                    statusDiv.innerHTML = '❌ Please fill in your name and email address.';
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                    return;
+                }
+
+                // Template parameters
+                const templateParams = {
+                    from_name: fromName,
+                    company_name: companyName,
+                    to_email: customerEmail,
+                    phone_number: phoneNumber,
+                    pdf_link: PDF_DOWNLOAD_LINK,
+                    time: time
+                };
+
+                console.log('📧 Sending audit guide to:', customerEmail);
+                console.log('📦 Template params:', templateParams);
+
+                // Send email via EmailJS
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function(response) {
+                        console.log('✅ Email sent successfully:', response);
+                        
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-check"></i> PDF Sent!';
+                        btn.style.background = '#10b981';
+                        
+                        statusDiv.style.display = 'block';
+                        statusDiv.style.background = '#d4edda';
+                        statusDiv.style.color = '#155724';
+                        statusDiv.innerHTML = `
+                            ✅ <strong>Your audit guide has been sent to ${customerEmail}!</strong><br>
+                            Please check your inbox (and spam folder) for the download link.<br>
+                            <small style="opacity:0.7;">📧 If you don't see it in 5 minutes, check your spam folder.</small>
+                        `;
+                        
+                        form.reset();
+                        
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                            btn.style.background = '';
+                            statusDiv.style.display = 'none';
+                        }, 6000);
+                        
+                    }, function(error) {
+                        console.error('❌ Email send error:', error);
+                        console.error('Error details:', JSON.stringify(error));
+                        
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Try WhatsApp';
+                        
+                        statusDiv.style.display = 'block';
+                        statusDiv.style.background = '#f8d7da';
+                        statusDiv.style.color = '#721c24';
+                        statusDiv.innerHTML = `
+                            ❌ <strong>Unable to send email to ${customerEmail}.</strong><br>
+                            Please <a href="https://wa.me/254799269573" style="color:#25D366; font-weight:bold;">contact us on WhatsApp</a> 
+                            to receive your audit guide instantly.
+                        `;
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                        }, 3000);
+                    });
+            });
         });
     </script>
 </body>
-    </html>
+            </html>
