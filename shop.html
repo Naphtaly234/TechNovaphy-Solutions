@@ -1093,10 +1093,8 @@ const products = [
 //  IMAGE PATH – WORKS IN IDE (USES PICSUM PLACEHOLDERS)
 // ============================================================
 function getImagePath(product) {
-    // Use picsum.photos for free placeholder images
-    return id:1;
+    return `images/${product.id}.webp`;
 }
-
 // ============================================================
 //  STATE
 // ============================================================
@@ -1429,7 +1427,7 @@ function selectPayment(method) {
     } else if (method === 'bank') {
         payeeInfo.innerHTML = '🏦 KCB Bank – Account: <strong>1335889469</strong>';
         paymentLabel.textContent = 'Account Name / Reference';
-        paymentInput.placeholder = 'e.g. John Doe';
+        paymentInput.placeholder = 'e.g. Daniel Daniel;
     }
     paymentInput.value = '';
 }
