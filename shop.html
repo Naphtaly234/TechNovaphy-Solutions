@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
+        /* ---- same styles as before, no changes needed ---- */
         * { margin:0; padding:0; box-sizing:border-box; }
         :root {
             --primary: #00F2FF;
@@ -655,12 +656,22 @@
         }
         .payment-option i { font-size:1.8rem; margin-bottom:0.3rem; display:block; color:var(--primary); }
         .payment-option span { font-weight:600; font-size:0.9rem; }
+
         .payment-detail {
             margin:1rem 0;
             padding:1rem;
             background:var(--card-bg);
             border-radius:12px;
             border:1px solid var(--border);
+        }
+        .payment-detail .payee-info {
+            font-size:0.9rem;
+            opacity:0.8;
+            margin-bottom:0.6rem;
+            padding:0.5rem;
+            background:rgba(0,242,255,0.05);
+            border-radius:8px;
+            border-left:3px solid var(--primary);
         }
         .payment-detail label {
             display:block;
@@ -678,6 +689,7 @@
             font-family:inherit;
         }
         .payment-detail input:focus { outline:none; border-color:var(--primary); }
+
         .delivery-options {
             display:flex;
             gap:0.8rem;
@@ -699,6 +711,7 @@
             background:rgba(0,242,255,0.08);
         }
         .delivery-options button:hover { border-color:var(--primary); }
+
         .place-order-btn {
             width:100%;
             padding:1rem;
@@ -913,7 +926,7 @@
 
         <h3 style="margin-bottom:0.5rem;">Payment Method</h3>
         <div class="payment-methods" id="paymentMethods">
-            <div class="payment-option" data-method="mpesa">
+            <div class="payment-option selected" data-method="mpesa">
                 <i class="fas fa-mobile-alt"></i>
                 <span>M-Pesa</span>
             </div>
@@ -921,14 +934,12 @@
                 <i class="fas fa-university"></i>
                 <span>Bank Transfer</span>
             </div>
-            <div class="payment-option" data-method="paybill">
-                <i class="fas fa-receipt"></i>
-                <span>Paybill</span>
-            </div>
+            <!-- Paybill removed – no number provided -->
         </div>
 
-        <div id="paymentDetail" class="payment-detail" style="display:none;">
-            <label id="paymentLabel">Phone Number</label>
+        <div class="payment-detail" id="paymentDetail">
+            <div class="payee-info" id="payeeInfo">📲 Pay to: <strong>0796911994</strong></div>
+            <label id="paymentLabel">Your Phone Number</label>
             <input type="text" id="paymentInput" placeholder="e.g. 0712345678" />
         </div>
 
@@ -955,7 +966,7 @@
 
 <script>
 // ============================================================
-//  PRODUCT DATA (48 items – same as before)
+//  PRODUCT DATA (48 items)
 // ============================================================
 const products = [
     { id:1, name:"iPhone 16 Pro Max", brand:"Apple", category:"phones", condition:"new", price:199999, originalPrice:220000, rating:4.9, reviews:456, badge:"Hot Deal" },
@@ -1048,6 +1059,7 @@ const paymentMethods = document.getElementById('paymentMethods');
 const paymentDetail = document.getElementById('paymentDetail');
 const paymentLabel = document.getElementById('paymentLabel');
 const paymentInput = document.getElementById('paymentInput');
+const payeeInfo = document.getElementById('payeeInfo');
 const deliveryOptions = document.getElementById('deliveryOptions');
 const placeOrderBtn = document.getElementById('placeOrderBtn');
 
@@ -1329,9 +1341,6 @@ function openCheckout() {
     selectPayment('mpesa');
     selectDelivery('before');
     paymentInput.value = '';
-    paymentDetail.style.display = 'block';
-    paymentLabel.textContent = 'M-Pesa Phone Number';
-    paymentInput.placeholder = 'e.g. 0712345678';
 }
 
 function closeCheckoutModal() {
@@ -1356,14 +1365,16 @@ function selectPayment(method) {
     document.querySelector(`.payment-option[data-method="${method}"]`).classList.add('selected');
     selectedPayment = method;
 
-    paymentDetail.style.display = 'block';
-    const labels = {
-        mpesa: { label: 'M-Pesa Phone Number', placeholder: 'e.g. 0712345678' },
-        bank: { label: 'Bank Name & Account Number', placeholder: 'e.g. KCB 1234567890' },
-        paybill: { label: 'Paybill Account Number', placeholder: 'e.g. 123456' }
-    };
-    paymentLabel.textContent = labels[method].label;
-    paymentInput.placeholder = labels[method].placeholder;
+    // Update payee info and input label
+    if (method === 'mpesa') {
+        payeeInfo.innerHTML = '📲 Pay to: <strong>0796911994</strong>';
+        paymentLabel.textContent = 'Your Phone Number (for confirmation)';
+        paymentInput.placeholder = 'e.g. 0712345678';
+    } else if (method === 'bank') {
+        payeeInfo.innerHTML = '🏦 KCB Bank – Account: <strong>1335889469</strong>';
+        paymentLabel.textContent = 'Your Account Name / Reference';
+        paymentInput.placeholder = 'e.g. John Doe';
+    }
     paymentInput.value = '';
 }
 
@@ -1390,7 +1401,6 @@ placeOrderBtn.addEventListener('click', function() {
         showToast('Your cart is empty.');
         return;
     }
-    // Validate input
     const detail = paymentInput.value.trim();
     if (!detail) {
         showToast('Please enter the required payment details.');
@@ -1399,12 +1409,11 @@ placeOrderBtn.addEventListener('click', function() {
 
     const methodNames = {
         mpesa: 'M-Pesa',
-        bank: 'Bank Transfer',
-        paybill: 'Paybill'
+        bank: 'Bank Transfer'
     };
     const deliveryText = selectedDelivery === 'before' ? 'Pay Before Delivery' : 'Pay After Delivery';
 
-    showToast(`✅ Order placed successfully!\nPayment: ${methodNames[selectedPayment]}\nDelivery: ${deliveryText}\nWe'll contact you shortly.`);
+    showToast(`✅ Order placed!\nPayment: ${methodNames[selectedPayment]}\nDelivery: ${deliveryText}\nWe'll contact you shortly.`);
     // Clear cart
     cart = [];
     updateCartCount();
@@ -1466,7 +1475,6 @@ document.querySelectorAll('.filter-item input[type="checkbox"]:not(#filter-all)'
     });
 });
 
-// Checkout button
 checkoutBtn.addEventListener('click', openCheckout);
 
 // ============================================================
@@ -1476,4 +1484,4 @@ renderProducts();
 updateCartCount();
 </script>
 </body>
-    </html>
+                                                                                        </html>
