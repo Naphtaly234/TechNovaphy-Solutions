@@ -73,6 +73,71 @@
             border:2px solid var(--bg);
         }
 
+        /* ----- MOBILE MENU TOGGLE ----- */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+        .menu-toggle:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .shop-nav {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                position: relative;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(10,14,39,0.98);
+                padding: 1.2rem 0;
+                border-top: 1px solid var(--border);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                gap: 0.5rem;
+                align-items: center;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+                list-style: none;
+                margin: 0;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.3rem 0;
+            }
+            .nav-links li a {
+                display: block;
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+                width: 100%;
+                color: var(--text);
+                text-decoration: none;
+            }
+            .nav-links li a.btn-primary {
+                width: 80%;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .shop-header-content {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                position: relative;
+            }
+            .shop-logo { font-size: 1.2rem; }
+        }
+
         /* SEARCH */
         .search-section {
             padding:1.8rem 0;
@@ -122,8 +187,6 @@
             gap:2rem;
             margin-bottom:3rem;
         }
-
-        /* SIDEBAR FILTERS */
         .filters-sidebar {
             background:var(--card-bg);
             border:1px solid var(--border);
@@ -162,7 +225,6 @@
         }
         .filter-item label { cursor:pointer; flex:1; }
 
-        /* PRODUCTS GRID */
         .products-header {
             display:flex;
             justify-content:space-between;
@@ -177,7 +239,6 @@
             gap:1.5rem;
         }
 
-        /* PRODUCT CARD */
         .product-card {
             background:var(--card-bg);
             border:1px solid var(--border);
@@ -211,8 +272,6 @@
             transition:transform 0.4s ease;
         }
         .product-card:hover .product-image img { transform:scale(1.03); }
-
-        /* SVG placeholder – shows if image missing */
         .product-image .placeholder-svg {
             width:100%;
             height:100%;
@@ -226,30 +285,9 @@
             padding:0.5rem;
         }
         .placeholder-svg .brand-icon { font-size:3.2rem; margin-bottom:0.3rem; }
-        .placeholder-svg .brand-name {
-            font-weight:700;
-            font-size:1.1rem;
-            color:var(--primary);
-        }
-        .placeholder-svg .product-title {
-            font-size:0.75rem;
-            opacity:0.8;
-            max-width:90%;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            white-space:nowrap;
-        }
-        .placeholder-svg .cat-tag {
-            font-size:0.6rem;
-            opacity:0.5;
-            margin-top:0.3rem;
-            background:rgba(255,255,255,0.08);
-            padding:0.2rem 0.8rem;
-            border-radius:20px;
-            text-transform:uppercase;
-            letter-spacing:1px;
-        }
-
+        .placeholder-svg .brand-name { font-weight:700; font-size:1.1rem; color:var(--primary); }
+        .placeholder-svg .product-title { font-size:0.75rem; opacity:0.8; max-width:90%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .placeholder-svg .cat-tag { font-size:0.6rem; opacity:0.5; margin-top:0.3rem; background:rgba(255,255,255,0.08); padding:0.2rem 0.8rem; border-radius:20px; text-transform:uppercase; letter-spacing:1px; }
         .product-badge {
             position:absolute;
             top:10px; right:10px;
@@ -303,24 +341,9 @@
             margin-bottom:0.8rem;
             flex-wrap:wrap;
         }
-        .price-current {
-            font-size:1.2rem;
-            font-weight:700;
-            color:var(--primary);
-        }
-        .price-original {
-            font-size:0.75rem;
-            text-decoration:line-through;
-            opacity:0.4;
-        }
-        .price-discount {
-            font-size:0.7rem;
-            background:rgba(255,100,0,0.2);
-            color:#ff6400;
-            padding:0.1rem 0.5rem;
-            border-radius:12px;
-            font-weight:600;
-        }
+        .price-current { font-size:1.2rem; font-weight:700; color:var(--primary); }
+        .price-original { font-size:0.75rem; text-decoration:line-through; opacity:0.4; }
+        .price-discount { font-size:0.7rem; background:rgba(255,100,0,0.2); color:#ff6400; padding:0.1rem 0.5rem; border-radius:12px; font-weight:600; }
         .product-actions {
             display:flex;
             gap:0.6rem;
@@ -361,7 +384,6 @@
         .wishlist-btn:hover { border-color:var(--primary); color:var(--primary); }
         .wishlist-btn.active { border-color:#ff3366; color:#ff3366; }
 
-        /* EMPTY STATE */
         .empty-state {
             grid-column:1/-1;
             text-align:center;
@@ -371,7 +393,6 @@
         .empty-state i { font-size:3.5rem; margin-bottom:1.2rem; color:var(--primary); }
         .empty-state h3 { font-size:1.3rem; margin-bottom:0.5rem; }
 
-        /* TOAST */
         .toast {
             position:fixed;
             top:90px; right:20px;
@@ -461,11 +482,7 @@
             overflow:hidden;
             flex-shrink:0;
         }
-        .cart-item-image img {
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
+        .cart-item-image img { width:100%; height:100%; object-fit:cover; }
         .cart-item-details { flex:1; }
         .cart-item-name { font-weight:600; font-size:0.9rem; }
         .cart-item-price { color:var(--primary); font-weight:700; font-size:0.95rem; }
@@ -551,6 +568,152 @@
         }
         .checkout-btn:hover { transform:scale(1.02); }
 
+        /* ===== CHECKOUT MODAL ===== */
+        .checkout-overlay {
+            position:fixed;
+            top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.7);
+            z-index:1500;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            opacity:0;
+            visibility:hidden;
+            transition:opacity 0.3s ease, visibility 0.3s ease;
+            padding:1rem;
+        }
+        .checkout-overlay.active {
+            opacity:1;
+            visibility:visible;
+        }
+        .checkout-modal {
+            background:var(--bg);
+            border:1px solid var(--border);
+            border-radius:24px;
+            max-width:550px;
+            width:100%;
+            max-height:90vh;
+            overflow-y:auto;
+            padding:2rem;
+            transform:scale(0.95);
+            transition:transform 0.3s ease;
+            box-shadow:0 20px 60px rgba(0,0,0,0.8);
+        }
+        .checkout-overlay.active .checkout-modal {
+            transform:scale(1);
+        }
+        .checkout-modal h2 {
+            font-size:1.5rem;
+            font-weight:700;
+            margin-bottom:0.5rem;
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+        }
+        .checkout-modal .close-checkout {
+            float:right;
+            background:none;
+            border:none;
+            color:var(--text);
+            font-size:1.8rem;
+            cursor:pointer;
+            transition:transform 0.2s;
+        }
+        .checkout-modal .close-checkout:hover { transform:rotate(90deg); color:var(--primary); }
+        .checkout-summary {
+            background:var(--card-bg);
+            border-radius:12px;
+            padding:1rem;
+            margin:1rem 0;
+            border:1px solid var(--border);
+        }
+        .checkout-summary .total {
+            font-size:1.2rem;
+            font-weight:700;
+            color:var(--primary);
+        }
+        .payment-methods {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:0.8rem;
+            margin:1.2rem 0;
+        }
+        .payment-option {
+            background:var(--card-bg);
+            border:2px solid var(--border);
+            border-radius:12px;
+            padding:1rem;
+            text-align:center;
+            cursor:pointer;
+            transition:all 0.2s;
+        }
+        .payment-option:hover { border-color:var(--primary); }
+        .payment-option.selected {
+            border-color:var(--primary);
+            background:rgba(0,242,255,0.08);
+            box-shadow:0 0 20px rgba(0,242,255,0.1);
+        }
+        .payment-option i { font-size:1.8rem; margin-bottom:0.3rem; display:block; color:var(--primary); }
+        .payment-option span { font-weight:600; font-size:0.9rem; }
+        .payment-detail {
+            margin:1rem 0;
+            padding:1rem;
+            background:var(--card-bg);
+            border-radius:12px;
+            border:1px solid var(--border);
+        }
+        .payment-detail label {
+            display:block;
+            font-weight:600;
+            margin-bottom:0.3rem;
+            font-size:0.9rem;
+        }
+        .payment-detail input {
+            width:100%;
+            padding:0.7rem;
+            background:rgba(255,255,255,0.05);
+            border:1px solid var(--border);
+            border-radius:8px;
+            color:var(--text);
+            font-family:inherit;
+        }
+        .payment-detail input:focus { outline:none; border-color:var(--primary); }
+        .delivery-options {
+            display:flex;
+            gap:0.8rem;
+            margin:1rem 0;
+        }
+        .delivery-options button {
+            flex:1;
+            padding:0.8rem;
+            background:var(--card-bg);
+            border:2px solid var(--border);
+            border-radius:10px;
+            color:var(--text);
+            font-weight:600;
+            cursor:pointer;
+            transition:all 0.2s;
+        }
+        .delivery-options button.selected {
+            border-color:var(--primary);
+            background:rgba(0,242,255,0.08);
+        }
+        .delivery-options button:hover { border-color:var(--primary); }
+        .place-order-btn {
+            width:100%;
+            padding:1rem;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            border:none;
+            border-radius:12px;
+            color:#000;
+            font-weight:700;
+            font-size:1rem;
+            cursor:pointer;
+            transition:transform 0.2s;
+            margin-top:1rem;
+        }
+        .place-order-btn:hover { transform:scale(1.02); }
+
         /* FOOTER */
         .shop-footer {
             border-top:1px solid var(--border);
@@ -580,6 +743,7 @@
             .shop-main { grid-template-columns:1fr; }
             .filters-sidebar { display:none; }
             .cart-drawer { width:100%; right:-100%; }
+            .payment-methods { grid-template-columns:1fr; }
         }
         @media (max-width:768px) {
             .products-container { grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:1rem; }
@@ -593,6 +757,8 @@
             .product-info { padding:0.8rem 1rem 1rem; }
             .add-cart-btn { font-size:0.7rem; padding:0.5rem 0.6rem; }
             .cart-drawer { width:100%; right:-100%; }
+            .checkout-modal { padding:1.5rem; }
+            .delivery-options { flex-direction:column; }
         }
         @media (max-width:480px) {
             .products-container { grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); gap:0.8rem; }
@@ -603,7 +769,6 @@
             .shop-nav a { font-size:0.85rem; }
         }
 
-        /* ANIMATIONS */
         .product-card {
             animation:fadeUp 0.5s ease forwards;
             opacity:0;
@@ -634,13 +799,20 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ===== HEADER ===== -->
 <header class="shop-header">
     <div class="container">
         <div class="shop-header-content">
-            <a href="#" class="shop-logo">TECH<span>NOVAPHY</span> SHOP</a>
+            <a href="index.html" class="shop-logo">TECH<span>NOVAPHY</span> SHOP</a>
             <nav class="shop-nav">
-                <a href="#"><i class="fas fa-home"></i> Services</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks" style="display:flex; list-style:none; gap:2rem; align-items:center; margin:0; padding:0;">
+                    <li><a href="index.html#services"><i class="fas fa-home"></i> Services</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tel:+254799269573" class="btn-primary" style="padding:0.6rem 1.2rem;">Call Now</a></li>
+                </ul>
                 <div class="cart-icon" id="cartIcon" title="Shopping Cart">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count" id="cartCount">0</span>
@@ -650,7 +822,7 @@
     </div>
 </header>
 
-<!-- SEARCH -->
+<!-- ===== SEARCH ===== -->
 <section class="search-section">
     <div class="container">
         <div class="search-container">
@@ -660,11 +832,9 @@
     </div>
 </section>
 
-<!-- MAIN -->
+<!-- ===== MAIN ===== -->
 <main class="container">
     <div class="shop-main">
-
-        <!-- SIDEBAR -->
         <aside class="filters-sidebar">
             <div class="filter-group">
                 <h3 class="filter-title">Category</h3>
@@ -698,7 +868,6 @@
             </div>
         </aside>
 
-        <!-- PRODUCTS -->
         <section>
             <div class="products-header">
                 <h2>🛒 All Products</h2>
@@ -706,11 +875,10 @@
             </div>
             <div class="products-container" id="productsGrid"></div>
         </section>
-
     </div>
 </main>
 
-<!-- CART OVERLAY & DRAWER -->
+<!-- ===== CART DRAWER ===== -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-drawer" id="cartDrawer">
     <div class="cart-drawer-header">
@@ -729,14 +897,55 @@
             <span>Total:</span>
             <span id="cartTotal">KES 0</span>
         </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
     </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ===== CHECKOUT MODAL ===== -->
+<div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-modal">
+        <button class="close-checkout" id="closeCheckout"><i class="fas fa-times"></i></button>
+        <h2><i class="fas fa-credit-card"></i> Checkout</h2>
+        <div class="checkout-summary">
+            <span>Total amount:</span>
+            <span class="total" id="checkoutTotal">KES 0</span>
+        </div>
+
+        <h3 style="margin-bottom:0.5rem;">Payment Method</h3>
+        <div class="payment-methods" id="paymentMethods">
+            <div class="payment-option" data-method="mpesa">
+                <i class="fas fa-mobile-alt"></i>
+                <span>M-Pesa</span>
+            </div>
+            <div class="payment-option" data-method="bank">
+                <i class="fas fa-university"></i>
+                <span>Bank Transfer</span>
+            </div>
+            <div class="payment-option" data-method="paybill">
+                <i class="fas fa-receipt"></i>
+                <span>Paybill</span>
+            </div>
+        </div>
+
+        <div id="paymentDetail" class="payment-detail" style="display:none;">
+            <label id="paymentLabel">Phone Number</label>
+            <input type="text" id="paymentInput" placeholder="e.g. 0712345678" />
+        </div>
+
+        <h3 style="margin:1rem 0 0.5rem;">Delivery Payment Timing</h3>
+        <div class="delivery-options" id="deliveryOptions">
+            <button class="selected" data-delivery="before">Pay Before Delivery</button>
+            <button data-delivery="after">Pay After Delivery</button>
+        </div>
+
+        <button class="place-order-btn" id="placeOrderBtn"><i class="fas fa-check-circle"></i> Place Order</button>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
 <footer class="shop-footer">
     <div class="shop-footer-links">
-        <a href="#"><i class="fas fa-home"></i> Services</a>
+        <a href="index.html#services"><i class="fas fa-home"></i> Services</a>
         <a href="tel:+254799269573"><i class="fas fa-phone"></i> +254 799 269 573</a>
         <a href="https://wa.me/254799269573"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="mailto:technovaphysolutions@gmail.com"><i class="fas fa-envelope"></i> Email</a>
@@ -746,10 +955,9 @@
 
 <script>
 // ============================================================
-//  PRODUCT DATA – all 48 items
+//  PRODUCT DATA (48 items – same as before)
 // ============================================================
 const products = [
-    // iPhones
     { id:1, name:"iPhone 16 Pro Max", brand:"Apple", category:"phones", condition:"new", price:199999, originalPrice:220000, rating:4.9, reviews:456, badge:"Hot Deal" },
     { id:2, name:"iPhone 16 Pro Max", brand:"Apple", category:"phones", condition:"refurbished", price:129999, originalPrice:199999, rating:4.8, reviews:312, badge:"Save 35%" },
     { id:3, name:"iPhone 15 Pro (Orange)", brand:"Apple", category:"phones", condition:"new", price:159999, originalPrice:180000, rating:4.8, reviews:389, badge:"Trending" },
@@ -758,53 +966,42 @@ const products = [
     { id:6, name:"iPhone 15 Pro (Light Blue)", brand:"Apple", category:"phones", condition:"refurbished", price:99999, originalPrice:159999, rating:4.7, reviews:228 },
     { id:7, name:"iPhone 14 Pro Max (Space Gray)", brand:"Apple", category:"phones", condition:"new", price:139999, originalPrice:160000, rating:4.7, reviews:445, badge:"Save 12%" },
     { id:8, name:"iPhone 14 Pro Max (Space Gray)", brand:"Apple", category:"phones", condition:"refurbished", price:89999, originalPrice:139999, rating:4.6, reviews:321 },
-    // Samsung
     { id:9, name:"Samsung Galaxy S24 Ultra (Pink)", brand:"Samsung", category:"phones", condition:"new", price:149999, originalPrice:170000, rating:4.8, reviews:234, badge:"Premium" },
     { id:10, name:"Samsung Galaxy S24 Ultra (Pink)", brand:"Samsung", category:"phones", condition:"refurbished", price:99999, originalPrice:149999, rating:4.7, reviews:178 },
     { id:11, name:"Samsung Galaxy A16 (Dark Blue)", brand:"Samsung", category:"phones", condition:"new", price:22999, originalPrice:28000, rating:4.5, reviews:156, badge:"Budget" },
     { id:12, name:"Samsung Galaxy A16 (Dark Blue)", brand:"Samsung", category:"phones", condition:"refurbished", price:14999, originalPrice:22999, rating:4.4, reviews:89 },
     { id:13, name:"Samsung Galaxy A06 (White)", brand:"Samsung", category:"phones", condition:"new", price:16999, originalPrice:21000, rating:4.3, reviews:124 },
     { id:14, name:"Samsung Galaxy A06 (White)", brand:"Samsung", category:"phones", condition:"refurbished", price:11999, originalPrice:16999, rating:4.2, reviews:67 },
-    // Huawei
     { id:15, name:"Huawei Mate X5 (Green)", brand:"Huawei", category:"phones", condition:"new", price:89999, originalPrice:110000, rating:4.7, reviews:289, badge:"Foldable" },
     { id:16, name:"Huawei Mate X5 (Green)", brand:"Huawei", category:"phones", condition:"refurbished", price:59999, originalPrice:89999, rating:4.6, reviews:167 },
     { id:17, name:"Huawei P30 Pro (Black)", brand:"Huawei", category:"phones", condition:"new", price:49999, originalPrice:65000, rating:4.6, reviews:234 },
     { id:18, name:"Huawei P30 Pro (Black)", brand:"Huawei", category:"phones", condition:"refurbished", price:32999, originalPrice:49999, rating:4.5, reviews:145 },
-    // OPPO
     { id:19, name:"OPPO A3 Pro (Pink)", brand:"OPPO", category:"phones", condition:"new", price:24999, originalPrice:32000, rating:4.4, reviews:178 },
     { id:20, name:"OPPO A3 Pro (Pink)", brand:"OPPO", category:"phones", condition:"refurbished", price:16999, originalPrice:24999, rating:4.3, reviews:98 },
     { id:21, name:"OPPO Reno15 Pro 5G (Brown)", brand:"OPPO", category:"phones", condition:"new", price:54999, originalPrice:70000, rating:4.6, reviews:267, badge:"5G" },
     { id:22, name:"OPPO Reno15 Pro 5G (Brown)", brand:"OPPO", category:"phones", condition:"refurbished", price:37999, originalPrice:54999, rating:4.5, reviews:156 },
-    // Xiaomi
     { id:23, name:"Xiaomi Redmi 12 (Light Blue)", brand:"Xiaomi", category:"phones", condition:"new", price:19999, originalPrice:26000, rating:4.4, reviews:201 },
     { id:24, name:"Xiaomi Redmi 12 (Light Blue)", brand:"Xiaomi", category:"phones", condition:"refurbished", price:13999, originalPrice:19999, rating:4.3, reviews:112 },
-    // Motorola
     { id:25, name:"Motorola Edge 70 Fusion (Dark Blue)", brand:"Motorola", category:"phones", condition:"new", price:34999, originalPrice:45000, rating:4.5, reviews:189 },
     { id:26, name:"Motorola Edge 70 Fusion (Dark Blue)", brand:"Motorola", category:"phones", condition:"refurbished", price:23999, originalPrice:34999, rating:4.4, reviews:104 },
-    // MacBooks
     { id:27, name:'MacBook Pro 16" M3 Max', brand:"Apple", category:"computers", condition:"new", price:349999, originalPrice:400000, rating:4.9, reviews:567, badge:"Premium" },
     { id:28, name:'MacBook Pro 16" M3 Max', brand:"Apple", category:"computers", condition:"refurbished", price:249999, originalPrice:349999, rating:4.8, reviews:389, badge:"Save 28%" },
     { id:29, name:'MacBook Air 15" M2', brand:"Apple", category:"computers", condition:"new", price:199999, originalPrice:240000, rating:4.8, reviews:445 },
     { id:30, name:'MacBook Air 15" M2', brand:"Apple", category:"computers", condition:"refurbished", price:139999, originalPrice:199999, rating:4.7, reviews:267 },
     { id:31, name:'MacBook Pro 13" M2', brand:"Apple", category:"computers", condition:"new", price:159999, originalPrice:190000, rating:4.7, reviews:389 },
     { id:32, name:'MacBook Pro 13" M2', brand:"Apple", category:"computers", condition:"refurbished", price:109999, originalPrice:159999, rating:4.6, reviews:234 },
-    // HP
     { id:33, name:'HP Pavilion 15" Laptop', brand:"HP", category:"computers", condition:"new", price:59999, originalPrice:75000, rating:4.5, reviews:278, badge:"Value Deal" },
     { id:34, name:'HP Pavilion 15" Laptop', brand:"HP", category:"computers", condition:"refurbished", price:39999, originalPrice:59999, rating:4.4, reviews:156 },
     { id:35, name:'HP Envy x360 14"', brand:"HP", category:"computers", condition:"new", price:79999, originalPrice:99999, rating:4.6, reviews:234 },
     { id:36, name:'HP Envy x360 14"', brand:"HP", category:"computers", condition:"refurbished", price:52999, originalPrice:79999, rating:4.5, reviews:145 },
-    // Lenovo
     { id:37, name:'Lenovo ThinkPad X1 Carbon', brand:"Lenovo", category:"computers", condition:"new", price:129999, originalPrice:160000, rating:4.7, reviews:312, badge:"Professional" },
     { id:38, name:'Lenovo ThinkPad X1 Carbon', brand:"Lenovo", category:"computers", condition:"refurbished", price:84999, originalPrice:129999, rating:4.6, reviews:189 },
     { id:39, name:'Lenovo IdeaPad 5 15"', brand:"Lenovo", category:"computers", condition:"new", price:54999, originalPrice:68000, rating:4.5, reviews:267 },
     { id:40, name:'Lenovo IdeaPad 5 15"', brand:"Lenovo", category:"computers", condition:"refurbished", price:37999, originalPrice:54999, rating:4.4, reviews:134 },
-    // iMac
     { id:41, name:'iMac 24" M3', brand:"Apple", category:"computers", condition:"new", price:189999, originalPrice:220000, rating:4.8, reviews:234, badge:"Desktop" },
     { id:42, name:'iMac 24" M3', brand:"Apple", category:"computers", condition:"refurbished", price:129999, originalPrice:189999, rating:4.7, reviews:167 },
-    // Microsoft
     { id:43, name:'Microsoft Surface Laptop 6', brand:"Microsoft", category:"computers", condition:"new", price:119999, originalPrice:145000, rating:4.6, reviews:198 },
     { id:44, name:'Microsoft Surface Laptop 6', brand:"Microsoft", category:"computers", condition:"refurbished", price:79999, originalPrice:119999, rating:4.5, reviews:123 },
-    // Dell
     { id:45, name:'Dell Desktop PC with Monitor', brand:"Dell", category:"computers", condition:"new", price:69999, originalPrice:89999, rating:4.4, reviews:156 },
     { id:46, name:'Dell Desktop PC with Monitor', brand:"Dell", category:"computers", condition:"refurbished", price:44999, originalPrice:69999, rating:4.3, reviews:98 },
     { id:47, name:'HP All-in-One Desktop 24"', brand:"HP", category:"computers", condition:"new", price:59999, originalPrice:75000, rating:4.3, reviews:134 },
@@ -812,8 +1009,7 @@ const products = [
 ];
 
 // ============================================================
-//  AUTO-GENERATE IMAGE PATH from product ID
-//  Just name your files: 1.webp, 2.webp, ... 48.webp
+//  HELPERS
 // ============================================================
 function getImagePath(product) {
     return `images/${product.id}.webp`;
@@ -824,6 +1020,8 @@ function getImagePath(product) {
 // ============================================================
 let filteredProducts = [...products];
 let cart = [];
+let selectedPayment = 'mpesa';
+let selectedDelivery = 'before';
 
 // ============================================================
 //  DOM REFS
@@ -837,13 +1035,62 @@ const cartIcon = document.getElementById('cartIcon');
 const cartDrawer = document.getElementById('cartDrawer');
 const cartOverlay = document.getElementById('cartOverlay');
 const closeCartBtn = document.getElementById('closeCart');
-const startShoppingBtn = document.getElementById('startShopping');
 const cartItemsEl = document.getElementById('cartItems');
 const cartFooter = document.getElementById('cartFooter');
 const cartTotalEl = document.getElementById('cartTotal');
+const checkoutBtn = document.getElementById('checkoutBtn');
+
+// Checkout modal
+const checkoutOverlay = document.getElementById('checkoutOverlay');
+const closeCheckout = document.getElementById('closeCheckout');
+const checkoutTotal = document.getElementById('checkoutTotal');
+const paymentMethods = document.getElementById('paymentMethods');
+const paymentDetail = document.getElementById('paymentDetail');
+const paymentLabel = document.getElementById('paymentLabel');
+const paymentInput = document.getElementById('paymentInput');
+const deliveryOptions = document.getElementById('deliveryOptions');
+const placeOrderBtn = document.getElementById('placeOrderBtn');
 
 // ============================================================
-//  RENDER
+//  MOBILE MENU
+// ============================================================
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        const icon = this.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        });
+    });
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.shop-nav')) {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        }
+    });
+}
+
+// ============================================================
+//  RENDER PRODUCTS
 // ============================================================
 function renderProducts() {
     const count = filteredProducts.length;
@@ -900,7 +1147,6 @@ function renderProducts() {
         `;
     }).join('');
 
-    // Restore wishlist states
     document.querySelectorAll('.wishlist-btn').forEach(btn => {
         const id = parseInt(btn.getAttribute('onclick')?.match(/\d+/)?.[0] || '0');
         if (id && localStorage.getItem('wishlist_' + id) === 'true') {
@@ -911,11 +1157,10 @@ function renderProducts() {
 }
 
 // ============================================================
-//  FILTERS
+//  FILTERS & SEARCH
 // ============================================================
 function applyFilters() {
     let result = [...products];
-
     const cats = [];
     if (document.getElementById('filter-phones').checked) cats.push('phones');
     if (document.getElementById('filter-computers').checked) cats.push('computers');
@@ -1070,6 +1315,104 @@ closeCartBtn.addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
 
 // ============================================================
+//  CHECKOUT MODAL
+// ============================================================
+function openCheckout() {
+    if (cart.length === 0) {
+        showToast('Your cart is empty. Add some items first.');
+        return;
+    }
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    checkoutTotal.textContent = 'KES ' + total.toLocaleString();
+    checkoutOverlay.classList.add('active');
+    // Reset selection
+    selectPayment('mpesa');
+    selectDelivery('before');
+    paymentInput.value = '';
+    paymentDetail.style.display = 'block';
+    paymentLabel.textContent = 'M-Pesa Phone Number';
+    paymentInput.placeholder = 'e.g. 0712345678';
+}
+
+function closeCheckoutModal() {
+    checkoutOverlay.classList.remove('active');
+}
+
+closeCheckout.addEventListener('click', closeCheckoutModal);
+checkoutOverlay.addEventListener('click', (e) => {
+    if (e.target === checkoutOverlay) closeCheckoutModal();
+});
+
+// Payment method selection
+paymentMethods.querySelectorAll('.payment-option').forEach(el => {
+    el.addEventListener('click', function() {
+        const method = this.dataset.method;
+        selectPayment(method);
+    });
+});
+
+function selectPayment(method) {
+    paymentMethods.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
+    document.querySelector(`.payment-option[data-method="${method}"]`).classList.add('selected');
+    selectedPayment = method;
+
+    paymentDetail.style.display = 'block';
+    const labels = {
+        mpesa: { label: 'M-Pesa Phone Number', placeholder: 'e.g. 0712345678' },
+        bank: { label: 'Bank Name & Account Number', placeholder: 'e.g. KCB 1234567890' },
+        paybill: { label: 'Paybill Account Number', placeholder: 'e.g. 123456' }
+    };
+    paymentLabel.textContent = labels[method].label;
+    paymentInput.placeholder = labels[method].placeholder;
+    paymentInput.value = '';
+}
+
+// Delivery timing
+deliveryOptions.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', function() {
+        deliveryOptions.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedDelivery = this.dataset.delivery;
+    });
+});
+
+function selectDelivery(type) {
+    deliveryOptions.querySelectorAll('button').forEach(b => {
+        b.classList.remove('selected');
+        if (b.dataset.delivery === type) b.classList.add('selected');
+    });
+    selectedDelivery = type;
+}
+
+// Place order
+placeOrderBtn.addEventListener('click', function() {
+    if (cart.length === 0) {
+        showToast('Your cart is empty.');
+        return;
+    }
+    // Validate input
+    const detail = paymentInput.value.trim();
+    if (!detail) {
+        showToast('Please enter the required payment details.');
+        return;
+    }
+
+    const methodNames = {
+        mpesa: 'M-Pesa',
+        bank: 'Bank Transfer',
+        paybill: 'Paybill'
+    };
+    const deliveryText = selectedDelivery === 'before' ? 'Pay Before Delivery' : 'Pay After Delivery';
+
+    showToast(`✅ Order placed successfully!\nPayment: ${methodNames[selectedPayment]}\nDelivery: ${deliveryText}\nWe'll contact you shortly.`);
+    // Clear cart
+    cart = [];
+    updateCartCount();
+    updateCartUI();
+    closeCheckoutModal();
+});
+
+// ============================================================
 //  WISHLIST
 // ============================================================
 function toggleWishlist(event, productId) {
@@ -1094,11 +1437,11 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.add('hide');
         setTimeout(() => toast.remove(), 400);
-    }, 2200);
+    }, 3000);
 }
 
 // ============================================================
-//  EVENTS
+//  EVENT BINDING
 // ============================================================
 searchBtn.addEventListener('click', performSearch);
 searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') performSearch(); });
@@ -1122,6 +1465,9 @@ document.querySelectorAll('.filter-item input[type="checkbox"]:not(#filter-all)'
         applyFilters();
     });
 });
+
+// Checkout button
+checkoutBtn.addEventListener('click', openCheckout);
 
 // ============================================================
 //  INIT
