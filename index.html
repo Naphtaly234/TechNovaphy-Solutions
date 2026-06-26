@@ -18,8 +18,8 @@
       gtag('config', 'G-1Q7655ML09');
     </script>
 
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    <!-- EmailJS SDK - Using Official CDN (More Reliable) -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
     <!-- Schema Markup - Local Business -->
     <script type="application/ld+json">
@@ -590,7 +590,7 @@
         });
 
         // ============================================================
-        //  EMAILJS – FIXED (NO AUTO-REFRESH)
+        //  EMAILJS – FIXED (Using Official CDN)
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             console.log('✅ Page loaded, initializing EmailJS...');
@@ -726,4 +726,4 @@
         });
     </script>
 </body>
-            </html>
+</html>
