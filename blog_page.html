@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechNovaphy Blog - Articles on IT Infrastructure, Web Development, Technology Tips, and Business Growth">
+    <title>TechNovaphy Blog | Tech Tips, IT Infrastructure, Web Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f2ff;
+            --accent: #7000ff;
+            --dark: #0a0e27;
+            --darker: #050812;
+            --text: #e0e0e0;
+            --border: #1a1f3a;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, #0f1535 100%);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .blog-hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-hero p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Search & Filter */
+        .blog-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.2);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, rgba(112, 0, 255, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .blog-category {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .blog-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 0.8rem;
+        }
+
+        /* Article Page */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        .article-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1));
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .article-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-body h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .article-body h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.8rem;
+        }
+
+        .article-body code {
+            background: rgba(0, 242, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--primary);
+        }
+
+        .article-body pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--primary);
+        }
+
+        .highlight-box {
+            background: rgba(0, 242, 255, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .related-posts h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .related-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .share-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 8, 18, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content p {
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero h1 { font-size: 2rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .article-header h1 { font-size: 1.8rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">TECH<span style="color: var(--accent);">NOVAPHY</span> Blog</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Tech Tips & Industry <span class="gradient-text">Insights</span></h1>
+            <p>Stay updated with the latest in IT infrastructure, web development, cybersecurity, and tech business growth. Written by our expert team.</p>
+        </div>
+    </section>
+
+    <!-- Blog Controls -->
+    <section>
+        <div class="container">
+            <div class="blog-controls">
+                <input type="text" class="search-box" placeholder="Search articles...">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">IT Infrastructure</button>
+                <button class="filter-btn">Web Development</button>
+                <button class="filter-btn">Security</button>
+                <button class="filter-btn">Business Growth</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section>
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Featured Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-image">🛡️</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Security</span>
+                            <span>5 min read</span>
+                            <span>June 20, 2026</span>
+                        </div>
+                        <h3>5 Critical Security Mistakes Your Business Is Making Right Now</h3>
+                        <p class="blog-excerpt">Most businesses don't realize they're vulnerable until it's too late. Here are the 5 most common security mistakes we see — and how to fix them today.</p>
+                        <a href="/blog/security-mistakes" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">💻</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Web Development</span>
+                            <span>7 min read</span>
+                            <span>June 18, 2026</span>
+                        </div>
+                        <h3>Why Your Website Needs Maintenance (And What That Means)</h3>
+                        <p class="blog-excerpt">Think you only update your website when adding new features? That's where most businesses go wrong. Here's why ongoing maintenance is critical.</p>
+                        <a href="/blog/website-maintenance" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">⚡</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Business Growth</span>
+                            <span>6 min read</span>
+                            <span>June 15, 2026</span>
+                        </div>
+                        <h3>How To Choose Between a Custom App, Website, or SaaS Solution</h3>
+                        <p class="blog-excerpt">Confused about which solution fits your business? We break down the pros, cons, and costs of each approach.</p>
+                        <a href="/blog/custom-vs-saas" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Post 4 -->
+                <div class="blog-card">
+                    <div class="blog-image">🌐</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">IT Infrastructure</span>
+                            <span>8 min read</span>
+                            <span>June 12, 2026</span>
+                        </div>
+                        <h3>Cloud Migration Guide: When, Why, and How to Move Your Systems</h3>
+                        <p class="blog-excerpt">Thinking about moving to the cloud? This guide covers everything you need to know before making the leap.</p>
+                        <a href="/blog/cloud-migration" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Post 5 -->
+                <div class="blog-card">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Web Development</span>
+                            <span>5 min read</span>
+                            <span>June 10, 2026</span>
+                        </div>
+                        <h3>Mobile-First Design: Why Every Business Needs It (And How to Get There)</h3>
+                        <p class="blog-excerpt">Over 70% of web traffic is mobile. Here's why your website must be mobile-first from day one.</p>
+                        <a href="/blog/mobile-first" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <!-- Post 6 -->
+                <div class="blog-card">
+                    <div class="blog-image">💰</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Business Growth</span>
+                            <span>9 min read</span>
+                            <span>June 8, 2026</span>
+                        </div>
+                        <h3>How Much Should You Budget for Website Development in 2026?</h3>
+                        <p class="blog-excerpt">Breaking down realistic costs for different types of web projects. What you should spend, where you can save.</p>
+                        <a href="/blog/budget-guide" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div style="text-align: center; margin: 4rem 0;">
+                <button style="padding: 0.8rem 1.5rem; margin: 0 0.5rem; background: rgba(0,242,255,0.1); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer;">← Previous</button>
+                <span style="margin: 0 1rem; opacity: 0.7;">Page 1 of 5</span>
+                <button style="padding: 0.8rem 1.5rem; margin: 0 0.5rem; background: rgba(0,242,255,0.1); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer;">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 TechNovaphy Blog. All articles written by our expert team.</p>
+                <p style="margin-top: 1rem; opacity: 0.5;">📞 +254 799 269 573 | ✉️ technovaphysolutions@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
