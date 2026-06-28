@@ -18,94 +18,165 @@
       gtag('config', 'G-1Q7655ML09');
     </script>
 
-    <!-- EmailJS SDK - Correct UMD build for browser -->
+    <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-    <!-- Schema Markup - Local Business -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "TechNovaphy Solutions",
-      "image": "https://technovaphy-solutions-e4vj.onrender.com/",
-      "description": "Enterprise IT Infrastructure, Web Development, and Managed Services for Nairobi businesses",
-      "url": "https://technovaphy-solutions-e4vj.onrender.com/",
-      "telephone": "+254799269573",
-      "email": "technovaphysolutions@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Nairobi",
-        "addressRegion": "Nairobi County",
-        "postalCode": "00100",
-        "addressCountry": "KE"
-      },
-      "areaServed": [
-        {"@type": "Place", "name": "Kenya"},
-        {"@type": "Place", "name": "East Africa"},
-        {"@type": "Place", "name": "Africa"}
-      ],
-      "priceRange": "$$",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
-    }
-    </script>
-
-    <!-- Schema Markup - Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "TechNovaphy Solutions",
-      "url": "https://technovaphy-solutions-e4vj.onrender.com/",
-      "description": "Enterprise IT Infrastructure, Custom Software Development, Web Development Services",
-      "contact": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "telephone": "+254799269573",
-        "email": "technovaphysolutions@gmail.com"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Nairobi",
-        "addressCountry": "KE"
-      }
-    }
-    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="TechNovaphy Solutions">
     <meta name="description" content="Enterprise IT Infrastructure, Web Development, and Managed Services for Nairobi businesses. Custom software, cloud solutions, 24/7 support.">
     <meta name="keywords" content="IT Infrastructure Nairobi, Web Development Kenya, Custom Software, Website Maintenance, E-commerce Solutions">
-    <meta name="author" content="TechNovaphy Solutions">
     <title>TechNovaphy | Enterprise IT Infrastructure & Web Development Services in Nairobi, Kenya</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/icon" href="technovaphy.icon">
-
-    <!-- ===== ADDITIONAL MOBILE NAV STYLES ===== -->
     <style>
-        /* Mobile menu toggle button */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f2ff;
+            --accent: #7000ff;
+            --dark: #0a0e27;
+            --darker: #050812;
+            --text: #e0e0e0;
+            --border: #1a1f3a;
+            --success: #10b981;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, #0f1535 100%);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            --primary: #0077be;
+            --accent: #6a0572;
+            --dark: #f5f5f5;
+            --darker: #ffffff;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .cta-button {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+        }
+
+        /* Hamburger */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: #ffffff;
+            color: var(--text);
             font-size: 1.8rem;
             cursor: pointer;
             padding: 0.2rem 0.5rem;
             transition: color 0.3s;
-            z-index: 10;
-        }
-        .menu-toggle:hover {
-            color: #00F2FF;
         }
 
-        /* Responsive nav – hides links on mobile, shows when toggled */
+        .menu-toggle:hover {
+            color: var(--primary);
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -116,7 +187,7 @@
                 width: 100%;
                 background: rgba(10, 14, 39, 0.98);
                 padding: 1.2rem 0;
-                border-top: 1px solid #1a1f3a;
+                border-top: 1px solid var(--border);
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -124,6 +195,7 @@
                 align-items: center;
                 backdrop-filter: blur(10px);
                 box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+                z-index: 999;
             }
             .nav-links.active {
                 display: flex;
@@ -147,12 +219,548 @@
             .nav-flex {
                 flex-wrap: wrap;
                 justify-content: space-between;
-                align-items: center;
                 position: relative;
             }
             .logo {
                 font-size: 1.2rem;
             }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            opacity: 0.7;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* ===== CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, rgba(112, 0, 255, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.1);
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ===== PROCESS ===== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            padding: 2rem;
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            animation: slideInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .process-step:nth-child(1) { animation-delay: 0.1s; }
+        .process-step:nth-child(2) { animation-delay: 0.2s; }
+        .process-step:nth-child(3) { animation-delay: 0.3s; }
+        .process-step:nth-child(4) { animation-delay: 0.4s; }
+
+        .step-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== TECH STACK ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .tech-badge:hover {
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.1);
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, rgba(112, 0, 255, 0.05) 100%);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .price small {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .badge-popular {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        .pricing-card li:before {
+            content: "✓ ";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .pricing-card .btn-primary {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.1);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-text {
+            max-width: 700px;
+            margin: 2rem auto;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        /* ===== SLIDER ===== */
+        .hero-image-section {
+            position: relative;
+            height: 400px;
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 242, 255, 0.2);
+            border: none;
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown-banner {
+            background: linear-gradient(135deg, #ff8c00, #ff6b35);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .countdown-banner h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-timer {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 1rem 0;
+            letter-spacing: 2px;
+        }
+
+        .claim-btn {
+            background: white;
+            color: #ff8c00;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .claim-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== CHATBOT (single) ===== */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .chatbot-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff8c00, #ff6b35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: none;
+            flex-direction: column;
+            max-height: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            padding: 1rem;
+            border-radius: 12px 12px 0 0;
+            font-weight: 700;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .message {
+            padding: 0.8rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .message.bot {
+            background: rgba(0, 242, 255, 0.1);
+            border-left: 3px solid var(--primary);
+        }
+
+        .message.user {
+            background: rgba(112, 0, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            align-self: flex-end;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .chatbot-input input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .chatbot-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* ===== FOOTER (Support column cleaned) ===== */
+        footer {
+            background: rgba(5, 8, 18, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.6;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .container { padding: 0 1rem; }
+            .pricing-card.featured { transform: scale(1); }
+            .section { padding: 40px 0; }
+            .hero-image-section { height: 250px; }
+            .chatbot-window { width: 90vw; bottom: 70px; right: 5vw; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -160,381 +768,449 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNKKWZB3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <div id="scroll-progress"></div>
-
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="container nav-flex">
-            <div class="logo">TECH<span>NOVAPHY</span></div>
-            <!-- ===== HAMBURGER BUTTON ===== -->
+            <div class="logo">TECHNOVAPHY</div>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#web-dev">Web Dev</a></li>
+                <li><a href="#webdev">Web Dev</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#maintenance">Maintenance</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#leadmagnet">Free Audit</a></li>
-                <li><a href="shop.html" class="btn-primary">Shop</a></li>
-                <li><a href="tel:+254799269573" class="btn-primary">Call Now</a></li>
+                <li><a href="shop.html" class="btn-primary" style="padding:0.6rem 1.2rem;">Shop</a></li>
             </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+                <a href="tel:+254799269573" class="cta-button">Call Now</a>
+            </div>
         </div>
     </nav>
 
-    <header class="hero">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
         <div class="container">
-            <div class="status-pill">
-                 IT Support Engineering Active
-            </div>
-            <h1 class="clash-display">Scalable <span class="gradient-text">IT Infrastructure</span> for Modern Business.</h1>
+            <span class="badge">IT Support Engineering Active</span>
+            <h1>Scalable IT Infrastructure for Modern Business.</h1>
             <p>We build and manage the technical backbone of Nairobi's growing enterprises. Reliable systems, custom software, and 24/7 proactive support.</p>
-            <div class="hero-actions" style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+            <div class="hero-buttons">
                 <a href="https://wa.me/254799269573?text=Hi%2C%20I%20would%20like%20more%20information%20about%20your%20TechNovaphy%20services." class="btn-primary">Get Started</a>
-                <a href="mailto:technovaphysolutions@gmail.com?subject=Service%20Inquiry&body=Hi%20Technovaphy%20Team,%20I%20would%20like%20more%20info%20about%20your%20IT%20services." class="btn-primary" style="background: transparent; color: white; border: 1px solid #1a1f3a;">Email Us</a>
+                <a href="mailto:technovaphysolutions@gmail.com?subject=Service%20Inquiry&body=Hi%20Technovaphy%20Team,%20I%20would%20like%20more%20info%20about%20your%20IT%20services." class="btn-secondary">Email Us</a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <section id="services" class="section">
+    <!-- ===== SERVICES ===== -->
+    <section class="section" id="services">
         <div class="container">
-            <div class="bento-grid">
-                <div class="bento-card large reveal">
-                    <i class="fas fa-network-wired" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Managed IT Operations</h3>
-                    <p>Comprehensive network management and hardware maintenance. We ensure your office infrastructure runs at 99.9% uptime.</p>
+            <h2>Our Services</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Managed IT Operations</h3>
+                    <p>Comprehensive network management and hardware maintenance. 99.9% uptime guarantee.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-laptop-code" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Business Software</h3>
+                <div class="card">
+                    <h3>Business Software</h3>
                     <p>Bespoke ERPs and automated workflows tailored to your business needs.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-cloud-arrow-up" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Cloud Solutions</h3>
+                <div class="card">
+                    <h3>Cloud Solutions</h3>
                     <p>Safe data migration and automated backups to protect your digital assets.</p>
                 </div>
-                <div class="bento-card wide reveal">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <h3 class="clash-display">24/7 Technical Support</h3>
-                            <p>Proactive troubleshooting and on-site assistance when you need it most.</p>
-                        </div>
-                        <div style="background: #00F2FF; color: black; padding: 10px 20px; border-radius: 50px; font-weight: 800;">EXPRESS</div>
-                    </div>
+                <div class="card">
+                    <h3>24/7 Technical Support</h3>
+                    <p>Proactive troubleshooting and on‑site assistance when you need it most.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="web-dev" class="section" style="background: rgba(255,255,255,0.01);">
+    <!-- ===== WEB DEVELOPMENT ===== -->
+    <section class="section" id="webdev">
         <div class="container">
-            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Web Development Services</h2>
-            
-            <div class="bento-grid">
-                <div class="bento-card reveal">
-                    <i class="fas fa-globe" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Business Websites</h3>
-                    <p>Professional, responsive websites for small & medium businesses. SEO-optimized for maximum visibility.</p>
+            <span class="badge" style="display: block; width: fit-content; margin-bottom: 1rem;">EXPRESS</span>
+            <h2>Web Development Services</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Business Websites</h3>
+                    <p>Professional, responsive websites for small & medium businesses. SEO‑optimized.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-shopping-cart" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">E-Commerce Solutions</h3>
-                    <p>Full-featured online stores with payment integration, inventory management, and analytics.</p>
+                <div class="card">
+                    <h3>E‑Commerce Solutions</h3>
+                    <p>Full‑featured online stores with payment integration, inventory, and analytics.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-cogs" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Web Applications</h3>
-                    <p>Custom web apps with real-time features, user authentication, and scalable architecture.</p>
+                <div class="card">
+                    <h3>Web Applications</h3>
+                    <p>Custom web apps with real‑time features, user auth, and scalable architecture.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Progressive Web Apps</h3>
-                    <p>Fast, installable web apps that work offline with native-like performance.</p>
+                <div class="card">
+                    <h3>Progressive Web Apps</h3>
+                    <p>Fast, installable web apps that work offline with native‑like performance.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-dashboard" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">Admin Dashboards</h3>
-                    <p>Data visualization and management tools for real-time business intelligence.</p>
+                <div class="card">
+                    <h3>Admin Dashboards</h3>
+                    <p>Data visualization and management tools for real‑time business intelligence.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <i class="fas fa-plug" style="font-size: 2rem; color: #00F2FF; margin-bottom: 1.5rem;"></i>
-                    <h3 class="clash-display">API Development</h3>
+                <div class="card">
+                    <h3>API Development</h3>
                     <p>RESTful and modern APIs for seamless integration with your business systems.</p>
                 </div>
             </div>
 
-            <h3 class="clash-display" style="text-align: center; font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem;">Technology Stack</h3>
+            <h3 style="margin-top: 3rem; margin-bottom: 2rem;">Technology Stack</h3>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                
-                <!-- Frontend -->
-                <div class="bento-card reveal" style="border-color: #00F2FF;">
-                    <h4 style="color: #00F2FF; margin-bottom: 1.5rem; font-size: 1.2rem;">Frontend Development</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">HTML5</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">CSS3</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">JavaScript</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">React</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">TypeScript</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Tailwind CSS</span>
-                    </div>
-                </div>
+            <h4 style="margin-bottom: 1rem; color: var(--primary);">Frontend</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">HTML5</div>
+                <div class="tech-badge">CSS3</div>
+                <div class="tech-badge">JavaScript</div>
+                <div class="tech-badge">React</div>
+                <div class="tech-badge">TypeScript</div>
+                <div class="tech-badge">Tailwind CSS</div>
+            </div>
 
-                <!-- Backend -->
-                <div class="bento-card reveal" style="border-color: #7000FF;">
-                    <h4 style="color: #7000FF; margin-bottom: 1.5rem; font-size: 1.2rem;">Backend Development</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Node.js</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Express.js</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Python</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Flask</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Java</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Spring Boot</span>
-                    </div>
-                </div>
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Backend</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">Node.js</div>
+                <div class="tech-badge">Express.js</div>
+                <div class="tech-badge">Python</div>
+                <div class="tech-badge">Flask</div>
+                <div class="tech-badge">Java</div>
+                <div class="tech-badge">Spring Boot</div>
+            </div>
 
-                <!-- Databases -->
-                <div class="bento-card reveal" style="border-color: #00F2FF;">
-                    <h4 style="color: #00F2FF; margin-bottom: 1.5rem; font-size: 1.2rem;">Databases</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">PostgreSQL</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">MySQL</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">MongoDB</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">SQL Server</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Redis</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Firebase</span>
-                    </div>
-                </div>
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Databases</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">PostgreSQL</div>
+                <div class="tech-badge">MySQL</div>
+                <div class="tech-badge">MongoDB</div>
+                <div class="tech-badge">SQL Server</div>
+                <div class="tech-badge">Redis</div>
+                <div class="tech-badge">Firebase</div>
+            </div>
 
-                <!-- Tools & Deployment -->
-                <div class="bento-card reveal" style="border-color: #7000FF;">
-                    <h4 style="color: #7000FF; margin-bottom: 1.5rem; font-size: 1.2rem;">Tools & Deployment</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Git/GitHub</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Docker</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Render</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Vercel</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">AWS</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Cloudflare</span>
-                    </div>
-                </div>
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Tools & Deployment</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">Git/GitHub</div>
+                <div class="tech-badge">Docker</div>
+                <div class="tech-badge">Render</div>
+                <div class="tech-badge">Vercel</div>
+                <div class="tech-badge">AWS</div>
+                <div class="tech-badge">Cloudflare</div>
+            </div>
 
-                <!-- APIs & Integrations -->
-                <div class="bento-card reveal" style="border-color: #00F2FF;">
-                    <h4 style="color: #00F2FF; margin-bottom: 1.5rem; font-size: 1.2rem;">APIs & Integrations</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">REST APIs</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">GraphQL</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Payment APIs</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Email Services</span>
-                        <span style="background: rgba(0, 242, 255, 0.1); color: #00F2FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">SMS APIs</span>
-                    </div>
-                </div>
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">APIs & Integrations</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">REST APIs</div>
+                <div class="tech-badge">GraphQL</div>
+                <div class="tech-badge">Payment APIs</div>
+                <div class="tech-badge">Email Services</div>
+                <div class="tech-badge">SMS APIs</div>
+            </div>
 
-                <!-- Quality Assurance -->
-                <div class="bento-card reveal" style="border-color: #7000FF;">
-                    <h4 style="color: #7000FF; margin-bottom: 1.5rem; font-size: 1.2rem;">Quality & Performance</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Unit Testing</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">SEO Optimization</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Performance Tuning</span>
-                        <span style="background: rgba(112, 0, 255, 0.1); color: #7000FF; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Security Best Practices</span>
-                    </div>
-                </div>
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Quality & Performance</h4>
+            <div class="tech-grid">
+                <div class="tech-badge">Unit Testing</div>
+                <div class="tech-badge">SEO Optimization</div>
+                <div class="tech-badge">Performance Tuning</div>
+                <div class="tech-badge">Security Best Practices</div>
             </div>
         </div>
     </section>
 
-    <section id="process" class="section" style="background: rgba(255,255,255,0.01);">
+    <!-- ===== PROCESS ===== -->
+    <section class="section" id="process">
         <div class="container">
-            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Why Choose Our Process</h2>
-            
-            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="bento-card reveal">
-                    <h4 style="color: #00F2FF; margin-bottom: 1rem;">01. Audit</h4>
+            <h2>Why Choose Our Process</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Audit</h3>
                     <p>We analyze your current hardware and software for bottlenecks.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <h4 style="color: #00F2FF; margin-bottom: 1rem;">02. Design</h4>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Design</h3>
                     <p>Custom infrastructure roadmap aligned with your budget.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <h4 style="color: #00F2FF; margin-bottom: 1rem;">03. Deploy</h4>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Deploy</h3>
                     <p>Seamless implementation with zero business interruption.</p>
                 </div>
-                <div class="bento-card reveal">
-                    <h4 style="color: #00F2FF; margin-bottom: 1rem;">04. Manage</h4>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Manage</h3>
                     <p>Ongoing optimization and 24/7 technical helpdesk.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="maintenance" class="section">
+    <!-- ===== ABOUT ===== -->
+    <section class="section">
         <div class="container">
-            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Website Maintenance & Support</h2>
-            <p style="text-align: center; opacity: 0.7; margin-bottom: 3rem; font-size: 1.1rem;">Keep your website running smoothly with our ongoing support plans. Recurring revenue means you'll never worry about downtime again.</p>
-            
-            <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                
-                <!-- Bronze Plan -->
-                <div class="price-card reveal">
-                    <h3 class="clash-display">Bronze</h3>
-                    <div class="price">KSh 10k<span>/mo</span></div>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.9rem;">Perfect for small businesses</p>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Website Maintenance & Updates</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Security Patches</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Bug Fixes</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Email Support (24-48hrs)</li>
-                    </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Bronze%20maintenance%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
-                </div>
-
-                <!-- Silver Plan (Featured) -->
-                <div class="price-card featured reveal">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h3 class="clash-display">Silver</h3>
-                        <span style="background: #00F2FF; color: black; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">POPULAR</span>
-                    </div>
-                    <div class="price">KSh 20k<span>/mo</span></div>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.9rem;">Most popular choice</p>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Everything in Bronze +</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> 24/7 Uptime Monitoring</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Monthly Performance Reports</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Priority WhatsApp Support (4hrs)</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> SEO Monitoring</li>
-                    </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Silver%20maintenance%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
-                </div>
-
-                <!-- Gold Plan -->
-                <div class="price-card premium reveal">
-                    <h3 class="clash-display">Gold</h3>
-                    <div class="price">KSh 35k<span>/mo</span></div>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.9rem;">Enterprise-grade support</p>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Everything in Silver +</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> 24/7 Dedicated Support</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Advanced Security Audits</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Weekly Analytics Reports</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Feature Development (5hrs/mo)</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Priority Phone Support</li>
-                    </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Gold%20maintenance%20plan." class="btn-primary" style="width: 100%;">Inquire Now</a>
-                </div>
+            <h2>Who We Are</h2>
+            <div class="about-text">
+                <p>TechNovaphy Solutions was founded with a simple belief: technology should empower businesses, not complicate them. We started as a small team of passionate developers and IT professionals in Nairobi, determined to solve real problems for real businesses.</p>
+                <p>Today, we've grown into a trusted partner for over 500 businesses across East Africa. From startups to established enterprises, from small websites to complex enterprise systems, we've delivered technology solutions that drive real business results.</p>
+                <p>We don't just build software and maintain websites. We build partnerships. We take time to understand your business, your challenges, and your vision. Then we deliver solutions tailored to your specific needs — not off‑the‑shelf, but custom‑crafted for your success.</p>
             </div>
         </div>
     </section>
 
-    <!-- Lead Magnet Section with EmailJS -->
-    <section id="leadmagnet" class="section" style="background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(112, 0, 255, 0.05) 100%);">
-        <div class="container" style="max-width: 700px;">
-            <h2 class="clash-display" style="text-align: center; font-size: 2.3rem; margin-bottom: 1rem;">Get Your Free IT Infrastructure Audit</h2>
-            <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem; font-size: 1.05rem;">Discover vulnerabilities, inefficiencies, and opportunities in your IT setup. Worth KES 50,000 — absolutely free.</p>
-            
-            <div class="bento-card" style="border: 2px solid #00F2FF; background: rgba(0, 242, 255, 0.05);">
-                <form id="auditForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div>
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
-                        <input type="text" id="from_name" name="from_name" placeholder="Daniel Naphtaly" required style="width: 100%; padding: 0.8rem; border: 1px solid #1a1f3a; border-radius: 12px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: inherit;">
-                    </div>
-                    
-                    <div>
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Company Name</label>
-                        <input type="text" id="company_name" name="company_name" placeholder="Your Company" required style="width: 100%; padding: 0.8rem; border: 1px solid #1a1f3a; border-radius: 12px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: inherit;">
-                    </div>
-                    
-                    <div>
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email Address</label>
-                        <input type="email" id="to_email" name="to_email" placeholder="your@email.com" required style="width: 100%; padding: 0.8rem; border: 1px solid #1a1f3a; border-radius: 12px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: inherit;">
-                    </div>
-                    
-                    <div>
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone Number (Optional)</label>
-                        <input type="tel" id="phone_number" name="phone_number" placeholder="+254 799 269 573" style="width: 100%; padding: 0.8rem; border: 1px solid #1a1f3a; border-radius: 12px; background: rgba(255,255,255,0.05); color: #ffffff; font-family: inherit;">
-                    </div>
-                    
-                    <button type="submit" id="auditBtn" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem; cursor: pointer; border: none; font-size: 1rem;">
-                        <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Get Free Audit PDF
-                    </button>
-                    
-                    <p style="font-size: 0.85rem; opacity: 0.6; text-align: center;">✓ We'll email you the audit guide instantly. No spam, unsubscribe anytime.</p>
-                </form>
-                
-                <!-- Status Message -->
-                <div id="auditStatus" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;"></div>
+    <!-- ===== OUR WORK (SLIDER) ===== -->
+    <section class="section">
+        <div class="container">
+            <h2>Our Work in Action</h2>
+            <p class="section-subtitle">Real projects, real results, real impact.</p>
+            <div class="hero-image-section">
+                <button class="slider-arrow prev" onclick="slideImage(-1)">❮</button>
+                <div class="hero-image" id="heroImage">📊</div>
+                <button class="slider-arrow next" onclick="slideImage(1)">❯</button>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="section">
+    <!-- ===== MAINTENANCE ===== -->
+    <section class="section" id="maintenance">
         <div class="container">
-            <h2 class="clash-display" style="text-align: center; font-size: 2.5rem;">Scalable Support Plans</h2>
+            <h2>Website Maintenance & Support</h2>
+            <p class="section-subtitle">Keep your website running smoothly with our ongoing support plans. Recurring revenue means you'll never worry about downtime again.</p>
             <div class="pricing-grid">
-                <div class="price-card reveal">
-                    <h3 class="clash-display">Standard IT</h3>
-                    <div class="price">KSh 15k<span>/mo</span></div>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Remote Support</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Cloud Backup</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Monthly Reports</li>
+                <div class="pricing-card">
+                    <h3>Bronze</h3>
+                    <div class="price">KSh 10k<small>/mo</small></div>
+                    <p style="opacity: 0.7; margin-bottom: 1rem;">Perfect for small businesses</p>
+                    <ul>
+                        <li>Website Maintenance & Updates</li>
+                        <li>Security Patches</li>
+                        <li>Bug Fixes</li>
+                        <li>Email Support (24-48hrs)</li>
                     </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20IT%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Bronze%20maintenance%20plan." class="btn-primary">Get Started</a>
                 </div>
-                <div class="price-card featured reveal">
-                    <h3 class="clash-display">Managed Pro</h3>
-                    <div class="price">KSh 50k<span>/mo</span></div>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> On-Site Maintenance</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Software Dev Support</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Priority Helpdesk</li>
+                <div class="pricing-card featured">
+                    <div class="badge-popular">POPULAR</div>
+                    <h3>Silver</h3>
+                    <div class="price">KSh 20k<small>/mo</small></div>
+                    <p style="opacity: 0.7; margin-bottom: 1rem;">Most popular choice</p>
+                    <ul>
+                        <li>Everything in Bronze +</li>
+                        <li>24/7 Uptime Monitoring</li>
+                        <li>Monthly Performance Reports</li>
+                        <li>Priority WhatsApp Support (4hrs)</li>
+                        <li>SEO Monitoring</li>
                     </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Managed%20Pro%20plan." class="btn-primary" style="width: 100%;">Get Started</a>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Silver%20maintenance%20plan." class="btn-primary">Get Started</a>
                 </div>
-                <div class="price-card premium reveal">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h3 class="clash-display">Premium Website</h3>
-                        <span style="background: #00F2FF; color: black; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">ONE-TIME</span>
-                    </div>
-                    <div class="price">KSh 120k<span>/once</span></div>
-                    <ul style="list-style: none; opacity: 0.8; margin-bottom: 2rem;">
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Custom Professional Design</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Responsive & Mobile-Optimized</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> SEO Optimized</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Integration Support</li>
-                        <li><i class="fas fa-check" style="color: #00F2FF;"></i> Lifetime Access (No Recurring Fees)</li>
+                <div class="pricing-card">
+                    <h3>Gold</h3>
+                    <div class="price">KSh 35k<small>/mo</small></div>
+                    <p style="opacity: 0.7; margin-bottom: 1rem;">Enterprise‑grade support</p>
+                    <ul>
+                        <li>Everything in Silver +</li>
+                        <li>24/7 Dedicated Support</li>
+                        <li>Advanced Security Audits</li>
+                        <li>Weekly Analytics Reports</li>
+                        <li>Feature Development (5hrs/mo)</li>
+                        <li>Priority Phone Support</li>
                     </ul>
-                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Website%20package%20for%20KSh%20120k." class="btn-primary" style="width: 100%;">Inquire Now</a>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Gold%20maintenance%20plan." class="btn-primary">Inquire Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="section" style="border-top: 1px solid #1a1f3a;">
-        <div class="container" style="text-align: center;">
-            <div class="logo" style="margin-bottom: 2rem;">TECH<span>NOVAPHY</span></div>
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <a href="tel:+254799269573" style="text-decoration: none; color: #ffffff;"><i class="fas fa-phone"></i> +254 799 269 573</a>
-                <a href="mailto:technovaphysolutions@gmail.com" style="text-decoration: none; color: #ffffff;"><i class="fas fa-envelope"></i> technovaphysolutions@gmail.com</a>
-                <a href="shop.html" style="text-decoration: none; color: #ffffff;"><i class="fas fa-shopping-bag"></i> Visit Shop</a>
+    <!-- ===== LEAD MAGNET ===== -->
+    <section class="section" id="leadmagnet">
+        <div class="container">
+            <h2>Get Your Free IT Infrastructure Audit</h2>
+            <p class="section-subtitle">Discover vulnerabilities, inefficiencies, and opportunities in your IT setup. Worth KES 50,000 — absolutely free.</p>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <form id="auditForm">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="from_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" id="company_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="to_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number (Optional)</label>
+                        <input type="tel" id="phone_number">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;" id="auditBtn">Get Free Audit PDF</button>
+                </form>
+                <div id="auditStatus" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600;"></div>
+                <p style="text-align: center; margin-top: 1rem; opacity: 0.6; font-size: 0.9rem;">✓ We'll email you the audit guide instantly. No spam, unsubscribe anytime.</p>
             </div>
-            <p style="margin-top: 3rem; opacity: 0.4;">© 2026 TechNovaphy Solutions. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- ===== COUNTDOWN BANNER ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="countdown-banner">
+                <h3>🎉 Limited Time Offer: Get Your Website Optimized</h3>
+                <div class="countdown-timer">
+                    <span id="days">02</span>d :
+                    <span id="hours">16</span>h :
+                    <span id="minutes">47</span>m :
+                    <span id="seconds">26</span>s
+                </div>
+                <button class="claim-btn" onclick="alert('Thank you! Contact us at +254 799 269 573 to claim this offer.')">Claim Offer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2>Scalable Support Plans</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Standard IT</h3>
+                    <div class="price">KSh 15k<small>/mo</small></div>
+                    <ul>
+                        <li>Remote Support</li>
+                        <li>Cloud Backup</li>
+                        <li>Monthly Reports</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20IT%20plan." class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Managed Pro</h3>
+                    <div class="price">KSh 50k<small>/mo</small></div>
+                    <ul>
+                        <li>On‑Site Maintenance</li>
+                        <li>Software Dev Support</li>
+                        <li>Priority Helpdesk</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Managed%20Pro%20plan." class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium Website</h3>
+                    <div class="price">KSh 120k<small>/once</small></div>
+                    <ul>
+                        <li>Custom Professional Design</li>
+                        <li>Responsive & Mobile-Optimized</li>
+                        <li>SEO Optimized</li>
+                        <li>Integration Support</li>
+                        <li>Lifetime Access (No Recurring Fees)</li>
+                    </ul>
+                    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Website%20package%20for%20KSh%20120k." class="btn-primary">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>IT Infrastructure</h4>
+                    <ul>
+                        <li><a href="#">Managed IT Operations</a></li>
+                        <li><a href="#">Business Software</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">24/7 Technical Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Web Development</h4>
+                    <ul>
+                        <li><a href="#">Business Websites</a></li>
+                        <li><a href="#">E‑Commerce Solutions</a></li>
+                        <li><a href="#">Web Applications</a></li>
+                        <li><a href="#">Progressive Web Apps</a></li>
+                        <li><a href="#">Admin Dashboards</a></li>
+                        <li><a href="#">API Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support & Hardware</h4>
+                    <ul>
+                        <li><a href="#">Website Maintenance</a></li>
+                        <!-- Only this remains -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+254799269573">+254 799 269 573</a></li>
+                        <li><a href="mailto:technovaphysolutions@gmail.com">Email Us</a></li>
+                        <li><a href="https://wa.me/254799269573">WhatsApp</a></li>
+                        <li><a href="shop.html">Visit Shop</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 TechNovaphy Solutions. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/254799269573?text=Hi%2C%20I%20would%20like%20more%20information%20about%20your%20TechNovaphy%20services." class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span>Chat Now</span>
-    </a>
+    <!-- ===== CHATBOT ===== -->
+    <div class="chatbot">
+        <div class="chatbot-bubble" onclick="toggleChat()">🤖</div>
+        <div class="chatbot-window" id="chatWindow">
+            <div class="chatbot-header">TechNovaphy Assistant</div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message bot">Hi! 👋 How can we help your business today?</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatInput" onkeypress="if(event.key==='Enter') sendMessage()">
+            </div>
+        </div>
+    </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== MOBILE MENU TOGGLE =====
+        // ============================================================
+        //  THEME TOGGLE
+        // ============================================================
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            if (theme === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeToggle').innerText = '☀️';
+            } else {
+                document.body.classList.remove('light-mode');
+                document.getElementById('themeToggle').innerText = '🌙';
+            }
+            localStorage.setItem('theme', theme);
+        })();
+
+        function toggleTheme() {
+            const body = document.body;
+            const isLight = body.classList.contains('light-mode');
+            const newTheme = isLight ? 'dark' : 'light';
+            if (newTheme === 'light') {
+                body.classList.add('light-mode');
+                document.getElementById('themeToggle').innerText = '☀️';
+            } else {
+                body.classList.remove('light-mode');
+                document.getElementById('themeToggle').innerText = '🌙';
+            }
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // ============================================================
+        //  MOBILE MENU
+        // ============================================================
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -547,7 +1223,6 @@
                     icon.classList.toggle('fa-times');
                 }
             });
-
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -560,166 +1235,198 @@
             });
         }
 
-        // ===== SCROLL PROGRESS BAR =====
-        window.onscroll = () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
-        };
-
-        // ===== SCROLL REVEAL =====
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-            observer.observe(el);
-        });
+        // ============================================================
+        //  COUNTDOWN
+        // ============================================================
+        function updateCountdown() {
+            const targetDate = new Date().getTime() + (2 * 24 * 60 * 60 * 1000) + (16 * 60 * 60 * 1000) + (47 * 60 * 1000) + (26 * 1000);
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
 
         // ============================================================
-        //  EMAILJS – FIXED (Using Official CDN)
+        //  SLIDER
         // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ Page loaded, initializing EmailJS...');
+        const images = ['📊', '💻', '🌐', '🔒', '⚡'];
+        let currentImageIndex = 0;
 
-            const EMAILJS_PUBLIC_KEY = '2a63sraNwt28lQWml';
-            const EMAILJS_SERVICE_ID = 'service_fqc51hs';
-            const EMAILJS_TEMPLATE_ID = 'template_hkn3vvb';
-            const PDF_DOWNLOAD_LINK = 'https://drive.google.com/file/d/1xCv9ZDB4INvm5n905Nu3YecaS1n9rJF6/view?usp=drivesdk';
-            // Check if EmailJS is loaded
-            if (typeof emailjs === 'undefined') {
-                console.error('❌ EmailJS not loaded! Check the script tag.');
-                return;
+        function slideImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            const el = document.getElementById('heroImage');
+            el.innerText = images[currentImageIndex];
+            el.style.animation = 'none';
+            setTimeout(() => el.style.animation = 'fadeIn 0.6s ease-out', 10);
+        }
+
+        function autoSlideImages() {
+            setInterval(() => slideImage(1), 5000);
+        }
+
+        // ============================================================
+        //  CHATBOT – trained on ALL services
+        // ============================================================
+        function toggleChat() {
+            document.getElementById('chatWindow').classList.toggle('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (message === '') return;
+            const chatMessages = document.getElementById('chatMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerText = message;
+            chatMessages.appendChild(userMsg);
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            const lower = message.toLowerCase();
+            let reply = '';
+
+            // ---- IT INFRASTRUCTURE ----
+            if (lower.includes('it') || lower.includes('infrastructure') || lower.includes('network')) {
+                reply = 'We offer managed IT operations, network management, hardware maintenance, and 99.9% uptime guarantee. We also provide business software (ERPs, workflows) and cloud solutions (migration, backups).';
+            }
+            // ---- WEB DEVELOPMENT ----
+            else if (lower.includes('web') || lower.includes('website') || lower.includes('develop')) {
+                reply = 'We build business websites, e‑commerce stores, custom web applications, progressive web apps, admin dashboards, and REST/GraphQL APIs. We use React, Node.js, Python, and more.';
+            }
+            // ---- MAINTENANCE PLANS ----
+            else if (lower.includes('maintenance') || lower.includes('update') || lower.includes('support plan')) {
+                reply = 'Our website maintenance plans: Bronze (KSh 10k/mo) – updates & security; Silver (KSh 20k/mo) – adds 24/7 monitoring, reports, WhatsApp support; Gold (KSh 35k/mo) – adds dedicated support, audits, feature development.';
+            }
+            // ---- PRICING / COST ----
+            else if (lower.includes('price') || lower.includes('cost') || lower.includes('pricing') || lower.includes('much')) {
+                reply = 'Maintenance plans start at KSh 10k/mo. Custom website development starts at KSh 60k. For IT support, we have Standard IT (KSh 15k/mo), Managed Pro (KSh 50k/mo), and Premium Website (KSh 120k one‑time). Contact us for a custom quote.';
+            }
+            // ---- CLOUD ----
+            else if (lower.includes('cloud') || lower.includes('migrate') || lower.includes('backup')) {
+                reply = 'We provide cloud migration, data backup, and cloud‑native solutions. We work with AWS, Azure, and Google Cloud.';
+            }
+            // ---- SUPPORT / HELP ----
+            else if (lower.includes('support') || lower.includes('help') || lower.includes('issue') || lower.includes('problem')) {
+                reply = 'We offer 24/7 proactive support, on‑site assistance, and priority helpdesk. You can call us at +254 799 269 573 or email technovaphysolutions@gmail.com.';
+            }
+            // ---- CONTACT ----
+            else if (lower.includes('contact') || lower.includes('phone') || lower.includes('email') || lower.includes('reach')) {
+                reply = 'You can call us at +254 799 269 573, email technovaphysolutions@gmail.com, or WhatsApp the same number. We’re in Nairobi, Kenya.';
+            }
+            // ---- AUDIT ----
+            else if (lower.includes('audit') || lower.includes('free') || lower.includes('assessment')) {
+                reply = 'Yes! We offer a free IT Infrastructure Audit. Fill out the form on this page and we’ll send you a comprehensive PDF guide.';
+            }
+            // ---- E-COMMERCE ----
+            else if (lower.includes('ecommerce') || lower.includes('store') || lower.includes('shop') || lower.includes('payment')) {
+                reply = 'We build full‑featured e‑commerce stores with payment integration (M‑Pesa, bank transfers, etc.), inventory management, and analytics.';
+            }
+            // ---- API ----
+            else if (lower.includes('api') || lower.includes('integration')) {
+                reply = 'We develop RESTful and GraphQL APIs for seamless integration with your business systems, including payment, email, and SMS services.';
+            }
+            // ---- DASHBOARD ----
+            else if (lower.includes('dashboard') || lower.includes('analytics') || lower.includes('report')) {
+                reply = 'We build admin dashboards and data visualization tools for real‑time business intelligence.';
+            }
+            // ---- GREETING ----
+            else if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey') || lower.includes('good morning') || lower.includes('good afternoon')) {
+                reply = 'Hello! 👋 How can I assist you today? Feel free to ask about our IT services, web development, pricing, or anything else.';
+            }
+            // ---- DEFAULT ----
+            else {
+                reply = 'Thanks for your message! I can help with information about our IT Infrastructure, Web Development, Maintenance Plans, Pricing, Cloud Services, and more. Or you can call us at +254 799 269 573.';
             }
 
-            console.log('✅ EmailJS loaded, initializing...');
-            emailjs.init(EMAILJS_PUBLIC_KEY);
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                botMsg.innerText = reply;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 400);
+        }
+
+        // ============================================================
+        //  EMAILJS FORM
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init('2a63sraNwt28lQWml');
+                console.log('EmailJS initialized');
+            } else {
+                console.error('EmailJS not loaded');
+            }
 
             const form = document.getElementById('auditForm');
             const btn = document.getElementById('auditBtn');
             const statusDiv = document.getElementById('auditStatus');
 
-            if (!form) {
-                console.error('❌ Form not found! Check ID: auditForm');
-                return;
-            }
-
-            console.log('✅ Form found, attaching submit handler');
-
             form.addEventListener('submit', function(e) {
-                // PREVENT AUTO-REFRESH
                 e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('📤 Form submitted');
-
-                // Disable button and show loading
                 btn.disabled = true;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                statusDiv.style.display = 'none';
+                btn.innerText = 'Sending...';
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.innerHTML = 'Processing...';
 
-                // Get current time
-                const now = new Date();
-                const time = now.toLocaleString('en-KE', { 
-                    timeZone: 'Africa/Nairobi',
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
+                const from_name = document.getElementById('from_name').value;
+                const company_name = document.getElementById('company_name').value;
+                const to_email = document.getElementById('to_email').value;
+                const phone_number = document.getElementById('phone_number').value || 'Not provided';
 
-                // Get customer's email
-                const customerEmail = document.getElementById('to_email').value;
-
-                // Get form values
-                const fromName = document.getElementById('from_name').value;
-                const companyName = document.getElementById('company_name').value;
-                const phoneNumber = document.getElementById('phone_number').value || 'Not provided';
-
-                // Validate
-                if (!fromName || !customerEmail) {
-                    statusDiv.style.display = 'block';
+                if (!from_name || !to_email) {
                     statusDiv.style.background = '#f8d7da';
                     statusDiv.style.color = '#721c24';
-                    statusDiv.innerHTML = '❌ Please fill in your name and email address.';
+                    statusDiv.innerHTML = '❌ Please fill in your name and email.';
                     btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
+                    btn.innerText = 'Get Free Audit PDF';
                     return;
                 }
 
-                // Template parameters
                 const templateParams = {
-                    name: fromName,
-                    to_email: customerEmail,
-                    time: time
+                    name: from_name,
+                    to_email: to_email,
+                    time: new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' })
                 };
 
-                console.log('📧 Sending audit guide to:', customerEmail);
-                console.log('📦 Template params:', templateParams);
-
-                // Send email via EmailJS
-                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                emailjs.send('service_fqc51hs', 'template_hkn3vvb', templateParams)
                     .then(function(response) {
-                        console.log('✅ Email sent successfully:', response);
-                        
-                        btn.disabled = false;
-                        btn.innerHTML = '<i class="fas fa-check"></i> PDF Sent!';
-                        btn.style.background = '#10b981';
-                        
-                        statusDiv.style.display = 'block';
                         statusDiv.style.background = '#d4edda';
                         statusDiv.style.color = '#155724';
-                        statusDiv.innerHTML = `
-                            ✅ <strong>Your audit guide has been sent to ${customerEmail}!</strong><br>
-                            Please check your inbox (and spam folder) for the download link.<br>
-                            <small style="opacity:0.7;">📧 If you don't see it in 5 minutes, check your spam folder.</small>
-                        `;
-                        
+                        statusDiv.innerHTML = `✅ Success! Your audit guide has been sent to ${to_email}.`;
                         form.reset();
-                        
-                        setTimeout(() => {
-                            btn.disabled = false;
-                            btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
-                            btn.style.background = '';
-                            statusDiv.style.display = 'none';
-                        }, 6000);
-                        
-                    }, function(error) {
-                        console.error('❌ Email send error:', error);
-                        console.error('Error details:', JSON.stringify(error));
-                        
                         btn.disabled = false;
-                        btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error - Try WhatsApp';
-                        
-                        statusDiv.style.display = 'block';
+                        btn.innerText = 'Get Free Audit PDF';
+                    })
+                    .catch(function(error) {
                         statusDiv.style.background = '#f8d7da';
                         statusDiv.style.color = '#721c24';
-                        statusDiv.innerHTML = `
-                            ❌ <strong>Unable to send email to ${customerEmail}.</strong><br>
-                            Please <a href="https://wa.me/254799269573" style="color:#25D366; font-weight:bold;">contact us on WhatsApp</a> 
-                            to receive your audit guide instantly.
-                        `;
-                        
-                        setTimeout(() => {
-                            btn.innerHTML = '<i class="fas fa-download"></i> Get Free Audit PDF';
-                        }, 3000);
+                        statusDiv.innerHTML = `❌ Error: ${error.text || 'Please try again or contact us on WhatsApp.'}`;
+                        btn.disabled = false;
+                        btn.innerText = 'Get Free Audit PDF';
                     });
             });
         });
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        window.addEventListener('load', function() {
+            updateCountdown();
+            autoSlideImages();
+        });
     </script>
 </body>
-</html>
+    </html>
