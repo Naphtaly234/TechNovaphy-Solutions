@@ -227,34 +227,12 @@
         .chatbot-input input { width: 100%; padding: 0.8rem; background: rgba(0,242,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
         .chatbot-input input:focus { outline: none; border-color: var(--primary); }
 
-        /* SERVICE MODAL */
-        .service-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center;
-        }
-        .service-modal.active { display: flex; }
-        .service-modal-content {
-            background: var(--dark); border: 1px solid var(--border); border-radius: 16px;
-            max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto;
-            padding: 2rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-        }
-        .service-modal-content .close-modal {
-            position: absolute; top: 10px; right: 15px; font-size: 2rem;
-            background: none; border: none; color: var(--text); cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .service-modal-content .close-modal:hover { transform: rotate(90deg); }
-        .service-modal-content h2 { margin-bottom: 1rem; color: var(--primary); }
-        .service-modal-content p { opacity: 0.8; line-height: 1.7; margin-bottom: 1rem; }
-        .service-modal-content ul { margin: 1rem 0 1.5rem 1.5rem; opacity: 0.8; }
-        .service-modal-content ul li { margin-bottom: 0.5rem; }
-
-        /* FOOTER */
+        /* FOOTER – static links */
         footer { background: rgba(5,8,18,0.8); border-top: 1px solid var(--border); padding: 3rem 0; margin-top: 4rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; margin-bottom: 2rem; }
         .footer-section h4 { font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 1rem; }
         .footer-section ul { list-style: none; }
-        .footer-section a { color: var(--text); text-decoration: none; opacity: 0.7; transition: color 0.3s; cursor: pointer; }
+        .footer-section a { color: var(--text); text-decoration: none; opacity: 0.7; transition: color 0.3s; cursor: default; }
         .footer-section a:hover { color: var(--primary); }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid var(--border); opacity: 0.6; }
 
@@ -265,7 +243,6 @@
             .section { padding: 40px 0; }
             .hero-image-section { height: 250px; }
             .chatbot-window { width: 90vw; bottom: 70px; right: 5vw; }
-            .service-modal-content { padding: 1.5rem; }
         }
 
         @keyframes slideInUp {
@@ -328,22 +305,10 @@
         <div class="container">
             <h2>Our Services</h2>
             <div class="cards-grid">
-                <div class="card">
-                    <h3>Managed IT Operations</h3>
-                    <p>Comprehensive network management and hardware maintenance. 99.9% uptime guarantee.</p>
-                </div>
-                <div class="card">
-                    <h3>Business Software</h3>
-                    <p>Bespoke ERPs and automated workflows tailored to your business needs.</p>
-                </div>
-                <div class="card">
-                    <h3>Cloud Solutions</h3>
-                    <p>Safe data migration and automated backups to protect your digital assets.</p>
-                </div>
-                <div class="card">
-                    <h3>24/7 Technical Support</h3>
-                    <p>Proactive troubleshooting and on‑site assistance when you need it most.</p>
-                </div>
+                <div class="card"><h3>Managed IT Operations</h3><p>Comprehensive network management and hardware maintenance. 99.9% uptime guarantee.</p></div>
+                <div class="card"><h3>Business Software</h3><p>Bespoke ERPs and automated workflows tailored to your business needs.</p></div>
+                <div class="card"><h3>Cloud Solutions</h3><p>Safe data migration and automated backups to protect your digital assets.</p></div>
+                <div class="card"><h3>24/7 Technical Support</h3><p>Proactive troubleshooting and on‑site assistance when you need it most.</p></div>
             </div>
         </div>
     </section>
@@ -524,34 +489,34 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER (with service modals) ===== -->
+    <!-- ===== FOOTER (static links) ===== -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>IT Infrastructure</h4>
                     <ul>
-                        <li><a onclick="openService('managed-it')">Managed IT Operations</a></li>
-                        <li><a onclick="openService('business-software')">Business Software</a></li>
-                        <li><a onclick="openService('cloud-solutions')">Cloud Solutions</a></li>
-                        <li><a onclick="openService('support')">24/7 Technical Support</a></li>
+                        <li><a href="#">Managed IT Operations</a></li>
+                        <li><a href="#">Business Software</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">24/7 Technical Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Web Development</h4>
                     <ul>
-                        <li><a onclick="openService('business-websites')">Business Websites</a></li>
-                        <li><a onclick="openService('ecommerce')">E‑Commerce Solutions</a></li>
-                        <li><a onclick="openService('web-apps')">Web Applications</a></li>
-                        <li><a onclick="openService('pwa')">Progressive Web Apps</a></li>
-                        <li><a onclick="openService('dashboards')">Admin Dashboards</a></li>
-                        <li><a onclick="openService('api')">API Development</a></li>
+                        <li><a href="#">Business Websites</a></li>
+                        <li><a href="#">E‑Commerce Solutions</a></li>
+                        <li><a href="#">Web Applications</a></li>
+                        <li><a href="#">Progressive Web Apps</a></li>
+                        <li><a href="#">Admin Dashboards</a></li>
+                        <li><a href="#">API Development</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Support & Hardware</h4>
                     <ul>
-                        <li><a onclick="openService('maintenance')">Website Maintenance</a></li>
+                        <li><a href="#">Website Maintenance</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -570,22 +535,13 @@
         </div>
     </footer>
 
-    <!-- ===== SERVICE MODAL ===== -->
-    <div class="service-modal" id="serviceModal">
-        <div class="service-modal-content">
-            <button class="close-modal" onclick="closeService()">&times;</button>
-            <h2 id="modalTitle">Service Title</h2>
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
-    <!-- ===== CHATBOT ===== -->
+    <!-- ===== CHATBOT (Naphbot) ===== -->
     <div class="chatbot">
         <div class="chatbot-bubble" onclick="toggleChat()">🤖</div>
         <div class="chatbot-window" id="chatWindow">
-            <div class="chatbot-header">TechNovaphy Assistant</div>
+            <div class="chatbot-header">Naphbot</div>
             <div class="chatbot-messages" id="chatMessages">
-                <div class="message bot">Hi! 👋 How can we help your business today?</div>
+                <div class="message bot">Hi! 👋 I'm Naphbot. Ask me anything about our services, pricing, or tech support.</div>
             </div>
             <div class="chatbot-input">
                 <input type="text" placeholder="Type your message..." id="chatInput" onkeypress="if(event.key==='Enter') sendMessage()">
@@ -685,163 +641,7 @@
         function autoSlide() { setInterval(() => slideImage(1), 5000); }
 
         // ============================================================
-        //  SERVICE MODAL
-        // ============================================================
-        const serviceData = {
-            'managed-it': {
-                title: 'Managed IT Operations',
-                body: `<p>We provide comprehensive network management and hardware maintenance to ensure your office infrastructure runs at <strong>99.9% uptime</strong>. Our services include:</p>
-                <ul>
-                    <li>Network monitoring and management</li>
-                    <li>Hardware maintenance and repairs</li>
-                    <li>Server administration</li>
-                    <li>Cybersecurity assessments</li>
-                    <li>Data backup and disaster recovery</li>
-                </ul>
-                <p><strong>Pricing:</strong> Customized based on your infrastructure size. Contact us for a free assessment.</p>`
-            },
-            'business-software': {
-                title: 'Business Software',
-                body: `<p>We develop bespoke ERPs and automated workflows tailored to your business needs. Our software solutions help you streamline operations, reduce manual work, and improve efficiency.</p>
-                <ul>
-                    <li>Custom ERP systems</li>
-                    <li>Workflow automation</li>
-                    <li>Inventory management</li>
-                    <li>Financial and accounting systems</li>
-                    <li>HR and payroll solutions</li>
-                </ul>
-                <p><strong>Pricing:</strong> Starts from KSh 300,000. Contact us for a detailed quote.</p>`
-            },
-            'cloud-solutions': {
-                title: 'Cloud Solutions',
-                body: `<p>We help you safely migrate to the cloud and implement automated backups to protect your digital assets. Our cloud services include:</p>
-                <ul>
-                    <li>Cloud migration (AWS, Azure, Google Cloud)</li>
-                    <li>Cloud-native application development</li>
-                    <li>Data backup and disaster recovery</li>
-                    <li>Cloud cost optimization</li>
-                    <li>Hybrid cloud setups</li>
-                </ul>
-                <p><strong>Pricing:</strong> Customized based on your cloud needs. Contact us for a free consultation.</p>`
-            },
-            'support': {
-                title: '24/7 Technical Support',
-                body: `<p>We provide proactive troubleshooting and on‑site assistance when you need it most. Our support services include:</p>
-                <ul>
-                    <li>24/7 remote and on‑site support</li>
-                    <li>Proactive monitoring and alerts</li>
-                    <li>Priority response times</li>
-                    <li>Dedicated account manager</li>
-                    <li>Monthly performance reviews</li>
-                </ul>
-                <p><strong>Pricing:</strong> Included in our Managed Pro and Gold maintenance plans.</p>`
-            },
-            'business-websites': {
-                title: 'Business Websites',
-                body: `<p>We build professional, responsive websites for small & medium businesses. Our websites are SEO‑optimized for maximum visibility.</p>
-                <ul>
-                    <li>Custom design and development</li>
-                    <li>Mobile‑first, responsive layouts</li>
-                    <li>SEO optimization (on‑page, technical)</li>
-                    <li>Contact forms and lead capture</li>
-                    <li>Content management system (CMS) integration</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 60,000 – 150,000 (depending on complexity).</p>`
-            },
-            'ecommerce': {
-                title: 'E‑Commerce Solutions',
-                body: `<p>We create full‑featured online stores with payment integration, inventory management, and analytics.</p>
-                <ul>
-                    <li>Payment integration (M‑Pesa, bank transfers, etc.)</li>
-                    <li>Product catalog and inventory management</li>
-                    <li>Shopping cart and checkout</li>
-                    <li>Order management and tracking</li>
-                    <li>Analytics and reporting</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 300,000 – 800,000 (depending on features and products).</p>`
-            },
-            'web-apps': {
-                title: 'Web Applications',
-                body: `<p>We build custom web applications with real‑time features, user authentication, and scalable architecture.</p>
-                <ul>
-                    <li>Real‑time data and collaboration features</li>
-                    <li>User authentication and role‑based access</li>
-                    <li>Scalable, cloud‑native architecture</li>
-                    <li>Integration with external APIs</li>
-                    <li>Progressive enhancement and performance</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 800,000+ (depending on complexity).</p>`
-            },
-            'pwa': {
-                title: 'Progressive Web Apps',
-                body: `<p>We build fast, installable web apps that work offline with native‑like performance.</p>
-                <ul>
-                    <li>Installable on mobile devices</li>
-                    <li>Offline functionality with service workers</li>
-                    <li>Push notifications</li>
-                    <li>Fast loading and performance</li>
-                    <li>Cross‑platform compatibility</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 800,000+ (depending on complexity).</p>`
-            },
-            'dashboards': {
-                title: 'Admin Dashboards',
-                body: `<p>We design and develop admin dashboards and data visualization tools for real‑time business intelligence.</p>
-                <ul>
-                    <li>Customizable dashboards</li>
-                    <li>Real‑time data visualization</li>
-                    <li>Charts, graphs, and reports</li>
-                    <li>User and role management</li>
-                    <li>Integration with business systems</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 500,000+ (depending on complexity).</p>`
-            },
-            'api': {
-                title: 'API Development',
-                body: `<p>We develop RESTful and modern (GraphQL) APIs for seamless integration with your business systems.</p>
-                <ul>
-                    <li>RESTful and GraphQL APIs</li>
-                    <li>Secure authentication and authorization</li>
-                    <li>Scalable and maintainable architecture</li>
-                    <li>Comprehensive documentation</li>
-                    <li>Integration with third‑party services</li>
-                </ul>
-                <p><strong>Pricing:</strong> KSh 400,000+ (depending on endpoints and complexity).</p>`
-            },
-            'maintenance': {
-                title: 'Website Maintenance',
-                body: `<p>We keep your website secure, up‑to‑date, and performing at its best with our maintenance plans.</p>
-                <ul>
-                    <li><strong>Bronze (KSh 10k/mo):</strong> Security patches, core updates, bug fixes, email support (24‑48hrs).</li>
-                    <li><strong>Silver (KSh 20k/mo):</strong> Everything in Bronze + 24/7 uptime monitoring, monthly performance reports, priority WhatsApp support (4hrs), SEO monitoring.</li>
-                    <li><strong>Gold (KSh 35k/mo):</strong> Everything in Silver + 24/7 dedicated support, advanced security audits, weekly analytics reports, 5 hours of feature development per month, priority phone support.</li>
-                </ul>
-                <p><strong>All plans include:</strong> Regular backups, broken link checking, and form testing.</p>`
-            }
-        };
-
-        function openService(key) {
-            const modal = document.getElementById('serviceModal');
-            const data = serviceData[key];
-            if (!data) return;
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalBody').innerHTML = data.body;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeService() {
-            document.getElementById('serviceModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal on overlay click
-        document.getElementById('serviceModal').addEventListener('click', function(e) {
-            if (e.target === this) closeService();
-        });
-
-        // ============================================================
-        //  CHATBOT – Super Smart with Detailed Responses
+        //  CHATBOT – Naphbot (super smart, detailed answers)
         // ============================================================
         function toggleChat() {
             document.getElementById('chatWindow').classList.toggle('active');
@@ -852,6 +652,7 @@
             const message = input.value.trim();
             if (message === '') return;
             const chatMessages = document.getElementById('chatMessages');
+
             // User message
             const userMsg = document.createElement('div');
             userMsg.className = 'message user';
@@ -863,70 +664,70 @@
             const lower = message.toLowerCase();
             let reply = '';
 
-            // ---- Highly detailed answers ----
+            // ------------------- DETAILED RESPONSES -------------------
             // IT Infrastructure
             if (lower.includes('it infrastructure') || lower.includes('managed it') || lower.includes('network management')) {
-                reply = 'Our Managed IT Operations include network monitoring, hardware maintenance, server administration, and cybersecurity. We guarantee 99.9% uptime. We also offer business software (custom ERPs) and cloud solutions (migration, backups). Prices customized to your needs.';
+                reply = '🔹 **Managed IT Operations** – We offer network monitoring, hardware maintenance, server administration, and cybersecurity. 99.9% uptime guarantee. Pricing customized to your infrastructure.';
             }
             // Business Software
             else if (lower.includes('business software') || lower.includes('erp') || lower.includes('automation') || lower.includes('workflow')) {
-                reply = 'We build bespoke ERPs and automated workflows tailored to your business. This includes inventory, finance, HR, and payroll systems. Pricing starts from KSh 300,000. Contact us for a detailed quote.';
+                reply = '🔹 **Business Software** – We build bespoke ERPs and automated workflows for inventory, finance, HR, and payroll. Starting from KSh 300,000.';
             }
             // Cloud
             else if (lower.includes('cloud') || lower.includes('migration') || lower.includes('backup')) {
-                reply = 'We provide cloud migration (AWS, Azure, GCP), cloud-native development, data backup, and disaster recovery. We also optimize cloud costs. Contact us for a free consultation.';
+                reply = '🔹 **Cloud Solutions** – Cloud migration (AWS, Azure, GCP), cloud-native development, data backup, and disaster recovery. Free consultation available.';
             }
             // Support
             else if (lower.includes('support') || lower.includes('helpdesk') || lower.includes('24/7')) {
-                reply = 'We offer 24/7 technical support with proactive monitoring, on‑site assistance, and priority response. Included in our Managed Pro plan (KSh 50k/mo) and Gold maintenance (KSh 35k/mo).';
+                reply = '🔹 **24/7 Technical Support** – Proactive monitoring, on‑site assistance, priority response. Included in Managed Pro (KSh 50k/mo) and Gold maintenance (KSh 35k/mo).';
             }
-            // Web development
-            else if (lower.includes('web development') || lower.includes('website') || lower.includes('web design')) {
-                reply = 'We build business websites (KSh 60k‑150k), e‑commerce stores (KSh 300k‑800k), custom web apps (KSh 800k+), progressive web apps, admin dashboards, and APIs. We use React, Node.js, Python, and more.';
+            // Business Websites
+            else if (lower.includes('business website') || lower.includes('business site')) {
+                reply = '🔹 **Business Websites** – Professional, responsive, SEO‑optimized websites. Starting from KSh 60,000 – 150,000 (depending on pages and features).';
             }
-            // E-commerce
+            // E‑commerce
             else if (lower.includes('ecommerce') || lower.includes('store') || lower.includes('shop') || lower.includes('payment')) {
-                reply = 'Our e‑commerce solutions include M‑Pesa/bank integration, inventory management, shopping cart, order tracking, and analytics. Starting from KSh 300,000.';
+                reply = '🔹 **E‑Commerce Solutions** – Full‑featured online stores with M‑Pesa/bank integration, inventory management, order tracking, and analytics. Starting from KSh 300,000 – 800,000.';
             }
-            // Web apps / custom apps
+            // Web Apps
             else if (lower.includes('web app') || lower.includes('custom app') || lower.includes('real-time')) {
-                reply = 'We build custom web apps with real‑time features, user authentication, and scalable cloud architecture. Starting from KSh 800,000.';
+                reply = '🔹 **Web Applications** – Custom web apps with real‑time features, user authentication, and scalable architecture. Starting from KSh 800,000.';
             }
             // PWA
             else if (lower.includes('pwa') || lower.includes('progressive web') || lower.includes('offline')) {
-                reply = 'Progressive Web Apps (PWAs) work offline, can be installed on phones, and send push notifications. Starting from KSh 800,000.';
+                reply = '🔹 **Progressive Web Apps** – Installable, offline‑capable, push notifications, native‑like performance. Starting from KSh 800,000.';
             }
-            // Dashboard / Analytics
+            // Dashboards
             else if (lower.includes('dashboard') || lower.includes('analytics') || lower.includes('report')) {
-                reply = 'We build admin dashboards with real‑time data visualization, charts, and reporting. Starting from KSh 500,000.';
+                reply = '🔹 **Admin Dashboards** – Real‑time data visualization, charts, and reports for business intelligence. Starting from KSh 500,000.';
             }
             // API
             else if (lower.includes('api') || lower.includes('integration')) {
-                reply = 'We develop RESTful and GraphQL APIs with secure authentication and comprehensive documentation. Starting from KSh 400,000.';
+                reply = '🔹 **API Development** – RESTful and GraphQL APIs with secure authentication and comprehensive documentation. Starting from KSh 400,000.';
             }
             // Maintenance
             else if (lower.includes('maintenance') || lower.includes('update') || lower.includes('plan')) {
-                reply = 'Our maintenance plans: Bronze (KSh 10k/mo) – updates & security; Silver (KSh 20k/mo) – adds 24/7 monitoring, reports, WhatsApp support; Gold (KSh 35k/mo) – adds dedicated support, audits, feature development, and phone support.';
+                reply = '🔹 **Website Maintenance Plans** – Bronze (10k/mo): updates & security; Silver (20k/mo): adds 24/7 monitoring, reports, WhatsApp support; Gold (35k/mo): adds dedicated support, audits, feature development, and phone support.';
             }
-            // Pricing
+            // Pricing / cost
             else if (lower.includes('price') || lower.includes('cost') || lower.includes('pricing') || lower.includes('how much')) {
-                reply = 'Maintenance: Bronze 10k, Silver 20k, Gold 35k/mo. Website development: Business site 60k‑150k, E‑commerce 300k‑800k, Custom apps 800k+, API 400k+, Dashboards 500k+. IT support plans: Standard IT 15k/mo, Managed Pro 50k/mo, Premium Website 120k one‑time.';
+                reply = '💲 **Pricing Summary** – Maintenance: Bronze 10k, Silver 20k, Gold 35k/mo. Web: Business site 60k‑150k, E‑commerce 300k‑800k, Custom apps 800k+, API 400k+, Dashboards 500k+. IT plans: Standard IT 15k/mo, Managed Pro 50k/mo, Premium Website 120k one‑time.';
             }
             // Audit
             else if (lower.includes('audit') || lower.includes('free') || lower.includes('assessment')) {
-                reply = 'Yes! We offer a free IT Infrastructure Audit. Fill out the form on this page and we’ll email you a comprehensive PDF guide instantly.';
+                reply = '📋 **Free IT Audit** – Fill out the form on this page and we’ll email you a comprehensive PDF guide instantly.';
             }
             // Contact
             else if (lower.includes('contact') || lower.includes('phone') || lower.includes('email') || lower.includes('reach')) {
-                reply = 'Call us at +254 799 269 573, email technovaphysolutions@gmail.com, or WhatsApp the same number. We’re based in Nairobi, Kenya.';
+                reply = '📞 **Contact** – Call +254 799 269 573, email technovaphysolutions@gmail.com, or WhatsApp the same number. Nairobi, Kenya.';
             }
             // Greetings
             else if (lower.match(/^(hi|hello|hey|good morning|good afternoon|greetings)/)) {
-                reply = 'Hello! 👋 How can I assist you today? I can tell you about our IT services, web development, pricing, maintenance plans, cloud solutions, and more.';
+                reply = '👋 Hello! I’m Naphbot. I can tell you about our IT services, web development, pricing, maintenance plans, cloud, and more. What would you like to know?';
             }
-            // Default – offer a menu
+            // Default – offer help
             else {
-                reply = 'I can help with: IT Infrastructure, Web Development, Maintenance Plans, Pricing, Cloud Services, E‑commerce, APIs, Dashboards, and more. What would you like to know? Or call us at +254 799 269 573.';
+                reply = 'I can help with: IT Infrastructure, Web Development, Maintenance Plans, Pricing, Cloud, E‑commerce, APIs, Dashboards, and more. Just ask me anything, or call us at +254 799 269 573.';
             }
 
             setTimeout(() => {
