@@ -197,7 +197,7 @@
         .claim-btn { background: white; color: #ff8c00; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .claim-btn:hover { transform: scale(1.05); }
 
-        /* CHATBOT (static Naphbot) – unchanged */
+        /* STATIC CHATBOT (Naphbot) – unchanged */
         .chatbot { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
         .chatbot-bubble {
             width: 60px; height: 60px; border-radius: 50%;
@@ -1044,7 +1044,7 @@
                     },
                     body: JSON.stringify({
                         messages: [{ role: 'user', content: text }],
-                        model: 'groq/llama-3.3-70b-versatile'
+                        model: 'openai/gpt-4o-mini'  // matches your backend's default
                     })
                 });
 
