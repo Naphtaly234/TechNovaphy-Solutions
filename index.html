@@ -29,7 +29,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ===== ALL EXISTING STYLES (unchanged) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #00f2ff;
@@ -146,6 +145,39 @@
         .card h3 { font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 0.8rem; }
         .card p { opacity: 0.8; line-height: 1.6; }
 
+        /* PRODUCTS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .project-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0,242,255,0.05) 0%, rgba(112,0,255,0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .project-card::before {
+            content: "";
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,242,255,0.12); }
+        .project-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: grid; place-items: center; color: var(--dark);
+            font-size: 1.4rem; margin-bottom: 1rem;
+        }
+        .project-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; margin-bottom: 0.6rem; }
+        .project-card > p { opacity: 0.8; margin-bottom: 1rem; }
+        .project-features { list-style: none; margin-bottom: 1.2rem; }
+        .project-features li { position: relative; padding: 0.35rem 0 0.35rem 1.4rem; opacity: 0.85; font-size: 0.95rem; }
+        .project-features li::before { content: "\2713"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+        .project-status {
+            display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.8rem;
+            border-radius: 999px; background: rgba(0,242,255,0.1); color: var(--primary); border: 1px solid var(--border);
+        }
+
         /* PROCESS */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; }
         .process-step { padding: 2rem; background: rgba(0,242,255,0.02); border: 1px solid var(--border); border-radius: 12px; text-align: center; animation: slideInUp 0.6s ease-out forwards; opacity: 0; }
@@ -197,7 +229,7 @@
         .claim-btn { background: white; color: #ff8c00; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .claim-btn:hover { transform: scale(1.05); }
 
-        /* STATIC CHATBOT (Naphbot) – unchanged */
+        /* NAPHBOT CHAT */
         .chatbot { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
         .chatbot-bubble {
             width: 60px; height: 60px; border-radius: 50%;
@@ -228,7 +260,7 @@
         .chatbot-input input { width: 100%; padding: 0.8rem; background: rgba(0,242,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
         .chatbot-input input:focus { outline: none; border-color: var(--primary); }
 
-        /* FOOTER – static links */
+        /* FOOTER */
         footer { background: rgba(5,8,18,0.8); border-top: 1px solid var(--border); padding: 3rem 0; margin-top: 4rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; margin-bottom: 2rem; }
         .footer-section h4 { font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 1rem; }
@@ -259,7 +291,7 @@
             to { opacity: 1; }
         }
 
-        /* ===== NEW: AI CHAT MODAL STYLES ===== */
+        /* AI CHAT MODAL */
         .ai-modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -271,7 +303,6 @@
             justify-content: center;
         }
         .ai-modal-overlay.active { display: flex; }
-
         .ai-modal {
             background: #0d1132;
             border: 1px solid #1a1f3a;
@@ -285,7 +316,6 @@
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
             position: relative;
         }
-
         .ai-modal-header {
             padding: 1.2rem 2rem;
             border-bottom: 1px solid #1a1f3a;
@@ -311,7 +341,6 @@
             transition: color 0.3s;
         }
         .ai-modal-header .close-modal:hover { color: #e0e0e0; }
-
         .ai-modal-messages {
             flex: 1;
             overflow-y: auto;
@@ -345,7 +374,6 @@
             padding-left: 0.8rem;
             margin-bottom: 0.5rem;
         }
-
         .ai-modal-input {
             padding: 1rem 2rem;
             border-top: 1px solid #1a1f3a;
@@ -363,10 +391,7 @@
             font-size: 1rem;
             font-family: inherit;
         }
-        .ai-modal-input input:focus {
-            outline: none;
-            border-color: #00f2ff;
-        }
+        .ai-modal-input input:focus { outline: none; border-color: #00f2ff; }
         .ai-modal-input button {
             padding: 0.8rem 2rem;
             background: linear-gradient(135deg, #00f2ff, #7000ff);
@@ -378,23 +403,10 @@
             transition: all 0.3s;
             white-space: nowrap;
         }
-        .ai-modal-input button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(0,242,255,0.3);
-        }
-        .ai-modal-input button:disabled {
-            opacity: 0.5;
-            cursor: wait;
-        }
-
-        .ai-modal-messages .error-msg {
-            color: #ff6464;
-            text-align: center;
-            padding: 1rem;
-        }
-        .ai-modal-messages .error-msg a {
-            color: #00f2ff;
-        }
+        .ai-modal-input button:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(0,242,255,0.3); }
+        .ai-modal-input button:disabled { opacity: 0.5; cursor: wait; }
+        .ai-modal-messages .error-msg { color: #ff6464; text-align: center; padding: 1rem; }
+        .ai-modal-messages .error-msg a { color: #00f2ff; }
 
         @media (max-width: 600px) {
             .ai-modal { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
@@ -416,6 +428,7 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Products</a></li>
                 <li><a href="#webdev">Web Dev</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#maintenance">Maintenance</a></li>
@@ -438,14 +451,13 @@
             <p>We build and manage the technical backbone of Nairobi's growing enterprises. Reliable systems, custom software, and 24/7 proactive support.</p>
             <div class="hero-buttons">
                 <a href="https://wa.me/254799269573?text=Hi%2C%20I%20would%20like%20more%20information%20about%20your%20TechNovaphy%20services." class="btn-primary">Get Started</a>
-                <!-- AI button triggers modal -->
-<a href="https://technovaphyais.netlify.app/" target="_blank" rel="noopener" class="btn-primary" style="background: linear-gradient(135deg, #ff8c00, #ff6b35); border: none; color: white;">Try TechNovaphy Assistant</a>
+                <a href="https://technovaphyais.netlify.app/" target="_blank" rel="noopener" class="btn-primary" style="background: linear-gradient(135deg, #ff8c00, #ff6b35); border: none; color: white;">Try TechNovaphy Assistant</a>
                 <a href="mailto:technovaphysolutions@gmail.com?subject=Service%20Inquiry&body=Hi%20Technovaphy%20Team,%20I%20would%20like%20more%20info%20about%20your%20IT%20services." class="btn-secondary">Email Us</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVICES (unchanged) ===== -->
+    <!-- ===== SERVICES ===== -->
     <section class="section" id="services">
         <div class="container">
             <h2>Our Services</h2>
@@ -453,42 +465,63 @@
                 <div class="card"><h3>Managed IT Operations</h3><p>Comprehensive network management and hardware maintenance. 99.9% uptime guarantee.</p></div>
                 <div class="card"><h3>Business Software</h3><p>Bespoke ERPs and automated workflows tailored to your business needs.</p></div>
                 <div class="card"><h3>Cloud Solutions</h3><p>Safe data migration and automated backups to protect your digital assets.</p></div>
-                <div class="card"><h3>24/7 Technical Support</h3><p>Proactive troubleshooting and on‑site assistance when you need it most.</p></div>
-                <div class="card"> <h4> School Management System</h4>
-                    <p>A complete system for primary schools, with staff signing in to see only what their role allows.</p>
-                    
-                    Pupil records with photographs
-                    Attendance registers and timetables
-                    School fees, invoices and receipts
-                    Staff, discipline, library and stock
-                    Reports and a full audit log
-                                      
+                <div class="card"><h3>24/7 Technical Support</h3><p>Proactive troubleshooting and on-site assistance when you need it most.</p></div>
             </div>
-                <div class="card"><h5>Pharmacy System</h5>Paragraph:
-
-<p/>Day-to-day pharmacy operations in one place, from the shelf to the owner’s reports.</p>
-
-Features:
-
-                Stock and inventory control
-                Sales and receipts
-                Prescription records
-                Reports for the owner
-
-Status: Available on request</div>
-                <div class="card"><h6>Game Development</h6>Game Development
-
-<p/>Playable games built from scratch, with the gameplay and scoring fully designed by us.</p>
-
-Features:
-
-Car Rush: a lane-dodging arcade game
-Nitro boosts, fuel and coin collection
-High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== WEB DEVELOPMENT (unchanged) ===== -->
+    <!-- ===== OUR PRODUCTS ===== -->
+    <section class="section" id="projects">
+        <div class="container">
+            <span class="badge" style="display: block; width: fit-content; margin-bottom: 1rem;">BUILT IN-HOUSE</span>
+            <h2>Our Products</h2>
+            <p class="section-subtitle">Software we have designed and built ourselves, ready to adapt to your organisation.</p>
+            <div class="project-grid">
+
+                <article class="project-card">
+                    <div class="project-icon"><i class="fas fa-school"></i></div>
+                    <h3>School Management System</h3>
+                    <p>A complete system for primary schools, with staff signing in to see only what their role allows.</p>
+                    <ul class="project-features">
+                        <li>Pupil records with photographs</li>
+                        <li>Attendance registers and timetables</li>
+                        <li>School fees, invoices and receipts</li>
+                        <li>Staff, discipline, library and stock</li>
+                        <li>Reports and a full audit log</li>
+                    </ul>
+                    <span class="project-status">Ready for pilot schools</span>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-icon"><i class="fas fa-pills"></i></div>
+                    <h3>Pharmacy Management System</h3>
+                    <p>Day-to-day pharmacy operations in one place, from the shelf to the owner's reports.</p>
+                    <ul class="project-features">
+                        <li>Stock and inventory control</li>
+                        <li>Sales and receipts</li>
+                        <li>Prescription records</li>
+                        <li>Reports for the owner</li>
+                    </ul>
+                    <span class="project-status">Available on request</span>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Game Development</h3>
+                    <p>Playable games built from scratch, with the gameplay and scoring fully designed by us.</p>
+                    <ul class="project-features">
+                        <li><strong>Car Rush:</strong> a lane-dodging arcade game</li>
+                        <li>Nitro boosts, fuel and coin collection</li>
+                        <li>High score tracking</li>
+                    </ul>
+                    <span class="project-status">Playable demo</span>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WEB DEVELOPMENT ===== -->
     <section class="section" id="webdev">
         <div class="container">
             <span class="badge" style="display: block; width: fit-content; margin-bottom: 1rem;">EXPRESS</span>
@@ -535,7 +568,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== PROCESS (unchanged) ===== -->
+    <!-- ===== PROCESS ===== -->
     <section class="section" id="process">
         <div class="container">
             <h2>Why Choose Our Process</h2>
@@ -548,7 +581,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== ABOUT (unchanged) ===== -->
+    <!-- ===== ABOUT ===== -->
     <section class="section">
         <div class="container">
             <h2>Who We Are</h2>
@@ -560,7 +593,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== OUR WORK (SLIDER) (unchanged) ===== -->
+    <!-- ===== OUR WORK (SLIDER) ===== -->
     <section class="section">
         <div class="container">
             <h2>Our Work in Action</h2>
@@ -573,7 +606,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== MAINTENANCE (unchanged) ===== -->
+    <!-- ===== MAINTENANCE ===== -->
     <section class="section" id="maintenance">
         <div class="container">
             <h2>Website Maintenance & Support</h2>
@@ -605,7 +638,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== LEAD MAGNET (unchanged) ===== -->
+    <!-- ===== LEAD MAGNET ===== -->
     <section class="section" id="leadmagnet">
         <div class="container">
             <h2>Get Your Free IT Infrastructure Audit</h2>
@@ -624,7 +657,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== COUNTDOWN BANNER (unchanged) ===== -->
+    <!-- ===== COUNTDOWN BANNER ===== -->
     <section class="section">
         <div class="container">
             <div class="countdown-banner">
@@ -637,7 +670,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== PRICING (unchanged) ===== -->
+    <!-- ===== PRICING ===== -->
     <section class="section" id="pricing">
         <div class="container">
             <h2>Scalable Support Plans</h2>
@@ -664,7 +697,7 @@ High score tracking</div>
         </div>
     </section>
 
-    <!-- ===== FOOTER (unchanged) ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -710,7 +743,7 @@ High score tracking</div>
         </div>
     </footer>
 
-    <!-- ===== STATIC CHATBOT (Naphbot) – unchanged ===== -->
+    <!-- ===== NAPHBOT CHAT ===== -->
     <div class="chatbot">
         <div class="chatbot-bubble" onclick="toggleChat()">🤖</div>
         <div class="chatbot-window" id="chatWindow">
@@ -742,16 +775,11 @@ High score tracking</div>
     </div>
 
     <script>
-        // ============================================================
-        //  EXISTING SCRIPTS (Theme, mobile menu, countdown, slider, static chatbot, EmailJS)
-        //  All unchanged – kept exactly as before.
-        // ============================================================
-
         // ===== THEME TOGGLE =====
         (function() {
             const saved = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            let theme = saved || (prefersDark ? 'dark' : 'light');
+            const theme = saved || (prefersDark ? 'dark' : 'light');
             if (theme === 'light') {
                 document.body.classList.add('light-mode');
                 document.getElementById('themeToggle').innerText = '☀️';
@@ -829,128 +857,146 @@ High score tracking</div>
         }
         function autoSlide() { setInterval(() => slideImage(1), 5000); }
 
-        // ===== STATIC CHATBOT (Naphbot) =====
+        // ===== NAPHBOT KNOWLEDGE =====
+        const KNOWLEDGE = [
+            {
+                keys: ["company", "about", "who are you", "who is", "technovaphy", "history", "founded"],
+                answer: "🏢 TechNovaphy Solutions is an IT and software company in Nairobi, Kenya. We build and manage the technical backbone of growing businesses: infrastructure, custom software, websites and 24/7 support."
+            },
+            {
+                keys: ["managed it", "it infrastructure", "network", "hardware", "uptime"],
+                answer: "🔹 Managed IT Operations: network management, hardware maintenance and a 99.9% uptime guarantee."
+            },
+            {
+                keys: ["business software", "erp", "automation", "workflow"],
+                answer: "🔹 Business Software: bespoke ERPs and automated workflows tailored to your business. From KSh 300,000."
+            },
+            {
+                keys: ["cloud", "migration", "backup", "disaster"],
+                answer: "🔹 Cloud Solutions: safe data migration, automated backups and cloud-native development (AWS, Azure, GCP)."
+            },
+            {
+                keys: ["support", "helpdesk", "24/7", "technical support", "on-site", "onsite"],
+                answer: "🔹 24/7 Technical Support: proactive troubleshooting and on-site help when you need it. Included in Managed Pro (KSh 50,000/month)."
+            },
+            {
+                keys: ["website", "business site", "business website", "site"],
+                answer: "🌐 Business Websites: professional, responsive and SEO-optimised websites for small and medium businesses. From KSh 60,000 to 150,000."
+            },
+            {
+                keys: ["ecommerce", "e-commerce", "online store", "shop", "payment", "mpesa", "m-pesa"],
+                answer: "🛒 E-Commerce Solutions: full online stores with payment integration (including M-Pesa), inventory and analytics. From KSh 300,000 to 800,000."
+            },
+            {
+                keys: ["web app", "web application", "real-time", "custom app"],
+                answer: "💻 Web Applications: custom web apps with real-time features, user login and scalable architecture. From KSh 800,000."
+            },
+            {
+                keys: ["pwa", "progressive web", "offline app", "installable"],
+                answer: "📱 Progressive Web Apps: fast, installable apps that work offline with a native-app feel. From KSh 800,000."
+            },
+            {
+                keys: ["dashboard", "analytics", "reporting", "business intelligence"],
+                answer: "📊 Admin Dashboards: data visualisation and management tools for real-time business intelligence. From KSh 500,000."
+            },
+            {
+                keys: ["api", "integration", "graphql", "rest"],
+                answer: "🔌 API Development: RESTful and GraphQL APIs for connecting your systems securely. From KSh 400,000."
+            },
+            {
+                keys: ["process", "how do you work", "steps", "audit", "design", "deploy"],
+                answer: "🧭 Our Process: 1) Audit your current hardware and software. 2) Design an infrastructure roadmap that fits your budget. 3) Deploy with no business interruption. 4) Manage with ongoing optimisation and 24/7 helpdesk."
+            },
+            {
+                keys: ["maintenance", "website maintenance", "bronze", "silver", "gold"],
+                answer: "🛠️ Website Maintenance Plans: Bronze KSh 10,000/month (updates, security patches, bug fixes). Silver KSh 20,000/month (adds uptime monitoring, monthly reports, priority WhatsApp support). Gold KSh 35,000/month (adds dedicated support, security audits and feature development)."
+            },
+            {
+                keys: ["standard it", "managed pro", "premium website", "support plan", "it plan"],
+                answer: "📦 Support Plans: Standard IT KSh 15,000/month (remote support, cloud backup, monthly reports). Managed Pro KSh 50,000/month (on-site maintenance, software development support, priority helpdesk). Premium Website KSh 120,000 one-time."
+            },
+            {
+                keys: ["audit", "free audit", "free assessment", "infrastructure audit"],
+                answer: "📋 Free IT Infrastructure Audit: worth KES 50,000, free of charge. Fill in the form on this page and we'll email you the audit guide."
+            },
+            {
+                keys: ["price", "cost", "pricing", "how much", "quote", "rates"],
+                answer: "💲 Pricing depends on what you need. Ask about a specific service, or contact us on +254 799 269 573 for a quote for your business."
+            },
+            {
+                keys: ["stack", "technology", "languages", "tools", "frameworks", "react", "python", "node", "django", "java"],
+                answer: "🧰 Technology we use. Frontend: HTML5, CSS3, JavaScript, React, TypeScript, Tailwind. Backend: Node.js, Express, Python, Flask, Java, Spring Boot. Databases: PostgreSQL, MySQL, MongoDB, SQL Server, Redis, Firebase. Deployment: Git, Docker, Render, Vercel, AWS, Cloudflare."
+            },
+            {
+                keys: ["school", "pupil", "student", "attendance", "school fees", "school system"],
+                answer: "🏫 School Management System: pupil records with photographs, attendance registers, timetables, school fees and receipts, staff, discipline, library, stock and reports. Each staff member signs in and sees only what their role allows. Ready for pilot schools."
+            },
+            {
+                keys: ["pharmacy", "pharmacist", "drug", "prescription", "chemist"],
+                answer: "💊 Pharmacy Management System: stock and inventory control, sales and receipts, prescription records and reports for the owner. Available on request."
+            },
+            {
+                keys: ["game", "car rush", "gaming", "pygame"],
+                answer: "🎮 Game Development: we build playable games from scratch. Try Car Rush, a lane-dodging arcade game with nitro boosts, fuel, coins and high scores."
+            },
+            {
+                keys: ["contact", "phone", "call", "email", "whatsapp", "reach", "location", "address", "where"],
+                answer: "📞 Contact us: phone and WhatsApp +254 799 269 573. Email technovaphysolutions@gmail.com. Based in Nairobi, Kenya."
+            },
+            {
+                keys: ["shop", "buy", "products for sale"],
+                answer: "🛍️ Shop: visit our shop page from the menu at the top of the site."
+            }
+        ];
+
+        const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact our team on +254 799 269 573 or email technovaphysolutions@gmail.com, and we'll reply quickly.";
+
+        // Returns the answer whose keywords match the most words in the question
+        function findAnswer(lower) {
+            let best = null;
+            let bestScore = 0;
+            KNOWLEDGE.forEach(function (entry) {
+                const score = entry.keys.filter(function (key) { return lower.includes(key); }).length;
+                if (score > bestScore) {
+                    bestScore = score;
+                    best = entry.answer;
+                }
+            });
+            return best;
+        }
+
         function toggleChat() {
             document.getElementById('chatWindow').classList.toggle('active');
         }
 
         function sendMessage() {
             const input = document.getElementById('chatInput');
-                      const lower = message.toLowerCase();
-            const reply = findAnswer(lower) || FALLBACK_REPLY;
+            const message = input.value.trim();
+            if (message === '') return;
+            const chatMessages = document.getElementById('chatMessages');
 
-            // ---- Static replies (same as before) ----
-           const KNOWLEDGE = [
-    {
-        keys: ["company", "about", "who are you", "who is", "technovaphy", "history", "founded"],
-        answer: "🏢 **TechNovaphy Solutions** is an IT and software company in Nairobi, Kenya. We build and manage the technical backbone of growing businesses: infrastructure, custom software, websites and 24/7 support."
-    },
-    {
-        keys: ["managed it", "it infrastructure", "network", "hardware", "uptime"],
-        answer: "🔹 **Managed IT Operations** – Network management, hardware maintenance and a 99.9% uptime guarantee."
-    },
-    {
-        keys: ["business software", "erp", "automation", "workflow"],
-        answer: "🔹 **Business Software** – Bespoke ERPs and automated workflows tailored to your business. From KSh 300,000."
-    },
-    {
-        keys: ["cloud", "migration", "backup", "disaster"],
-        answer: "🔹 **Cloud Solutions** – Safe data migration, automated backups and cloud-native development (AWS, Azure, GCP)."
-    },
-    {
-        keys: ["support", "helpdesk", "24/7", "technical support", "on-site", "onsite"],
-        answer: "🔹 **24/7 Technical Support** – Proactive troubleshooting and on-site help when you need it. Included in Managed Pro (KSh 50,000/month)."
-    },
-    {
-        keys: ["website", "business site", "business website", "site"],
-        answer: "🌐 **Business Websites** – Professional, responsive and SEO-optimised websites for small and medium businesses. From KSh 60,000 to 150,000."
-    },
-    {
-        keys: ["ecommerce", "e-commerce", "online store", "shop", "payment", "mpesa", "m-pesa"],
-        answer: "🛒 **E-Commerce Solutions** – Full online stores with payment integration (including M-Pesa), inventory and analytics. From KSh 300,000 to 800,000."
-    },
-    {
-        keys: ["web app", "web application", "real-time", "custom app"],
-        answer: "💻 **Web Applications** – Custom web apps with real-time features, user login and scalable architecture. From KSh 800,000."
-    },
-    {
-        keys: ["pwa", "progressive web", "offline app", "installable"],
-        answer: "📱 **Progressive Web Apps** – Fast, installable apps that work offline with a native-app feel. From KSh 800,000."
-    },
-    {
-        keys: ["dashboard", "analytics", "reporting", "business intelligence"],
-        answer: "📊 **Admin Dashboards** – Data visualisation and management tools for real-time business intelligence. From KSh 500,000."
-    },
-    {
-        keys: ["api", "integration", "graphql", "rest"],
-        answer: "🔌 **API Development** – RESTful and GraphQL APIs for connecting your systems securely. From KSh 400,000."
-    },
-    {
-        keys: ["process", "how do you work", "steps", "audit", "design", "deploy"],
-        answer: "🧭 **Our Process** – 1) Audit your current hardware and software. 2) Design an infrastructure roadmap that fits your budget. 3) Deploy with no business interruption. 4) Manage with ongoing optimisation and 24/7 helpdesk."
-    },
-    {
-        keys: ["maintenance", "website maintenance", "bronze", "silver", "gold"],
-        answer: "🛠️ **Website Maintenance Plans** – Bronze KSh 10,000/month (updates, security patches, bug fixes). Silver KSh 20,000/month (adds uptime monitoring, monthly reports, priority WhatsApp support). Gold KSh 35,000/month (adds dedicated support, security audits and feature development)."
-    },
-    {
-        keys: ["standard it", "managed pro", "premium website", "support plan", "it plan"],
-        answer: "📦 **Support Plans** – Standard IT KSh 15,000/month (remote support, cloud backup, monthly reports). Managed Pro KSh 50,000/month (on-site maintenance, software development support, priority helpdesk). Premium Website KSh 120,000 one-time."
-    },
-    {
-        keys: ["audit", "free audit", "free assessment", "infrastructure audit"],
-        answer: "📋 **Free IT Infrastructure Audit** – Worth KES 50,000, free of charge. Fill in the form on this page and we'll email you the audit guide."
-    },
-    {
-        keys: ["price", "cost", "pricing", "how much", "quote", "rates"],
-        answer: "💲 **Pricing** – Prices depend on what you need. Ask about a specific service, or contact us on +254 799 269 573 for a quote for your business."
-    },
-    {
-        keys: ["stack", "technology", "languages", "tools", "frameworks", "react", "python", "node", "django", "java"],
-        answer: "🧰 **Technology We Use** – Frontend: HTML5, CSS3, JavaScript, React, TypeScript, Tailwind. Backend: Node.js, Express, Python, Flask, Java, Spring Boot. Databases: PostgreSQL, MySQL, MongoDB, SQL Server, Redis, Firebase. Deployment: Git, Docker, Render, Vercel, AWS, Cloudflare."
-    },
-    {
-        keys: ["school", "pupil", "student", "attendance", "school fees", "school system"],
-        answer: "🏫 **School Management System** – Pupil records with photographs, attendance registers, timetables, school fees and receipts, staff, discipline, library, stock and reports. Each staff member signs in and sees only what their role allows. Ready for pilot schools."
-    },
-    {
-        keys: ["pharmacy", "pharmacist", "drug", "prescription", "chemist"],
-        answer: "💊 **Pharmacy Management System** – Stock and inventory control, sales and receipts, prescription records and reports for the owner. Available on request."
-    },
-    {
-        keys: ["game", "car rush", "gaming", "pygame"],
-        answer: "🎮 **Game Development** – We build playable games from scratch. Try **Car Rush**, a lane-dodging arcade game with nitro boosts, fuel, coins and high scores."
-    },
-    {
-        keys: ["contact", "phone", "call", "email", "whatsapp", "reach", "location", "address", "where"],
-        answer: "📞 **Contact Us** – Phone and WhatsApp: +254 799 269 573. Email: technovaphysolutions@gmail.com. Based in Nairobi, Kenya."
-    },
-    {
-        keys: ["shop", "buy", "products for sale"],
-        answer: "🛍️ **Shop** – Visit our shop page from the menu at the top of the site."
-    }
-];
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerText = message;
+            chatMessages.appendChild(userMsg);
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
 
-// Finds the knowledge entry with the most keyword matches
-function findAnswer(lower) {
-    let best = null;
-    let bestScore = 0;
-    KNOWLEDGE.forEach(function (entry) {
-        const score = entry.keys.filter(function (key) { return lower.includes(key); }).length;
-        if (score > bestScore) {
-            bestScore = score;
-            best = entry.answer;
+            const reply = findAnswer(message.toLowerCase()) || FALLBACK_REPLY;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                botMsg.innerText = reply;
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 400);
         }
-    });
-    return best;
-}
 
-const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact our team on +254 799 269 573 or email technovaphysolutions@gmail.com, and we'll reply quickly.";
-        // ===== EMAILJS FORM (unchanged) =====
+        // ===== EMAILJS AUDIT FORM =====
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof emailjs !== 'undefined') {
                 emailjs.init('2a63sraNwt28lQWml');
-                console.log('EmailJS initialized');
             } else {
                 console.error('EmailJS not loaded');
             }
@@ -961,26 +1007,23 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                btn.disabled = true;
-                btn.innerText = 'Sending...';
-                statusDiv.style.display = 'block';
-                statusDiv.style.background = '#f8d7da';
-                statusDiv.style.color = '#721c24';
-                statusDiv.innerHTML = 'Processing...';
-
                 const from_name = document.getElementById('from_name').value;
-                const company_name = document.getElementById('company_name').value;
                 const to_email = document.getElementById('to_email').value;
-                const phone_number = document.getElementById('phone_number').value || 'Not provided';
+
+                statusDiv.style.display = 'block';
 
                 if (!from_name || !to_email) {
                     statusDiv.style.background = '#f8d7da';
                     statusDiv.style.color = '#721c24';
                     statusDiv.innerHTML = '❌ Please fill in your name and email.';
-                    btn.disabled = false;
-                    btn.innerText = 'Get Free Audit PDF';
                     return;
                 }
+
+                btn.disabled = true;
+                btn.innerText = 'Sending...';
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.innerHTML = 'Processing...';
 
                 const templateParams = {
                     name: from_name,
@@ -989,7 +1032,7 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
                 };
 
                 emailjs.send('service_fqc51hs', 'template_hkn3vvb', templateParams)
-                    .then(function(response) {
+                    .then(function() {
                         statusDiv.style.background = '#d4edda';
                         statusDiv.style.color = '#155724';
                         statusDiv.innerHTML = `✅ Success! Your audit guide has been sent to ${to_email}.`;
@@ -1000,26 +1043,22 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
                     .catch(function(error) {
                         statusDiv.style.background = '#f8d7da';
                         statusDiv.style.color = '#721c24';
-                        statusDiv.innerHTML = `❌ Error: ${error.text || 'Please try again or contact us on WhatsApp.'}`;
+                        statusDiv.innerHTML = `❌ Error: ${(error && error.text) || 'Please try again or contact us on WhatsApp.'}`;
                         btn.disabled = false;
                         btn.innerText = 'Get Free Audit PDF';
                     });
             });
         });
 
-        // ============================================================
-        //  NEW: AI CHAT MODAL LOGIC
-        // ============================================================
+        // ===== AI ASSISTANT MODAL =====
         const API_BASE = window.location.origin;
 
         function openAIChat() {
             document.getElementById('aiModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Check auth and setup
             const token = localStorage.getItem('token');
             if (!token) {
-                const msgs = document.getElementById('aiMessages');
-                msgs.innerHTML = `
+                document.getElementById('aiMessages').innerHTML = `
                     <div class="error-msg">
                         Please <a href="/" style="color:#00f2ff;">log in</a> to use the AI assistant.
                     </div>
@@ -1027,7 +1066,6 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
                 document.getElementById('aiInput').disabled = true;
                 document.getElementById('aiSendBtn').disabled = true;
             } else {
-                // verify token
                 fetch(`${API_BASE}/api/user/profile`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 }).then(res => {
@@ -1036,10 +1074,8 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
                         window.location.href = '/';
                     }
                 }).catch(() => {});
-                // enable input
                 document.getElementById('aiInput').disabled = false;
                 document.getElementById('aiSendBtn').disabled = false;
-                // clear any error messages and show welcome
                 const msgs = document.getElementById('aiMessages');
                 if (msgs.children.length === 0 || msgs.querySelector('.error-msg')) {
                     msgs.innerHTML = `
@@ -1055,12 +1091,10 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
             document.body.style.overflow = '';
         }
 
-        // Click outside modal to close
         document.getElementById('aiModal').addEventListener('click', function(e) {
             if (e.target === this) closeAIChat();
         });
 
-        // AI send function
         async function sendAIMessage() {
             const input = document.getElementById('aiInput');
             const sendBtn = document.getElementById('aiSendBtn');
@@ -1078,7 +1112,6 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
             const text = input.value.trim();
             if (!text || sendBtn.disabled) return;
 
-            // Add user message
             const userDiv = document.createElement('div');
             userDiv.className = 'msg user';
             userDiv.textContent = text;
@@ -1088,7 +1121,6 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
             input.disabled = true;
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Assistant placeholder with thinking
             const assistantDiv = document.createElement('div');
             assistantDiv.className = 'msg assistant';
             const thinking = document.createElement('div');
@@ -1111,7 +1143,7 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
                     },
                     body: JSON.stringify({
                         messages: [{ role: 'user', content: text }],
-                        model: 'openai/gpt-4o-mini'  // matches your backend's default
+                        model: 'openai/gpt-4o-mini'
                     })
                 });
 
@@ -1166,7 +1198,6 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
             }
         }
 
-        // AI event listeners
         document.getElementById('aiSendBtn').addEventListener('click', sendAIMessage);
         document.getElementById('aiInput').addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -1175,9 +1206,7 @@ const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact 
             }
         });
 
-        // ============================================================
-        //  INIT
-        // ============================================================
+        // ===== START =====
         window.addEventListener('load', function() {
             updateCountdown();
             autoSlide();
