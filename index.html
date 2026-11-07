@@ -412,6 +412,14 @@
             .ai-modal { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
             .ai-modal-messages .msg { max-width: 90%; }
         }
+        /* Real photo slider */
+#heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.25s ease;
+}
     </style>
 </head>
 <body>
@@ -600,7 +608,7 @@
             <p class="section-subtitle">Real projects, real results, real impact.</p>
             <div class="hero-image-section">
                 <button class="slider-arrow prev" onclick="slideImage(-1)">❮</button>
-                <div class="hero-image" id="heroImage">📊</div>
+               <img class="hero-image" id="heroImage" src="images/slide1.jpg" alt="Our IT infrastructure work">
                 <button class="slider-arrow next" onclick="slideImage(1)">❯</button>
             </div>
         </div>
@@ -845,18 +853,32 @@
             }, 1000);
         }
 
-        // ===== SLIDER =====
-        const images = ['📊','💻','🌐','🔒','⚡'];
-        let idx = 0;
-        function slideImage(dir) {
-            idx = (idx + dir + images.length) % images.length;
-            const el = document.getElementById('heroImage');
-            el.innerText = images[idx];
-            el.style.animation = 'none';
-            setTimeout(() => el.style.animation = 'fadeIn 0.6s ease-out', 10);
-        }
-        function autoSlide() { setInterval(() => slideImage(1), 5000); }
+        //// ===== SLIDER (real images) =====
+const slides = [
+    { src: 'images/slide1.jpg', alt: 'Our IT infrastructure work' },
+    { src: 'images/slide2.jpg', alt: 'Software development' },
+    { src: 'images/slide3.jpg', alt: 'Web development' },
+    { src: 'images/slide4.jpg', alt: 'Cybersecurity and networks' },
+    { src: 'images/slide5.jpg', alt: 'Business systems' }
+];
+let idx = 0;
 
+function showSlide(i) {
+    const el = document.getElementById('heroImage');
+    el.style.opacity = 0;
+    setTimeout(() => {
+        el.src = slides[i].src;
+        el.alt = slides[i].alt;
+        el.style.opacity = 1;
+    }, 250);
+}
+
+function slideImage(dir) {
+    idx = (idx + dir + slides.length) % slides.length;
+    showSlide(idx);
+}
+
+function autoSlide() { setInterval(() => slideImage(1), 5000); }
         // ===== NAPHBOT KNOWLEDGE =====
         const KNOWLEDGE = [
             {
