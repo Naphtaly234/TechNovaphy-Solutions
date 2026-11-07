@@ -456,14 +456,13 @@
                 <div class="card"><h3>24/7 Technical Support</h3><p>Proactive troubleshooting and on‑site assistance when you need it most.</p></div>
                 <div class="card"> <h4> School Management System</h4>
                     <p>A complete system for primary schools, with staff signing in to see only what their role allows.</p>
-Features:
-
-Pupil records with photographs
-Attendance registers and timetables
-School fees, invoices and receipts
-Staff, discipline, library and stock
-Reports and a full audit log
-                    <span class="badge">Active</span>
+                    
+                    Pupil records with photographs
+                    Attendance registers and timetables
+                    School fees, invoices and receipts
+                    Staff, discipline, library and stock
+                    Reports and a full audit log
+                                      
             </div>
                 <div class="card"><h5>Pharmacy System</h5>Paragraph:
 
@@ -471,10 +470,10 @@ Reports and a full audit log
 
 Features:
 
-Stock and inventory control
-Sales and receipts
-Prescription records
-Reports for the owner
+                Stock and inventory control
+                Sales and receipts
+                Prescription records
+                Reports for the owner
 
 Status: Available on request</div>
                 <div class="card"><h6>Game Development</h6>Game Development
@@ -837,79 +836,116 @@ High score tracking</div>
 
         function sendMessage() {
             const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (message === '') return;
-            const chatMessages = document.getElementById('chatMessages');
-
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            userMsg.innerText = message;
-            chatMessages.appendChild(userMsg);
-            input.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            const lower = message.toLowerCase();
-            let reply = '';
+                      const lower = message.toLowerCase();
+            const reply = findAnswer(lower) || FALLBACK_REPLY;
 
             // ---- Static replies (same as before) ----
-            if (lower.includes('it infrastructure') || lower.includes('managed it')) {
-                reply = '🔹 **Managed IT Operations** – Network monitoring, hardware maintenance, server admin, cybersecurity. 99.9% uptime guarantee.';
-            }
-            else if (lower.includes('business software') || lower.includes('erp') || lower.includes('automation')) {
-                reply = '🔹 **Business Software** – Bespoke ERPs and automated workflows for inventory, finance, HR, payroll. From KSh 300,000.';
-            }
-            else if (lower.includes('cloud') || lower.includes('migration') || lower.includes('backup')) {
-                reply = '🔹 **Cloud Solutions** – Cloud migration (AWS, Azure, GCP), cloud-native development, backup & disaster recovery.';
-            }
-            else if (lower.includes('support') || lower.includes('helpdesk') || lower.includes('24/7')) {
-                reply = '🔹 **24/7 Technical Support** – Proactive monitoring, on‑site assistance, priority response. Included in Managed Pro (50k/mo).';
-            }
-            else if (lower.includes('business website') || lower.includes('business site')) {
-                reply = '🔹 **Business Websites** – Professional, responsive, SEO‑optimized. Starting from KSh 60,000 – 150,000.';
-            }
-            else if (lower.includes('ecommerce') || lower.includes('store') || lower.includes('shop') || lower.includes('payment')) {
-                reply = '🔹 **E‑Commerce Solutions** – Full‑featured stores with M‑Pesa/bank integration, inventory, order tracking. From KSh 300,000 – 800,000.';
-            }
-            else if (lower.includes('web app') || lower.includes('custom app') || lower.includes('real-time')) {
-                reply = '🔹 **Web Applications** – Custom real‑time apps with user auth and scalable architecture. From KSh 800,000.';
-            }
-            else if (lower.includes('pwa') || lower.includes('progressive web') || lower.includes('offline')) {
-                reply = '🔹 **Progressive Web Apps** – Installable, offline, push notifications, native‑like performance. From KSh 800,000.';
-            }
-            else if (lower.includes('dashboard') || lower.includes('analytics') || lower.includes('report')) {
-                reply = '🔹 **Admin Dashboards** – Real‑time data visualization and BI reports. From KSh 500,000.';
-            }
-            else if (lower.includes('api') || lower.includes('integration')) {
-                reply = '🔹 **API Development** – RESTful & GraphQL APIs with secure auth and docs. From KSh 400,000.';
-            }
-            else if (lower.includes('maintenance') || lower.includes('update') || lower.includes('plan')) {
-                reply = '🔹 **Website Maintenance Plans** – Bronze 10k/mo (updates & security); Silver 20k/mo (+ monitoring, reports, WhatsApp); Gold 35k/mo (+ dedicated support, audits, feature dev).';
-            }
-            else if (lower.includes('price') || lower.includes('cost') || lower.includes('pricing') || lower.includes('how much')) {
-                reply = '💲 **Pricing Summary** – Maintenance: Bronze 10k, Silver 20k, Gold 35k/mo. Web: Business site 60k‑150k, E‑commerce 300k‑800k, Custom apps 800k+, API 400k+, Dashboards 500k+. IT plans: Standard IT 15k/mo, Managed Pro 50k/mo, Premium Website 120k one‑time.';
-            }
-            else if (lower.includes('audit') || lower.includes('free') || lower.includes('assessment')) {
-                reply = '📋 **Free IT Audit** – Fill out the form on this page and we’ll email you a comprehensive PDF guide instantly.';
-            }
-            else if (lower.includes('contact') || lower.includes('phone') || lower.includes('email') || lower.includes('reach')) {
-                reply = '📞 **Contact** – Call +254 799 269 573, email technovaphysolutions@gmail.com, or WhatsApp the same number. Nairobi, Kenya.';
-            }
-            else if (lower.match(/^(hi|hello|hey|good morning|good afternoon|greetings)/)) {
-                reply = '👋 Hello! I’m Naphbot. Ask me about IT services, web development, pricing, maintenance plans, cloud, and more.';
-            }
-            else {
-                reply = 'I can help with: IT Infrastructure, Web Development, Maintenance Plans, Pricing, Cloud, E‑commerce, APIs, Dashboards, and more. Just ask, or call +254 799 269 573.';
-            }
+           const KNOWLEDGE = [
+    {
+        keys: ["company", "about", "who are you", "who is", "technovaphy", "history", "founded"],
+        answer: "🏢 **TechNovaphy Solutions** is an IT and software company in Nairobi, Kenya. We build and manage the technical backbone of growing businesses: infrastructure, custom software, websites and 24/7 support."
+    },
+    {
+        keys: ["managed it", "it infrastructure", "network", "hardware", "uptime"],
+        answer: "🔹 **Managed IT Operations** – Network management, hardware maintenance and a 99.9% uptime guarantee."
+    },
+    {
+        keys: ["business software", "erp", "automation", "workflow"],
+        answer: "🔹 **Business Software** – Bespoke ERPs and automated workflows tailored to your business. From KSh 300,000."
+    },
+    {
+        keys: ["cloud", "migration", "backup", "disaster"],
+        answer: "🔹 **Cloud Solutions** – Safe data migration, automated backups and cloud-native development (AWS, Azure, GCP)."
+    },
+    {
+        keys: ["support", "helpdesk", "24/7", "technical support", "on-site", "onsite"],
+        answer: "🔹 **24/7 Technical Support** – Proactive troubleshooting and on-site help when you need it. Included in Managed Pro (KSh 50,000/month)."
+    },
+    {
+        keys: ["website", "business site", "business website", "site"],
+        answer: "🌐 **Business Websites** – Professional, responsive and SEO-optimised websites for small and medium businesses. From KSh 60,000 to 150,000."
+    },
+    {
+        keys: ["ecommerce", "e-commerce", "online store", "shop", "payment", "mpesa", "m-pesa"],
+        answer: "🛒 **E-Commerce Solutions** – Full online stores with payment integration (including M-Pesa), inventory and analytics. From KSh 300,000 to 800,000."
+    },
+    {
+        keys: ["web app", "web application", "real-time", "custom app"],
+        answer: "💻 **Web Applications** – Custom web apps with real-time features, user login and scalable architecture. From KSh 800,000."
+    },
+    {
+        keys: ["pwa", "progressive web", "offline app", "installable"],
+        answer: "📱 **Progressive Web Apps** – Fast, installable apps that work offline with a native-app feel. From KSh 800,000."
+    },
+    {
+        keys: ["dashboard", "analytics", "reporting", "business intelligence"],
+        answer: "📊 **Admin Dashboards** – Data visualisation and management tools for real-time business intelligence. From KSh 500,000."
+    },
+    {
+        keys: ["api", "integration", "graphql", "rest"],
+        answer: "🔌 **API Development** – RESTful and GraphQL APIs for connecting your systems securely. From KSh 400,000."
+    },
+    {
+        keys: ["process", "how do you work", "steps", "audit", "design", "deploy"],
+        answer: "🧭 **Our Process** – 1) Audit your current hardware and software. 2) Design an infrastructure roadmap that fits your budget. 3) Deploy with no business interruption. 4) Manage with ongoing optimisation and 24/7 helpdesk."
+    },
+    {
+        keys: ["maintenance", "website maintenance", "bronze", "silver", "gold"],
+        answer: "🛠️ **Website Maintenance Plans** – Bronze KSh 10,000/month (updates, security patches, bug fixes). Silver KSh 20,000/month (adds uptime monitoring, monthly reports, priority WhatsApp support). Gold KSh 35,000/month (adds dedicated support, security audits and feature development)."
+    },
+    {
+        keys: ["standard it", "managed pro", "premium website", "support plan", "it plan"],
+        answer: "📦 **Support Plans** – Standard IT KSh 15,000/month (remote support, cloud backup, monthly reports). Managed Pro KSh 50,000/month (on-site maintenance, software development support, priority helpdesk). Premium Website KSh 120,000 one-time."
+    },
+    {
+        keys: ["audit", "free audit", "free assessment", "infrastructure audit"],
+        answer: "📋 **Free IT Infrastructure Audit** – Worth KES 50,000, free of charge. Fill in the form on this page and we'll email you the audit guide."
+    },
+    {
+        keys: ["price", "cost", "pricing", "how much", "quote", "rates"],
+        answer: "💲 **Pricing** – Prices depend on what you need. Ask about a specific service, or contact us on +254 799 269 573 for a quote for your business."
+    },
+    {
+        keys: ["stack", "technology", "languages", "tools", "frameworks", "react", "python", "node", "django", "java"],
+        answer: "🧰 **Technology We Use** – Frontend: HTML5, CSS3, JavaScript, React, TypeScript, Tailwind. Backend: Node.js, Express, Python, Flask, Java, Spring Boot. Databases: PostgreSQL, MySQL, MongoDB, SQL Server, Redis, Firebase. Deployment: Git, Docker, Render, Vercel, AWS, Cloudflare."
+    },
+    {
+        keys: ["school", "pupil", "student", "attendance", "school fees", "school system"],
+        answer: "🏫 **School Management System** – Pupil records with photographs, attendance registers, timetables, school fees and receipts, staff, discipline, library, stock and reports. Each staff member signs in and sees only what their role allows. Ready for pilot schools."
+    },
+    {
+        keys: ["pharmacy", "pharmacist", "drug", "prescription", "chemist"],
+        answer: "💊 **Pharmacy Management System** – Stock and inventory control, sales and receipts, prescription records and reports for the owner. Available on request."
+    },
+    {
+        keys: ["game", "car rush", "gaming", "pygame"],
+        answer: "🎮 **Game Development** – We build playable games from scratch. Try **Car Rush**, a lane-dodging arcade game with nitro boosts, fuel, coins and high scores."
+    },
+    {
+        keys: ["contact", "phone", "call", "email", "whatsapp", "reach", "location", "address", "where"],
+        answer: "📞 **Contact Us** – Phone and WhatsApp: +254 799 269 573. Email: technovaphysolutions@gmail.com. Based in Nairobi, Kenya."
+    },
+    {
+        keys: ["shop", "buy", "products for sale"],
+        answer: "🛍️ **Shop** – Visit our shop page from the menu at the top of the site."
+    }
+];
 
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot';
-                botMsg.innerText = reply;
-                chatMessages.appendChild(botMsg);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 400);
+// Finds the knowledge entry with the most keyword matches
+function findAnswer(lower) {
+    let best = null;
+    let bestScore = 0;
+    KNOWLEDGE.forEach(function (entry) {
+        const score = entry.keys.filter(function (key) { return lower.includes(key); }).length;
+        if (score > bestScore) {
+            bestScore = score;
+            best = entry.answer;
         }
+    });
+    return best;
+}
 
+const FALLBACK_REPLY = "🤔 I don't have an answer to that yet. Please contact our team on +254 799 269 573 or email technovaphysolutions@gmail.com, and we'll reply quickly.";
         // ===== EMAILJS FORM (unchanged) =====
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof emailjs !== 'undefined') {
