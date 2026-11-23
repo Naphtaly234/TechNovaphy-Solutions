@@ -178,6 +178,11 @@
             display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.8rem;
             border-radius: 999px; background: rgba(0,242,255,0.1); color: var(--primary); border: 1px solid var(--border);
         }
+        .project-link {
+            display: inline-block; margin-top: 1rem; margin-left: 0.5rem; color: var(--primary);
+            font-weight: 600; text-decoration: none; font-size: 0.95rem;
+        }
+        .project-link:hover { text-decoration: underline; }
 
         /* PROCESS */
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; }
@@ -438,6 +443,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Products</a></li>
+                <li><a href="games.html">Games</a></li>
                 <li><a href="#webdev">Web Dev</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#maintenance">Maintenance</a></li>
@@ -524,6 +530,7 @@
                         <li>High score tracking</li>
                     </ul>
                     <span class="project-status">Playable demo</span>
+                    <a href="games.html" class="project-link">Play Car Rush →</a>
                 </article>
 
             </div>
@@ -854,32 +861,33 @@
             }, 1000);
         }
 
-        //// ===== SLIDER (real images) =====
-const slides = [
-    { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images%20(2).jpg', alt: 'Our IT infrastructure work' },
-    { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/Screenshot%202026-11-07%20111319.png', alt: 'Software development' },
-    { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images%20(1).jpg', alt: 'Web development' },
-    { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/Screenshot%202026-11-07%20112114.png', alt: 'School Management System' },
-    { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images.jpg', alt: 'Business systems' }
-];
-let idx = 0;
+        // ===== SLIDER (real images) =====
+        const slides = [
+            { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images%20(2).jpg', alt: 'Our IT infrastructure work' },
+            { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/Screenshot%202026-11-07%20111319.png', alt: 'Software development' },
+            { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images%20(1).jpg', alt: 'Web development' },
+            { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/Screenshot%202026-11-07%20112114.png', alt: 'School Management System' },
+            { src: 'https://raw.githubusercontent.com/Naphtaly234/TechNovaphy-Solutions/main/github/workflows/images.jpg', alt: 'Business systems' }
+        ];
+        let idx = 0;
 
-function showSlide(i) {
-    const el = document.getElementById('heroImage');
-    el.style.opacity = 0;
-    setTimeout(() => {
-        el.src = slides[i].src;
-        el.alt = slides[i].alt;
-        el.style.opacity = 1;
-    }, 250);
-}
+        function showSlide(i) {
+            const el = document.getElementById('heroImage');
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.src = slides[i].src;
+                el.alt = slides[i].alt;
+                el.style.opacity = 1;
+            }, 250);
+        }
 
-function slideImage(dir) {
-    idx = (idx + dir + slides.length) % slides.length;
-    showSlide(idx);
-}
+        function slideImage(dir) {
+            idx = (idx + dir + slides.length) % slides.length;
+            showSlide(idx);
+        }
 
-function autoSlide() { setInterval(() => slideImage(1), 5000); }
+        function autoSlide() { setInterval(() => slideImage(1), 5000); }
+
         // ===== NAPHBOT KNOWLEDGE =====
         const KNOWLEDGE = [
             {
@@ -960,7 +968,7 @@ function autoSlide() { setInterval(() => slideImage(1), 5000); }
             },
             {
                 keys: ["game", "car rush", "gaming", "pygame"],
-                answer: "🎮 Game Development: we build playable games from scratch. Try Car Rush, a lane-dodging arcade game with nitro boosts, fuel, coins and high scores."
+                answer: "🎮 Game Development: we build playable games from scratch. Try Car Rush, a lane-dodging arcade game with nitro boosts, fuel, coins and high scores. You can play it on our Games page."
             },
             {
                 keys: ["contact", "phone", "call", "email", "whatsapp", "reach", "location", "address", "where"],
